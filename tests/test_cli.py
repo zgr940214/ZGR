@@ -20,7 +20,7 @@ def write_sample(tmp_path):
 
 def test_cli_requires_input(capsys):
     assert main([]) == 2
-    assert "at least one input" in capsys.readouterr().err
+    assert "provide an input file" in capsys.readouterr().err
 
 
 def test_cli_table_output(tmp_path, capsys):

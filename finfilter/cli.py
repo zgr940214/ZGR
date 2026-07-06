@@ -1,8 +1,11 @@
 """Command-line interface: ``finfilter`` or ``python -m finfilter``.
 
 Examples:
+    finfilter --list-sources
+    finfilter --fetch --keywords earnings,guidance --sort date
+    finfilter --fetch cnbc,wsj-markets --min-sentiment 0.2 --format json
+    finfilter --fetch-tickers AAPL,TSLA --sort sentiment --save today.json
     finfilter examples/sample_news.json --tickers AAPL,MSFT --keywords earnings
-    finfilter examples/sample_news.csv --min-sentiment 0.2 --sort date --format table
     finfilter --rss https://example.com/feed.xml --keywords "rate cut" --format json
 """
 
@@ -24,7 +27,9 @@ from .filters import (
 from .loaders import fetch_rss, load_many
 from .models import NewsItem
 from .pipeline import Pipeline
+from .scraper import scrape
 from .sentiment import label_sentiment, score_sentiment
+from .sources import TRUSTED_SOURCES
 
 
 def _split(value: str) -> list[str]:
@@ -38,8 +43,20 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("files", nargs="*",
                         help="input files (.json, .jsonl, .csv, .xml/.rss)")
-    parser.add_argument("--rss", action="append", default=[], metavar="URL",
-                        help="fetch a live RSS/Atom feed (repeatable)")
+
+    inputs = parser.add_argument_group("live inputs")
+    inputs.add_argument("--fetch", nargs="?", type=_split, const=[], default=None,
+                        metavar="SRC1,SRC2",
+                        help="scrape trusted sources (no value = all of them); "
+                             "see --list-sources for names")
+    inputs.add_argument("--fetch-tickers", type=_split, default=None, metavar="T1,T2",
+                        help="also scrape Yahoo Finance headline feeds for these tickers")
+    inputs.add_argument("--rss", action="append", default=[], metavar="URL",
+                        help="fetch an arbitrary RSS/Atom feed (repeatable)")
+    inputs.add_argument("--list-sources", action="store_true",
+                        help="list the trusted sources and exit")
+    inputs.add_argument("--timeout", type=float, default=10.0, metavar="SECS",
+                        help="per-request timeout for live fetches (default: 10)")
 
     group = parser.add_argument_group("filters")
     group.add_argument("--keywords", type=_split, default=None, metavar="K1,K2",
@@ -72,6 +89,8 @@ def build_parser() -> argparse.ArgumentParser:
                      help="keep duplicate items instead of dropping them")
     out.add_argument("--format", choices=["table", "json", "titles"], default="table",
                      help="output format (default: table)")
+    out.add_argument("--save", default=None, metavar="FILE",
+                     help="also save the results as JSON to this file")
     return parser
 
 
@@ -125,18 +144,37 @@ def render_table(items: Iterable[NewsItem]) -> str:
     return "\n".join(lines)
 
 
+def list_sources() -> str:
+    lines = ["NAME                 CATEGORY  WEBSITE"]
+    for source in TRUSTED_SOURCES.values():
+        lines.append(f"{source.name:20} {source.category:9} {source.website}")
+    lines.append("yahoo-<ticker>       stocks    https://finance.yahoo.com "
+                 "(via --fetch-tickers)")
+    return "\n".join(lines)
+
+
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    if not args.files and not args.rss:
+    if args.list_sources:
+        print(list_sources())
+        return 0
+    if not args.files and not args.rss and args.fetch is None and not args.fetch_tickers:
         build_parser().print_usage(sys.stderr)
-        print("error: provide at least one input file or --rss URL", file=sys.stderr)
+        print("error: provide an input file, --fetch, --fetch-tickers or --rss URL",
+              file=sys.stderr)
         return 2
 
     try:
         items = list(load_many(args.files))
+        if args.fetch is not None or args.fetch_tickers:
+            # --fetch with no value scrapes every trusted source; --fetch-tickers
+            # alone scrapes only the per-ticker Yahoo Finance feeds.
+            names = args.fetch if args.fetch else (None if args.fetch is not None else [])
+            items.extend(scrape(names, tickers=args.fetch_tickers or (),
+                                timeout=args.timeout))
         for url in args.rss:
-            items.extend(fetch_rss(url))
-    except (OSError, ValueError) as exc:
+            items.extend(fetch_rss(url, timeout=args.timeout))
+    except (OSError, ValueError, KeyError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
 
@@ -153,13 +191,18 @@ def main(argv: list[str] | None = None) -> int:
     if args.limit is not None:
         pipeline.limit(args.limit)
 
+    results = pipeline.collect()
+    if args.save:
+        Pipeline(results).to_file(args.save)
+        print(f"saved {len(results)} items to {args.save}", file=sys.stderr)
+
     if args.format == "json":
-        print(pipeline.to_json(with_sentiment=True))
+        print(Pipeline(results).to_json(with_sentiment=True))
     elif args.format == "titles":
-        for item in pipeline:
+        for item in results:
             print(item.title)
     else:
-        print(render_table(pipeline.collect()))
+        print(render_table(results))
     return 0
 
 
