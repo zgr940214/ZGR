@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Apple beats earnings expectations as iPhone sales surge",
+    "body": "Apple reported record quarterly revenue, with iPhone sales up 12% year over year. Shares of $AAPL rallied in after-hours trading.",
+    "source": "MarketWatch",
+    "url": "https://example.com/apple-earnings",
+    "published_at": "2026-07-01T21:05:00Z",
+    "tickers": ["AAPL"]
+  },
+  {
+    "title": "Tesla shares plunge after vehicle recall announcement",
+    "body": "Tesla announced a recall affecting 120,000 vehicles, raising concerns about quality control. $TSLA fell 6% in early trading.",
+    "source": "Reuters",
+    "url": "https://example.com/tesla-recall",
+    "published_at": "2026-06-28T13:30:00Z",
+    "tickers": ["TSLA"]
+  },
+  {
+    "title": "Fed signals possible rate cut later this year",
+    "body": "Federal Reserve officials hinted that a rate cut could come in the fall if inflation continues to cool, boosting hopes of a market rally.",
+    "source": "Bloomberg",
+    "url": "https://example.com/fed-rate-cut",
+    "published_at": "2026-06-30T18:00:00Z",
+    "tickers": []
+  },
+  {
+    "title": "Microsoft announces record cloud growth in Q4 earnings",
+    "body": "Microsoft's Azure revenue grew 29%, beating analyst estimates. The strong quarter lifted $MSFT to a new all-time high.",
+    "source": "CNBC",
+    "url": "https://example.com/msft-earnings",
+    "published_at": "2026-07-02T20:45:00Z",
+    "tickers": ["MSFT"]
+  },
+  {
+    "title": "Regional bank faces investigation over loan losses",
+    "body": "Regulators opened an investigation into loan loss reserves at a mid-sized regional bank, and its shares dropped 9% on the news.",
+    "source": "Reuters",
+    "url": "https://example.com/bank-investigation",
+    "published_at": "2026-06-25T15:10:00Z",
+    "tickers": ["RBNK"]
+  },
+  {
+    "title": "Oil prices climb as OPEC extends production cuts",
+    "body": "Crude oil rose 3% after OPEC agreed to extend production cuts through year end. Energy stocks gained across the board.",
+    "source": "MarketWatch",
+    "url": "https://example.com/oil-opec",
+    "published_at": "2026-06-29T09:00:00Z",
+    "tickers": ["XOM", "CVX"]
+  },
+  {
+    "title": "Apple beats earnings expectations as iPhone sales surge",
+    "body": "Duplicate syndicated copy of the Apple earnings story.",
+    "source": "SyndicatedWire",
+    "url": "https://example.com/apple-earnings",
+    "published_at": "2026-07-01T22:00:00Z",
+    "tickers": ["AAPL"]
+  },
+  {
+    "title": "Startup announces new office coffee machine",
+    "body": "In non-financial news, a startup upgraded its espresso maker.",
+    "source": "OfficeNews",
+    "url": "https://example.com/coffee",
+    "published_at": "2026-06-27T08:00:00Z",
+    "tickers": []
+  }
+]

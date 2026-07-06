@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "finfilter"
+version = "0.1.0"
+description = "Filter, screen and rank financial news and market data"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["finance", "news", "filter", "sentiment", "rss"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Office/Business :: Financial",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+finfilter = "finfilter.cli:main"
+
+[tool.setuptools]
+packages = ["finfilter"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
