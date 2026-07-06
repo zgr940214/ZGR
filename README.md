@@ -1,10 +1,35 @@
 # finfilter
 
-Filter, screen and rank financial news and market data — pure Python, no
-runtime dependencies (only `pytest` for tests).
+Scrape, filter, screen and rank financial news and market data — pure Python,
+no runtime dependencies (only `pytest` for tests).
+
+## Trusted sources
+
+`finfilter` ships with a registry of trusted financial news publishers scraped
+via their public RSS feeds (`finfilter --list-sources`):
+
+| Name | Publisher | Website |
+|---|---|---|
+| `cnbc` | CNBC Top News | https://www.cnbc.com |
+| `marketwatch` | MarketWatch Top Stories | https://www.marketwatch.com |
+| `wsj-markets` | Wall Street Journal Markets | https://www.wsj.com |
+| `ft` | Financial Times | https://www.ft.com |
+| `bbc-business` | BBC News Business | https://www.bbc.com/news/business |
+| `guardian-business` | The Guardian Business | https://www.theguardian.com/business |
+| `investing-com` | Investing.com News | https://www.investing.com |
+| `nasdaq-markets` | Nasdaq Markets | https://www.nasdaq.com |
+| `seeking-alpha` | Seeking Alpha Market News | https://seekingalpha.com |
+| `fortune` | Fortune | https://fortune.com |
+| `federal-reserve` | Federal Reserve press releases | https://www.federalreserve.gov |
+| `yahoo-<ticker>` | Yahoo Finance per-ticker headlines | https://finance.yahoo.com |
+
+Any other RSS/Atom feed can be added ad hoc with `--rss URL` or by extending
+`finfilter/sources.py`.
 
 ## Features
 
+- **Scraper** — fetches the trusted sources above concurrently, strips embedded
+  HTML, and tags each item with its publisher.
 - **Loaders** for JSON, JSON Lines, CSV files and RSS/Atom feeds (file or live URL).
 - **Composable filters** — combine with `&`, `|` and `~`:
   - `KeywordFilter` — word-boundary keyword matching (any/all, optional substring mode)
@@ -25,29 +50,35 @@ pip install -e ".[dev]"   # from the repository root
 ## Quick start (CLI)
 
 ```bash
-# Positive Apple/Microsoft earnings news, newest first, as a table
-finfilter examples/sample_news.json examples/sample_news.csv \
-    --tickers AAPL,MSFT --keywords earnings,revenue \
-    --min-sentiment 0.2 --sort date
+# See which trusted sources are available
+finfilter --list-sources
 
-# Everything negative last week, as JSON with sentiment scores
-finfilter examples/sample_news.json \
-    --since 2026-06-25 --until 2026-07-02 \
-    --max-sentiment -0.2 --format json
+# Scrape ALL trusted sources, keep M&A news, newest first
+finfilter --fetch --keywords takeover,merger,acquisition --sort date
 
-# Filter a live RSS feed
+# Scrape only CNBC and WSJ, keep positive stories, output JSON
+finfilter --fetch cnbc,wsj-markets --min-sentiment 0.2 --format json
+
+# Per-ticker headlines from Yahoo Finance, most positive first, saved to a file
+finfilter --fetch-tickers AAPL,TSLA --sort sentiment --save today.json
+
+# Local files work too, and mix freely with live sources
+finfilter examples/sample_news.json --tickers AAPL,MSFT --keywords earnings
+
+# Any other feed can be added ad hoc
 finfilter --rss https://example.com/markets.rss --keywords "rate cut" --format titles
 ```
 
 Run `finfilter --help` for all options (`--sources`, `--exclude-keywords`,
-`--regex`, `--all-keywords`, `--limit`, `--no-dedupe`, ...).
+`--regex`, `--all-keywords`, `--since/--until`, `--limit`, `--no-dedupe`, ...).
 
 ## Quick start (Python API)
 
 ```python
-from finfilter import KeywordFilter, Pipeline, SentimentFilter, TickerFilter, load
+from finfilter import KeywordFilter, Pipeline, SentimentFilter, TickerFilter, scrape
 
-items = load("examples/sample_news.json")
+# Scrape trusted sources (all of them, or scrape(["cnbc", "ft"], tickers=["AAPL"]))
+items = scrape()
 
 screen = (
     TickerFilter(["AAPL", "MSFT", "NVDA"])
@@ -60,7 +91,8 @@ for item in results:
     print(item.published_at.date(), item.tickers, item.title)
 ```
 
-See `examples/screen_positive_tech.py` for a runnable version.
+See `examples/screen_positive_tech.py` (offline sample data) and
+`examples/live_market_screen.py` (live scrape) for runnable versions.
 
 ## Input formats
 
@@ -81,14 +113,21 @@ swap in your own model via `PredicateFilter` or a custom `Filter` subclass.
 ```
 finfilter/
   models.py     # NewsItem dataclass, timestamp parsing, ticker extraction
+  sources.py    # registry of trusted publishers and their RSS feeds
+  scraper.py    # concurrent fetching + HTML cleanup for trusted sources
   filters.py    # composable Filter classes
   sentiment.py  # lexicon-based sentiment scoring
   loaders.py    # JSON / JSONL / CSV / RSS loaders
   pipeline.py   # fluent Pipeline API
   cli.py        # command-line interface
-examples/       # sample data and API example
+examples/       # sample data and API examples
 tests/          # pytest suite
 ```
+
+Scraping note: feeds are fetched with a plain `finfilter/1.0` user agent and a
+per-request timeout; failed sources are skipped with a warning so one slow
+publisher never blocks the rest. Please respect each publisher's terms of use
+when redistributing content.
 
 ## Development
 

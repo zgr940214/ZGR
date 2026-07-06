@@ -106,6 +106,13 @@ class Pipeline:
     def __iter__(self) -> Iterator[NewsItem]:
         return iter(self.collect())
 
+    def to_file(self, path, *, with_sentiment: bool = False) -> None:
+        """Write the results as a JSON file (loadable again with finfilter.load)."""
+        from pathlib import Path
+        Path(path).write_text(
+            self.to_json(with_sentiment=with_sentiment) + "\n", encoding="utf-8"
+        )
+
     def to_json(self, *, indent: int = 2, with_sentiment: bool = False) -> str:
         rows = []
         for item in self.collect():
