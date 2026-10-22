@@ -1,0 +1,54 @@
+{
+  "wireless_regdb_version": "2026.09.03",
+  "ipk": "/workspace/rpi4-yocto/build/tmp/deploy/ipk/all/wireless-regdb-static_2026.09.03-r0_all.ipk",
+  "package_matches_pinned_source": true,
+  "final_rootfs_matches_package": true,
+  "final_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs-20261022060721.tar.bz2",
+  "final_rootfs_members": {
+    "regulatory.db": {
+      "member": "lib/firmware/regulatory.db",
+      "bytes": 6348,
+      "sha256": "7e236caecd939c8ec98be4870bf30422f28ffef2565a38aaaa2d9ddabd0c2641"
+    },
+    "regulatory.db.p7s": {
+      "member": "lib/firmware/regulatory.db.p7s",
+      "bytes": 1085,
+      "sha256": "50332f0db09b8bcc719235ec4985c27377f2cc2f42abb7b5dcf951866c5a888a"
+    }
+  },
+  "regulatory_db_sha256": "7e236caecd939c8ec98be4870bf30422f28ffef2565a38aaaa2d9ddabd0c2641",
+  "regulatory_signature_sha256": "50332f0db09b8bcc719235ec4985c27377f2cc2f42abb7b5dcf951866c5a888a",
+  "openssl_cms_detached_signature_verified": true,
+  "trusted_certificates_from_actual_kernel_source": true,
+  "certificates_match_compiled_cfg80211_elf_symbol": true,
+  "signer_in_compiled_regdb_keys": "wens-0",
+  "signer_certificate_sha256": "eeb049594eb3a83e50bfb6782e7fdf9e96fbd5c2954a0bbb0931cd55321d0bcf",
+  "signer_info": "subject=CN=wens\nissuer=CN=wens\nsha256 Fingerprint=EE:B0:49:59:4E:B3:A8:3E:50:BF:B6:78:2E:7F:DF:9E:96:FB:D5:C2:95:4A:0B:BB:09:31:CD:55:32:1D:0B:CF",
+  "compiled_certificate_bytes": 2789,
+  "cfg80211_ko_sha256": "4faf962a32a68ad921cb0a51f21949889d0f534c5070b89f5ff7bf4ef0eb1aac",
+  "verification_policy": "OpenSSL trust restricted to actual kernel built-in certs, purpose any, no validity-time check to match Linux kernel policy; signature and chain checks enabled",
+  "kernel_module_loaded": false,
+  "hardware_radio_tested": false,
+  "passed": true,
+  "source_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs-20261022060721.tar.bz2",
+  "source_sha256": "c631a9e0da55d2ab081e70ed0aa8e6fea18592e0d7161b7fb8fe5cba3bc0e385",
+  "source_bytes": 20904629,
+  "final_rootfs_cfg80211_matches_verified_elf": true,
+  "verified_final_rootfs_members": {
+    "regulatory.db": {
+      "member": "lib/firmware/regulatory.db",
+      "bytes": 6348,
+      "sha256": "7e236caecd939c8ec98be4870bf30422f28ffef2565a38aaaa2d9ddabd0c2641"
+    },
+    "regulatory.db.p7s": {
+      "member": "lib/firmware/regulatory.db.p7s",
+      "bytes": 1085,
+      "sha256": "50332f0db09b8bcc719235ec4985c27377f2cc2f42abb7b5dcf951866c5a888a"
+    },
+    "cfg80211.ko": {
+      "member": "lib/modules/6.12.93-v8/kernel/net/wireless/cfg80211.ko",
+      "bytes": 22428568,
+      "sha256": "4faf962a32a68ad921cb0a51f21949889d0f534c5070b89f5ff7bf4ef0eb1aac"
+    }
+  }
+}

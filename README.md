@@ -4,48 +4,93 @@ RPi4 / BCM2711 的 64 位 Yocto 镜像，固定 Yocto Scarthgap LTS **5.0.21**�
 Raspberry Pi Linux **6.12.93-v8**。上游源码、BSP 和内核 metadata 均固定到完整
 Git SHA，见 [sources.lock.json](sources.lock.json)，不使用 AUTOREV。
 
-## 推荐：可在 Windows 配置的 SSH / GPIO 镜像
+## 推荐：只填 Wi-Fi 名称和密码的 SSH / GPIO 镜像
 
-[镜像升级包，无需重复下载符号](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-headless-ssh-gpio-6.12.93-v8-image-v1.zip)
-或[镜像 + 完整内核符号](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-headless-ssh-gpio-6.12.93-v8-full-v1.zip)。
+推荐目标为 `rpi4-boot-rcu-wifi-image`：预配 Wi-Fi、OpenSSH、GPIO 工具和
+`rpi4-debug.local` 主机名，Wi-Fi `wlan0` 与有线 `eth0` 默认使用 DHCP。
+只安装 Wi-Fi 所需的少量完整 DWARF 模块、RPi4 固件和签名监管数据库；
+同一完整符号内核保持不变，已有 vmlinux 和启动 / RCU 源码可以继续使用。
 
-此版本包含 OpenSSH、有线 DHCP、GPIO 工具与 FAT 启动分区配置导入，镜像仅
-18,951,216 字节；仍为零 `.ko`，同一完整 DWARF4 内核。AP / Wi-Fi 暂不加入。
-已实际运行 `bash scripts/build-headless-ssh.sh`，3756 项 BitBake 任务全部成功，
-构建入口及产物验收退出码均为 0。12 项配置导入 fixture 检查通过。
+[Wi-Fi 镜像升级 ZIP](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-wifi-ready-6.12.93-v8-image-v1.zip)
+**已在本执行环境实际构建，产物验收、19 项配置导入和 15 项 AArch64 软件检查均通过。**
+升级包只下载新镜像与使用说明，不重复携带完整符号。
 
-烧录 ZIP 中 `image/*.img.xz`，跳过 Imager 的 Raspberry Pi OS 定制。重新插卡，
-Windows 可见的 FAT 分区中已有 `network-config` 和 `README-SETUP.txt`。
-默认 eth0 DHCP。将自己的 SSH **公钥**复制到 FAT 根目录，命名 `authorized_keys`，
-插网线开机后即可公钥登录，无需预先接串口：
+1. 解压 ZIP，在 Raspberry Pi Imager 的“使用自定义镜像”中选择
+   `image/rpi4-wifi-ready-6.12.93-v8.img.xz`，烧录一次，跳过 Raspberry Pi OS 专用定制。
+2. 重插 SD 卡，在 Windows 可见的 FAT 启动分区打开 `network-config`。
+   **只改两行**，等号后直接填写自己的名称和密码，不额外加引号：
 
-```powershell
-ssh-keygen -t ed25519
-# 将 E: 替换成 SD 卡启动分区盘符；已有密钥时跳过生成，勿覆盖自己的密钥。
-Copy-Item "$env:USERPROFILE\.ssh\id_ed25519.pub" 'E:\authorized_keys'
-# 从路由器 DHCP 客户端列表查到 IPv4 后：
-ssh root@树莓派的IPv4
+   ```text
+   SSID=你的WiFi名称
+   PASSWORD=你的WiFi密码
+   ```
+
+   空格、中文和标点按原样填写，保存为 UTF-8；支持 CRLF 和 UTF-8 BOM。
+3. 安全弹出卡，插入 Pi 并上电，等待启动完成后连接：
+
+   ```powershell
+   ssh root@rpi4-debug.local
+   ```
+
+   初始 SSH 密码为 **`Rpi4GPIO-2026!`**。首次登录后可用 `passwd` 修改。
+
+如果 `.local` 无法解析，在路由器 DHCP 列表查找 `rpi4-debug` 的 IPv4，
+使用 `ssh root@实际IP`；插网线到 DHCP 路由器也可作为备用连接。
+Wi-Fi 是连接现有 AP 的客户端，默认国家代码 CN；支持 WPA2-PSK 和提供 WPA2 兼容模式的
+WPA2/WPA3 混合网络，不承诺 WPA3-only AP。首次导入结果写入 FAT 的 `setup-result.txt`。
+详细说明见[启动分区配置说明](docs/ssh-template.zh-CN.md)。
+
+GPIO 设备树参数仍在 FAT 的 `config.txt`；登录后先查看实际芯片与线路：
+
+```sh
+gpiodetect
+gpioinfo
+gpioset --help
 ```
 
-首次配置结果写入 FAT 的 `setup-result.txt`。`network-config` 是本镜像的
-KEY=VALUE 格式，不是 cloud-init YAML。完整模板、静态 IP 与可选密码方式见
-[启动分区配置说明](docs/ssh-template.zh-CN.md)。GPIO 设备树参数仍在 `config.txt`；
-SSH 登录后可用 `gpiodetect`、`gpioinfo` 和 libgpiod 2.1.3 的其他工具。
+libgpiod 版本为 2.1.3，GPIO_CDEV 内建。GPIO line 编号不等于排针物理编号，
+实际映射和电气行为需在板上确认。
 
-从源码构建推荐镜像：
+从源码构建推荐的 Wi-Fi 镜像：
 
 ```bash
 git clone --single-branch --no-tags --branch yocto-rpi4 https://github.com/zgr940214/ZGR.git rpi4-yocto
 cd rpi4-yocto
 bash scripts/setup.sh
-bash scripts/build-headless-ssh.sh
+bash scripts/build-wifi-ssh.sh
 ```
 
-本轮日志：
+`build-wifi-ssh.sh` 完成内核安装检查后，实际构建新目标并运行
+`scripts/verify-wifi-ssh-artifacts.py`；只有所有步骤通过才返回 0。
+输出位于 `build/tmp/deploy/images/raspberrypi4-64/`：
+
+```text
+rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs.wic.xz
+rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs.wic.bmap
+rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs.tar.bz2
+```
+
+烧录自己构建的产物时，将 `.wic.xz` 复制或改名为 `.img.xz` 后选择即可，内容不变。
+本轮标识在 `logs/wifi-ssh-current-run.txt`，对应日志为
+`logs/wifi-ssh-build-<run>.log` 和 `logs/wifi-ssh-artifacts-<run>.log`。
+完整构建/验收入口本轮原生退出码为 0，4366 项任务全部成功；当前运行标识 `20261022T061536Z`。
+发布包保留对应日志、19 项配置导入检查和新目标 15 项 AArch64 软件检查报告。
+真实 OpenSSH 使用镜像预置密码完成 SSH 鉴权，错误密码被拒绝；账号库未修改。
+实际安装 5 个无线模块，逐一验证完整 DWARF4、vermagic、依赖和原内核构建哈希。
+签名监管数据库还通过实际 cfg80211 模块内置证书的密码学验证。
+此前目标的通过记录单列于后文，本轮状态以 Wi-Fi 日志为准。
+本环境没有 RPi4 硬件；尚未验证实机启动、Wi-Fi 关联、mDNS/NIC 连通和 GPIO 电气行为。
+
+## 可选：原有线 SSH / GPIO 镜像
+
+[有线镜像升级包](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-headless-ssh-gpio-6.12.93-v8-image-v1.zip)
+或[有线镜像 + 完整内核符号](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-headless-ssh-gpio-6.12.93-v8-full-v1.zip)。
+原 `rpi4-boot-rcu-ssh-image` 继续保留，运行 `bash scripts/build-headless-ssh.sh` 构建。
+此目标为有线 eth0 DHCP、零 `.ko`，首次登录使用自己的 SSH 公钥或自行配置的密码；
+它不使用新 Wi-Fi 目标的预置口令。此前已实际构建并验收，3756 项任务成功、12 项导入检查通过：
 [构建](verification/headless-ssh-build-20261022T033449Z.log)、
 [产物验收](verification/headless-ssh-artifacts-20261022T033449Z.log)、
 [导入测试](verification/headless-setup-tests.json)。
-本环境没有 RPi4 硬件，未验证实机启动、网线连通和 GPIO 电气行为。
 
 ## 历史纯串口镜像（没有 SSH）
 
@@ -110,7 +155,8 @@ rpi4-kernel-debug/                 # 同一次完整符号内核构建的调试�
 `rcu_gp_init`、`rcu_gp_cleanup`、`rcu_core`、`call_rcu`、`synchronize_rcu`。
 这些符号已在实际 ELF 中检查存在。
 
-精简下载包只包含启动 / RCU 相关源码和生成头文件，并非完整内核源码树；
+配套完整符号包中的源码仅包含启动 / RCU 精选代码和生成头文件，并非完整内核源码树；
+推荐的 Wi-Fi 镜像升级包不重复携带符号或源码归档。
 缺少其他子系统源码时可从固定提交补齐。GDB 源码路径映射：
 
 ```gdb
@@ -129,7 +175,19 @@ KASLR 默认启用；调试时可在启动分区 `cmdline.txt` 同一行末尾�
 普通串口 KGDB 注册较晚，不能保证从 `head.S` 第一条指令单步；最早启动需要
 JTAG 或适当的 QEMU 调试环境。没有进行实机启动或 KGDB / JTAG 连通测试。
 
-## 产物验收
+## 各目标的产物验收
+
+推荐 Wi-Fi 目标的构建入口会自动执行专用验收；也可单独检查已生成的产物：
+
+```bash
+python3 scripts/verify-wifi-ssh-artifacts.py
+```
+
+检查包括实际 Wi-Fi 依赖模块的 AArch64 ELF、完整 DWARF4、vermagic 及其与原内核构建的
+逐字节一致性，RPi4 固件/NVRAM/签名 regdb、预置账户与 mDNS、FAT 上的 Wi-Fi 模板，
+以及启动 kernel/DTB 哈希、ext4 和 WIC 分区范围。本轮检查结果以本轮日志为准。
+
+原纯串口精简目标使用以下验收入口：
 
 ```bash
 python3 scripts/verify-boot-rcu-artifacts.py
@@ -144,7 +202,7 @@ bash scripts/bitbake.sh -p
 
 ## 可选的全模块镜像
 
-需要研究模块、Wi-Fi 或其他设备时，可另外运行：
+需要研究全部内核模块或其他设备时，可另外运行：
 
 ```bash
 bash scripts/build.sh
@@ -162,7 +220,8 @@ rootfs / 调试归档模块逐字节一致性和 WIC 检查通过。原记录为
 ## 资源与网络
 
 首次构建仍需编译完整调试内核，磁盘建议至少 **100 GB 可用空间**。
-本环境用 32 GB 磁盘、32 GiB RAM 实际完成了构建；配置同时调度 2 个配方任务，
+此前全模块、纯串口及有线目标已在 32 GB 磁盘、32 GiB RAM 的本环境完成构建；
+配置同时调度 2 个配方任务，
 每个使用 `-j4`，非内核配方启用 rm_work，低空间时由脚本回收内核 `.o` 和 `.o.cmd`。
 保留 vmlinux、所有已链接 `.ko`、源码、生成头文件和 GDB 工具。
 Docker vfs 驱动在每个容器运行时还使用约 1.1 GiB 磁盘，退出时释放。
@@ -191,10 +250,10 @@ init/shell、ext4 与分区范围均通过验收。
 编译复用了此前已实际交叉编译并验收的固定版本内核。
 未进行 RPi4 实机启动或调试器连接测试。
 
-## AArch64 用户态执行验证
+## 早期有线镜像的 AArch64 用户态执行记录
 
-新 SSH 镜像里的实际 AArch64 ssh-keygen、sshd 配置检查、BusyBox、passwd 和
+原有线 SSH 镜像里的实际 AArch64 ssh-keygen、sshd 配置检查、BusyBox、passwd 和
 GPIO 2.1.3 工具已在 QEMU 10.0.13 用户模式下运行，9 项检查通过。
 [执行报告](verification/aarch64-smoke.json)、[执行日志](verification/aarch64-smoke.log)、
 [模拟器来源验证](verification/aarch64-emulator-provenance.json)。
-这不是 RPi4 实机启动或实际 SSH 联网测试。
+这不是 RPi4 实机启动或实际 SSH 联网测试，也不是本轮 Wi-Fi 目标的软件验证结果。

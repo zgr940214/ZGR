@@ -1,48 +1,105 @@
-# 从 Windows 配置 SSH 和有线网络
+# 从 Windows 填写 Wi-Fi 名称和密码后直接 SSH 登录
 
-当前推荐镜像是 `rpi4-boot-rcu-ssh-image`，包含已实际编译的 OpenSSH、
-有线 DHCP、libgpiod-tools 和启动分区导入程序。无需串口即可完成首次公钥登录。
+推荐目标为 `rpi4-boot-rcu-wifi-image`，构建入口是 `bash scripts/build-wifi-ssh.sh`。
+本轮完整构建/验收入口已原生退出 0，4366 项任务全部成功。
+以下是该目标的配置流程；原有线和纯串口目标继续保留为可选目标。
 
-## 烧录后设置登录
+## 烧录后只改两行
 
-1. 解压下载 ZIP，使用 Raspberry Pi Imager 写入 `image/*.img.xz`。
-   跳过 Raspberry Pi OS 的系统定制，完成写入与校验后重新插卡。
-2. Windows 可见的 FAT 启动分区已有 `network-config`、`README-SETUP.txt`、
-   `authorized_keys.example` 和 `userconf.txt.example`。
-3. 没有自己的 SSH 密钥时，在 Windows PowerShell 执行 `ssh-keygen -t ed25519`。
-   已有密钥则直接使用，避免覆盖。只复制 `.pub` 公钥，私钥留在电脑：
+1. 解压镜像 ZIP，使用 Raspberry Pi Imager 写入 `image/rpi4-wifi-ready-6.12.93-v8.img.xz`。
+   跳过 Raspberry Pi OS 专用定制，完成写入后重新插入 SD 卡。
+2. Windows 可见的 FAT 分区中已有 `network-config` 和 `README-SETUP.txt`。
+   打开 `network-config`，只把两行占位内容换成自己的 Wi-Fi 信息，不额外加引号：
+
+   ```text
+   SSID=你的WiFi名称
+   PASSWORD=你的WiFi密码
+   ```
+
+   空格、中文和标点按原样填写。保存为 UTF-8；Windows CRLF 和 UTF-8 BOM 均支持。
+   SSID 最多 32 个 UTF-8 字节，密码为 8～63 个字节或 64 位十六进制 PSK。
+3. 安全弹出卡，插入 Pi 并上电，等待启动完成后，在同一局域网的 PowerShell 执行：
+
+   ```powershell
+   ssh root@rpi4-debug.local
+   ```
+
+   初始用户名为 `root`，SSH 密码为 **`Rpi4GPIO-2026!`**。
+   这个流程只需要 Wi-Fi 信息；首次登录后可执行 `passwd` 修改开发用初始密码。
+
+Wi-Fi `wlan0` 与有线 `eth0` 默认使用 DHCP。电脑无法解析 `.local` 时，
+在路由器 DHCP 客户端列表查找 `rpi4-debug` 的 IPv4，使用 `ssh root@实际IP`。
+插网线到 DHCP 路由器也可以使用相同账号密码连接。
+
+当前 Wi-Fi 是连接现有 AP 的客户端，默认国家代码 CN。
+面向 WPA2-PSK 和支持 WPA2 兼容模式的 WPA2/WPA3 混合网络，不承诺 WPA3-only AP；
+镜像不提供 AP 热点。
+
+## 模板格式和导入结果
+
+`network-config` 是自定义 **KEY=VALUE**，不是 cloud-init YAML。
+普通连接只填写 `SSID`、`PASSWORD`，无需补齐其他字段。
+开机时先导入，再启动 networking、SSH 和 mDNS；结果写入 FAT 的 `setup-result.txt`。
+错误不会覆盖已有有效配置或阻止启动。
+
+只有 FAT 文件内容改变时才重新导入，未变模板不会覆盖后续板上修改。
+启动分区保留原始 Wi-Fi 配置以便在 Windows 继续修改；结果文件不包含 Wi-Fi 密码、PSK 或口令哈希。
+根文件系统使用推导后的 WPA PSK，相关配置权限为 0600。
+
+## GPIO 和调试符号
+
+GPIO 设备树及引脚复用参数仍在 FAT 的 `config.txt` 中修改，重启后生效。
+内核 GPIO_CDEV 与 BCM2835 pinctrl 已内建，系统包含 libgpiod 2.1.3 工具：
+
+```sh
+gpiodetect
+gpioinfo
+gpioget --help
+gpioset --help
+```
+
+先查看真实 gpiochip/line 映射，GPIO line 编号不等于排针物理编号。
+2.x 的 `gpioset` 使用 `-c` 指定芯片，并在进程运行时保持线路请求，退出后的电平不作保证。
+实际电气行为和外设所需的 overlay 应在自己的板及接线条件下验证。
+
+Wi-Fi 目标只安装无线所需的一小组完整 DWARF 模块、RPi4 固件和签名监管数据库，
+不安装全部 1890 个模块。底层 Linux 6.12.93-v8 完整符号 ELF 没有变化；
+已有 vmlinux、GDB 辅助文件和启动/RCU 精选源码继续兼容。
+镜像升级包不重复下载这些符号，GDB 路径映射见[项目内核调试说明](../README.md#内核调试)。
+
+## 从源码构建与验收
+
+```bash
+git clone --single-branch --no-tags --branch yocto-rpi4 https://github.com/zgr940214/ZGR.git rpi4-yocto
+cd rpi4-yocto
+bash scripts/setup.sh
+bash scripts/build-wifi-ssh.sh
+```
+
+该入口实际运行新镜像构建及 `scripts/verify-wifi-ssh-artifacts.py`，任一步失败均返回非零。
+输出 `rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs.wic.xz`，改名 `.img.xz` 后可用于 Imager。
+本轮标识在 `logs/wifi-ssh-current-run.txt`，构建和验收日志使用相同的 `<run>` 标识。
+本轮运行标识 `20261022T061536Z`；交付包保留构建/产物日志、19 项配置导入与 15 项 AArch64 软件验证报告。
+真实 OpenSSH 使用镜像预置且未修改的账号库完成密码鉴权，错误密码被拒绝；WPA nl80211 和 PSK 推导验证通过。
+5 个无线模块逐一验收完整 DWARF4、vermagic 和原内核构建哈希，模块依赖/SDIO alias 完整。
+监管数据库签名已由实际 cfg80211 模块内置公钥对应证书验证通过。
+
+本环境没有 RPi4 硬件，未进行实机启动、无线关联、SSH/mDNS 实际联网、GPIO 电气行为或 KGDB/JTAG 测试。
+
+## 可选的旧目标和高级入口
+
+旧有线目标 `rpi4-boot-rcu-ssh-image` 使用 `bash scripts/build-headless-ssh.sh` 构建，
+默认 eth0 DHCP、没有 Wi-Fi、零 `.ko`。该旧目标需要自己的 SSH 公钥或自行设置密码，
+不使用 Wi-Fi 目标的预置口令。Windows 复制公钥的示例：
 
 ```powershell
-# 将 E: 换成 SD 卡启动分区的实际盘符。
+# 将 E: 换成启动分区盘符，只复制自己的 .pub 公钥。
 Copy-Item "$env:USERPROFILE\.ssh\id_ed25519.pub" 'E:\authorized_keys'
 ```
 
-文件名必须是 `authorized_keys`，无 `.txt` 后缀。UTF-8 BOM 和 CRLF 可识别。
-公钥示例文件本身不含可登录的密钥，需要复制你自己的真实公钥。
+旧有线目标可选静态网络仍使用 KEY=VALUE，例如：
 
-4. 默认使用有线 eth0 DHCP。插网线到路由器，安全弹出卡后开机。
-   首次开机会生成独立 SSH host keys。路由器的 DHCP 客户端列表可查到 IPv4：
-
-```powershell
-ssh root@树莓派的IPv4
-```
-
-若私钥使用其他文件名，使用 `ssh -i 私钥文件 root@IPv4`。
-没有共享默认口令；root 的空密码 SSH 登录被禁止。串口仍可用于本地恢复。
-
-## 网络模板
-
-启动分区的 `network-config` 是自定义 KEY=VALUE，值不加引号，不使用 cloud-init YAML。
-默认内容可直接使用：
-
-```conf
-INTERFACE=eth0
-MODE=dhcp
-```
-
-静态 IPv4 示例，地址、网关和 DNS 按自己的网络修改：
-
-```conf
+```text
 INTERFACE=eth0
 MODE=static
 ADDRESS=192.168.1.50
@@ -51,35 +108,7 @@ GATEWAY=192.168.1.1
 DNS=192.168.1.1 1.1.1.1
 ```
 
-开机时先导入，再由 SysVinit 启动 networking 和 sshd。
-导入结果在 FAT 的 `setup-result.txt`；错误不会覆盖已有有效配置或阻止开机。
-只在 FAT 文件内容发生变化时重新导入，板上后续手改的配置不会被未变的模板覆盖。
-
-## 密码、GPIO 与后续修改
-
-推荐使用公钥登录。若需要密码，可在有 openssl 的机器执行 `openssl passwd -6`，
-将生成的 SHA-512 crypt 哈希以 `root:哈希` 的单行内容存为 FAT 的 `userconf.txt`。
-这不是明文密码文件。成功导入后该文件会被删除；模板在 `userconf.txt.example`。
-也可先通过公钥 SSH 登录后执行 `passwd` 设置自己的密码。
-
-GPIO 设备树/复用参数修改 FAT 的 `config.txt`，重启后生效。
-系统已包含 libgpiod 2.1.3 的 gpiodetect、gpioinfo、gpioget、gpioset、gpiomon、gpionotify，
-内核 GPIO_CDEV 与 BCM2835 pinctrl 内建。先用 `gpiodetect` / `gpioinfo` 查看真实芯片和线路。
-2.x 的 gpioset 需要 `-c` 指定芯片，并在进程运行时保持线路请求；退出后电平不作保证。
-当前镜像未加入 Wi-Fi/AP；也没有额外安装 SPI/I2C 等模块，不把普通 GPIO 工具等同于所有外设支持。
-
-内核、完整调试符号和 boot/RCU 配置不变，之前下载的 vmlinux 可继续使用。
-
-## 重新构建与验收
-
-```bash
-bash scripts/setup.sh
-bash scripts/build-headless-ssh.sh
-```
-
-该入口实际运行新镜像构建和 `scripts/verify-headless-ssh-artifacts.py`，任一步失败都会返回非零。
-输出 `rpi4-boot-rcu-ssh-image-raspberrypi4-64.rootfs.wic.xz`，改名 `.img.xz` 后可用 Imager。
-原来的 `build-boot-rcu.sh` 仍用于无 SSH 的旧纯串口镜像。
-
-本轮实际构建与产物验收已退出 0，3756 项任务成功；12 项导入测试通过。
-实际硬件启动、SSH 网线连通、GPIO 电气行为和 KGDB/JTAG 未测试。
+高级公钥导入 `authorized_keys`、哈希密码导入 `userconf.txt` 继续保留，
+但不是推荐 Wi-Fi 连接流程的准备步骤。
+纯串口目标 `rpi4-boot-rcu-image` 使用 `build-boot-rcu.sh`，原全模块目标 `rpi4-debug-image`
+使用 `build.sh`；区别、资源要求与固定源码版本见[项目 README](../README.md)。

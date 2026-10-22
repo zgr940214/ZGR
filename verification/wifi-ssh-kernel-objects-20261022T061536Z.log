@@ -1,0 +1,3 @@
+Verified complete unstripped vmlinux and 1890 full-DWARF modules
+Removed 0 redundant .o files and 0 paired .o.cmd files (0 logical bytes); reclaimed 0 bytes of free space
+All .ko/vmlinux/maps/configs/sources/headers/GDB/scripts/tools/arch retained

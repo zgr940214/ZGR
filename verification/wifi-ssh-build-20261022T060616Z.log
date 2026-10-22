@@ -1,0 +1,1079 @@
+Loading cache...done.
+Loaded 1929 entries from dependency cache.
+NOTE: Resolving any missing task queue dependencies
+
+Build Configuration:
+BB_VERSION           = "2.8.1"
+BUILD_SYS            = "x86_64-linux"
+NATIVELSBSTRING      = "universal"
+TARGET_SYS           = "aarch64-poky-linux"
+MACHINE              = "raspberrypi4-64"
+DISTRO               = "poky"
+DISTRO_VERSION       = "5.0.21"
+TUNE_FEATURES        = "aarch64 crc cortexa72"
+TARGET_FPU           = ""
+meta                 
+meta-poky            
+meta-yocto-bsp       = "scarthgap:104772c5fd0653290cbb5e4b77813343957939cc"
+meta-raspberrypi     = "scarthgap:018d44467c4f09eb63f8ea5e86e85d755250cf89"
+meta-rpi4-debug      = "<unknown>:<unknown>"
+
+Initialising tasks...Checking sstate mirror object availability...done.
+Sstate summary: Wanted 320 Local 90 Mirrors 59 Missed 171 Current 1677 (46% match, 91% complete)
+Removing 6 stale sstate objects for arch cortexa72...done.
+Removing 2 stale sstate objects for arch raspberrypi4_64...done.
+NOTE: Executing Tasks
+NOTE: Running task 2164 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_prepare_recipe_sysroot)
+NOTE: Running task 2166 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_collect_spdx_deps)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_collect_spdx_deps: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 2170 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_configure)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_collect_spdx_deps: Succeeded
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_configure: Started
+NOTE: Running task 2681 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libnl/libnl_3.9.0.bb:do_package_qa)
+NOTE: recipe libnl-1_3.9.0-r0: task do_package_qa: Started
+NOTE: recipe libnl-1_3.9.0-r0: task do_package_qa: Succeeded
+NOTE: Running task 2690 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libnl/libnl_3.9.0.bb:do_create_runtime_spdx)
+NOTE: recipe libnl-1_3.9.0-r0: task do_create_runtime_spdx: Started
+NOTE: recipe libnl-1_3.9.0-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 2802 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libxau_1.0.11.bb:do_package_write_ipk)
+NOTE: recipe libxau-1_1.0.11-r0: task do_package_write_ipk: Started
+NOTE: recipe libxau-1_1.0.11-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2803 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libxau_1.0.11.bb:do_rm_work)
+NOTE: recipe libxau-1_1.0.11-r0: task do_rm_work: Started
+NOTE: recipe libxau-1_1.0.11-r0: task do_rm_work: Succeeded
+NOTE: Running task 2804 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-proto/xcb-proto_1.16.0.bb:do_package_write_ipk)
+NOTE: recipe xcb-proto-1.16.0-r0: task do_package_write_ipk: Started
+NOTE: recipe xcb-proto-1.16.0-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2805 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-proto/xcb-proto_1.16.0.bb:do_rm_work)
+NOTE: recipe xcb-proto-1.16.0-r0: task do_rm_work: Started
+NOTE: recipe xcb-proto-1.16.0-r0: task do_rm_work: Succeeded
+NOTE: Running task 2806 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libxdmcp_1.1.4.bb:do_package_write_ipk)
+NOTE: recipe libxdmcp-1_1.1.4-r0: task do_package_write_ipk: Started
+NOTE: recipe libxdmcp-1_1.1.4-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2807 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libxdmcp_1.1.4.bb:do_rm_work)
+NOTE: recipe libxdmcp-1_1.1.4-r0: task do_rm_work: Started
+NOTE: recipe libxdmcp-1_1.1.4-r0: task do_rm_work: Succeeded
+NOTE: Running task 2808 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libpthread-stubs_0.5.bb:do_package_write_ipk)
+NOTE: recipe libpthread-stubs-0.5-r0: task do_package_write_ipk: Started
+NOTE: recipe libpthread-stubs-0.5-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2809 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libpthread-stubs_0.5.bb:do_rm_work)
+NOTE: recipe libpthread-stubs-0.5-r0: task do_rm_work: Started
+NOTE: recipe libpthread-stubs-0.5-r0: task do_rm_work: Succeeded
+NOTE: Running task 2830 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libxcb_1.16.bb:do_package_write_ipk)
+NOTE: recipe libxcb-1.16-r0: task do_package_write_ipk: Started
+NOTE: recipe libxcb-1.16-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2831 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libxcb_1.16.bb:do_rm_work)
+NOTE: recipe libxcb-1.16-r0: task do_rm_work: Started
+NOTE: recipe libxcb-1.16-r0: task do_rm_work: Succeeded
+NOTE: Running task 2832 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-proto/xorgproto_2023.2.bb:do_package_write_ipk)
+NOTE: recipe xorgproto-2023.2-r0: task do_package_write_ipk: Started
+NOTE: recipe xorgproto-2023.2-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2833 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-proto/xorgproto_2023.2.bb:do_rm_work)
+NOTE: recipe xorgproto-2023.2-r0: task do_rm_work: Started
+NOTE: recipe xorgproto-2023.2-r0: task do_rm_work: Succeeded
+NOTE: Running task 2834 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/xtrans_1.5.0.bb:do_package_write_ipk)
+NOTE: recipe xtrans-1_1.5.0-r0: task do_package_write_ipk: Started
+NOTE: recipe xtrans-1_1.5.0-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2835 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/xtrans_1.5.0.bb:do_rm_work)
+NOTE: recipe xtrans-1_1.5.0-r0: task do_rm_work: Started
+NOTE: recipe xtrans-1_1.5.0-r0: task do_rm_work: Succeeded
+NOTE: Running task 2836 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libice_1.1.1.bb:do_package_write_ipk)
+NOTE: recipe libice-1_1.1.1-r0: task do_package_write_ipk: Started
+NOTE: recipe libice-1_1.1.1-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2837 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libice_1.1.1.bb:do_rm_work)
+NOTE: recipe libice-1_1.1.1-r0: task do_rm_work: Started
+NOTE: recipe libice-1_1.1.1-r0: task do_rm_work: Succeeded
+NOTE: Running task 2838 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-util/util-macros_1.20.0.bb:do_package_write_ipk)
+NOTE: recipe util-macros-1_1.20.0-r0: task do_package_write_ipk: Started
+NOTE: recipe util-macros-1_1.20.0-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2839 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-util/util-macros_1.20.0.bb:do_rm_work)
+NOTE: recipe util-macros-1_1.20.0-r0: task do_rm_work: Started
+NOTE: recipe util-macros-1_1.20.0-r0: task do_rm_work: Succeeded
+NOTE: Running task 2844 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libcheck/libcheck_0.15.2.bb:do_package_write_ipk)
+NOTE: recipe libcheck-0.15.2-r0: task do_package_write_ipk: Started
+NOTE: recipe libcheck-0.15.2-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2845 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libcheck/libcheck_0.15.2.bb:do_rm_work)
+NOTE: recipe libcheck-0.15.2-r0: task do_rm_work: Started
+NOTE: recipe libcheck-0.15.2-r0: task do_rm_work: Succeeded
+NOTE: Running task 2854 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libx11_1.8.9.bb:do_package_write_ipk)
+NOTE: recipe libx11-1_1.8.9-r0: task do_package_write_ipk: Started
+NOTE: recipe libx11-1_1.8.9-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2855 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libx11_1.8.9.bb:do_rm_work)
+NOTE: recipe libx11-1_1.8.9-r0: task do_rm_work: Started
+NOTE: recipe libx11-1_1.8.9-r0: task do_rm_work: Succeeded
+NOTE: Running task 2856 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libsm_1.2.4.bb:do_package_write_ipk)
+NOTE: recipe libsm-1_1.2.4-r0: task do_package_write_ipk: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_configure: Succeeded
+NOTE: Running task 2865 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libnl/libnl_3.9.0.bb:do_package_write_ipk)
+NOTE: recipe libnl-1_3.9.0-r0: task do_package_write_ipk: Started
+NOTE: recipe libsm-1_1.2.4-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2866 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-graphics/xorg-lib/libsm_1.2.4.bb:do_rm_work)
+NOTE: recipe libsm-1_1.2.4-r0: task do_rm_work: Started
+NOTE: recipe libsm-1_1.2.4-r0: task do_rm_work: Succeeded
+NOTE: Running task 2879 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_compile)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_compile: Started
+NOTE: recipe libnl-1_3.9.0-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2880 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libnl/libnl_3.9.0.bb:do_rm_work)
+NOTE: recipe libnl-1_3.9.0-r0: task do_rm_work: Started
+NOTE: recipe libnl-1_3.9.0-r0: task do_rm_work: Succeeded
+NOTE: Running task 2881 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_recipe_qa)
+NOTE: recipe libdaemon-0.14-r0: task do_recipe_qa: Started
+NOTE: recipe libdaemon-0.14-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 2882 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_fetch)
+NOTE: recipe libdaemon-0.14-r0: task do_fetch: Started
+NOTE: recipe libdaemon-0.14-r0: task do_fetch: Succeeded
+NOTE: Running task 2883 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_prepare_recipe_sysroot)
+NOTE: recipe libdaemon-0.14-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe libdaemon-0.14-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 2884 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_unpack)
+NOTE: recipe libdaemon-0.14-r0: task do_unpack: Started
+NOTE: recipe libdaemon-0.14-r0: task do_unpack: Succeeded
+NOTE: Running task 2885 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_collect_spdx_deps)
+NOTE: recipe libdaemon-0.14-r0: task do_collect_spdx_deps: Started
+NOTE: recipe libdaemon-0.14-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 2886 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_patch)
+NOTE: recipe libdaemon-0.14-r0: task do_patch: Started
+NOTE: recipe libdaemon-0.14-r0: task do_patch: Succeeded
+NOTE: Running task 2887 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_populate_lic)
+NOTE: recipe libdaemon-0.14-r0: task do_populate_lic: Started
+NOTE: recipe libdaemon-0.14-r0: task do_populate_lic: Succeeded
+NOTE: Running task 2888 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_deploy_source_date_epoch)
+NOTE: recipe libdaemon-0.14-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe libdaemon-0.14-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 2889 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_configure)
+NOTE: recipe libdaemon-0.14-r0: task do_configure: Started
+NOTE: recipe libdaemon-0.14-r0: task do_configure: Succeeded
+NOTE: Running task 2890 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_compile)
+NOTE: recipe libdaemon-0.14-r0: task do_compile: Started
+NOTE: recipe libdaemon-0.14-r0: task do_compile: Succeeded
+NOTE: Running task 2891 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_install)
+NOTE: recipe libdaemon-0.14-r0: task do_install: Started
+NOTE: recipe libdaemon-0.14-r0: task do_install: Succeeded
+NOTE: Running task 2892 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_package)
+NOTE: recipe libdaemon-0.14-r0: task do_package: Started
+NOTE: recipe libdaemon-0.14-r0: task do_package: Succeeded
+NOTE: Running task 2893 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_packagedata)
+NOTE: recipe libdaemon-0.14-r0: task do_packagedata: Started
+NOTE: recipe libdaemon-0.14-r0: task do_packagedata: Succeeded
+NOTE: Running task 2894 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_package_qa)
+NOTE: recipe libdaemon-0.14-r0: task do_package_qa: Started
+NOTE: recipe libdaemon-0.14-r0: task do_package_qa: Succeeded
+NOTE: Running task 2895 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_package_write_ipk)
+NOTE: recipe libdaemon-0.14-r0: task do_package_write_ipk: Started
+NOTE: recipe libdaemon-0.14-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 2896 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_create_spdx)
+NOTE: recipe libdaemon-0.14-r0: task do_create_spdx: Started
+NOTE: recipe libdaemon-0.14-r0: task do_create_spdx: Succeeded
+NOTE: Running task 2897 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_create_runtime_spdx)
+NOTE: recipe libdaemon-0.14-r0: task do_create_runtime_spdx: Started
+NOTE: recipe libdaemon-0.14-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 2898 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_populate_sysroot)
+NOTE: recipe libdaemon-0.14-r0: task do_populate_sysroot: Started
+NOTE: recipe libdaemon-0.14-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 2899 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libdaemon/libdaemon_0.14.bb:do_rm_work)
+NOTE: recipe libdaemon-0.14-r0: task do_rm_work: Started
+NOTE: recipe libdaemon-0.14-r0: task do_rm_work: Succeeded
+NOTE: Running task 3011 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_recipe_qa)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_recipe_qa: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3012 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_fetch)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_fetch: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_fetch: Succeeded
+NOTE: Running task 3013 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_prepare_recipe_sysroot)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3014 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_unpack)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_unpack: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_unpack: Succeeded
+NOTE: Running task 3015 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_collect_spdx_deps)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_collect_spdx_deps: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3016 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_create_spdx)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_create_spdx: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3017 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_create_runtime_spdx)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_create_runtime_spdx: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3018 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_patch)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_patch: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_patch: Succeeded
+NOTE: Running task 3019 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_populate_lic)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_populate_lic: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3020 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_deploy_source_date_epoch)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3021 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_configure)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_configure: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_configure: Succeeded
+NOTE: Running task 3022 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_compile)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_compile: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_compile: Succeeded
+NOTE: Running task 3023 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_install)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_install: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_install: Succeeded
+NOTE: Running task 3024 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_populate_sysroot)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_populate_sysroot: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3025 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/libxslt/libxslt_1.1.43.bb:do_rm_work)
+NOTE: recipe libxslt-native-1.1.43-r0: task do_rm_work: Started
+NOTE: recipe libxslt-native-1.1.43-r0: task do_rm_work: Succeeded
+NOTE: Running task 3026 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_recipe_qa)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_recipe_qa: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3027 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_fetch)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_fetch: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_fetch: Succeeded
+NOTE: Running task 3028 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_prepare_recipe_sysroot)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3029 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_unpack)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_unpack: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_unpack: Succeeded
+NOTE: Running task 3030 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_collect_spdx_deps)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_collect_spdx_deps: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3031 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_create_spdx)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_create_spdx: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3032 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_create_runtime_spdx)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_create_runtime_spdx: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3033 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_patch)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_patch: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_patch: Succeeded
+NOTE: Running task 3034 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_populate_lic)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_populate_lic: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3035 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_deploy_source_date_epoch)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3036 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_configure)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_configure: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_configure: Succeeded
+NOTE: Running task 3037 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_compile)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_compile: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_compile: Succeeded
+NOTE: Running task 3038 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_install)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_install: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_install: Succeeded
+NOTE: Running task 3039 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_populate_sysroot)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_populate_sysroot: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3040 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xsl-stylesheets_1.79.1.bb:do_rm_work)
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_rm_work: Started
+NOTE: recipe docbook-xsl-stylesheets-native-1.79.1-r0: task do_rm_work: Succeeded
+NOTE: Running task 3041 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_recipe_qa)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_recipe_qa: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3042 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_fetch)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_fetch: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_fetch: Succeeded
+NOTE: Running task 3043 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_prepare_recipe_sysroot)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3044 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_unpack)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_unpack: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_unpack: Succeeded
+NOTE: Running task 3045 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_collect_spdx_deps)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_collect_spdx_deps: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3046 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_create_spdx)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_create_spdx: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3047 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_create_runtime_spdx)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_create_runtime_spdx: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3048 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_patch)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_patch: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_patch: Succeeded
+NOTE: Running task 3049 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_populate_lic)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_populate_lic: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3050 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_deploy_source_date_epoch)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3051 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_configure)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_configure: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_configure: Succeeded
+NOTE: Running task 3052 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_compile)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_compile: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_compile: Succeeded
+NOTE: Running task 3053 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_install)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_install: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_install: Succeeded
+NOTE: Running task 3054 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_populate_sysroot)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_populate_sysroot: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3055 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/docbook-xml/docbook-xml-dtd4_4.5.bb:do_rm_work)
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_rm_work: Started
+NOTE: recipe docbook-xml-dtd4-native-4.5-r0: task do_rm_work: Succeeded
+NOTE: Running task 3057 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_fetch)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_fetch: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_fetch: Succeeded
+NOTE: Running task 3058 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_prepare_recipe_sysroot)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3059 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_unpack)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_unpack: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_unpack: Succeeded
+NOTE: Running task 3060 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_collect_spdx_deps)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_collect_spdx_deps: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3061 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_create_spdx)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_create_spdx: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3062 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_create_runtime_spdx)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_create_runtime_spdx: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3063 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_patch)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_patch: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_patch: Succeeded
+NOTE: Running task 3066 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_configure)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_configure: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_compile: Succeeded
+NOTE: Running task 3067 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_install)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_install: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_install: Succeeded
+NOTE: Running task 3068 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_package)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_package: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_configure: Succeeded
+NOTE: Running task 3069 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_populate_sysroot)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_populate_sysroot: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3070 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_compile)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_compile: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_package: Succeeded
+NOTE: Running task 3071 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_packagedata)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_packagedata: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_packagedata: Succeeded
+NOTE: Running task 3072 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_create_spdx)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_create_spdx: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3073 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_collect_spdx_deps)
+NOTE: recipe dbus-1.14.10-r0: task do_collect_spdx_deps: Started
+NOTE: recipe dbus-1.14.10-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3074 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_prepare_recipe_sysroot)
+NOTE: recipe dbus-1.14.10-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe dbus-1.14.10-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3075 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_configure)
+NOTE: recipe dbus-1.14.10-r0: task do_configure: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_compile: Succeeded
+NOTE: Running task 3076 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_install)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_install: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_install: Succeeded
+NOTE: Running task 3077 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_populate_sysroot)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_populate_sysroot: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3078 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-gnome/gobject-introspection/gobject-introspection_1.78.1.bb:do_rm_work)
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_rm_work: Started
+NOTE: recipe gobject-introspection-native-1.78.1-r0: task do_rm_work: Succeeded
+NOTE: Running task 3079 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_recipe_qa)
+NOTE: recipe avahi-0.8-r0: task do_recipe_qa: Started
+NOTE: recipe avahi-0.8-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3080 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_fetch)
+NOTE: recipe avahi-0.8-r0: task do_fetch: Started
+NOTE: recipe avahi-0.8-r0: task do_fetch: Succeeded
+NOTE: Running task 3081 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_unpack)
+NOTE: recipe avahi-0.8-r0: task do_unpack: Started
+NOTE: recipe avahi-0.8-r0: task do_unpack: Succeeded
+NOTE: Running task 3082 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_patch)
+NOTE: recipe avahi-0.8-r0: task do_patch: Started
+NOTE: recipe avahi-0.8-r0: task do_patch: Succeeded
+NOTE: Running task 3083 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_populate_lic)
+NOTE: recipe avahi-0.8-r0: task do_populate_lic: Started
+NOTE: recipe avahi-0.8-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3084 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_deploy_source_date_epoch)
+NOTE: recipe avahi-0.8-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe avahi-0.8-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3202 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/libxml/libxml2_2.12.10.bb:do_package_qa)
+NOTE: recipe libxml2-2.12.10-r0: task do_package_qa: Started
+NOTE: recipe libxml2-2.12.10-r0: task do_package_qa: Succeeded
+NOTE: Running task 3206 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/libxml/libxml2_2.12.10.bb:do_package_write_ipk)
+NOTE: recipe libxml2-2.12.10-r0: task do_package_write_ipk: Started
+NOTE: recipe dbus-1.14.10-r0: task do_configure: Succeeded
+NOTE: Running task 3212 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/libxml/libxml2_2.12.10.bb:do_create_runtime_spdx)
+NOTE: recipe libxml2-2.12.10-r0: task do_create_runtime_spdx: Started
+NOTE: recipe libxml2-2.12.10-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3221 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_configure_ptest_base)
+NOTE: recipe dbus-1.14.10-r0: task do_configure_ptest_base: Started
+NOTE: recipe dbus-1.14.10-r0: task do_configure_ptest_base: Succeeded
+NOTE: Running task 3222 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_compile)
+NOTE: recipe dbus-1.14.10-r0: task do_compile: Started
+NOTE: recipe libxml2-2.12.10-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3223 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/libxml/libxml2_2.12.10.bb:do_rm_work)
+NOTE: recipe libxml2-2.12.10-r0: task do_rm_work: Started
+NOTE: recipe libxml2-2.12.10-r0: task do_rm_work: Succeeded
+NOTE: Running task 3224 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_recipe_qa)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_recipe_qa: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3225 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_fetch)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_fetch: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_fetch: Succeeded
+NOTE: Running task 3226 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_prepare_recipe_sysroot)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3227 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_unpack)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_unpack: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_unpack: Succeeded
+NOTE: Running task 3228 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_collect_spdx_deps)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_collect_spdx_deps: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3229 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_create_spdx)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_create_spdx: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3230 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_create_runtime_spdx)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_create_runtime_spdx: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3231 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_patch)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_patch: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_patch: Succeeded
+NOTE: Running task 3232 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_populate_lic)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_populate_lic: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3233 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_deploy_source_date_epoch)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3234 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_configure)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_configure: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_configure: Succeeded
+NOTE: Running task 3235 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_compile)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_compile: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_compile: Succeeded
+NOTE: Running task 3236 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_install)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_install: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_install: Succeeded
+NOTE: Running task 3237 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_populate_sysroot)
+NOTE: recipe dbus-1.14.10-r0: task do_compile: Succeeded
+NOTE: Running task 3238 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_compile_ptest_base)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_populate_sysroot: Started
+NOTE: recipe dbus-1.14.10-r0: task do_compile_ptest_base: Started
+NOTE: recipe dbus-1.14.10-r0: task do_compile_ptest_base: Succeeded
+NOTE: Running task 3239 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_install)
+NOTE: recipe dbus-1.14.10-r0: task do_install: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3240 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/xmlto/xmlto_0.0.28.bb:do_rm_work)
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_rm_work: Started
+NOTE: recipe xmlto-native-0.0.28+0.0.29+git-r0: task do_rm_work: Succeeded
+NOTE: Running task 3354 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_recipe_qa)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_recipe_qa: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3355 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_fetch)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_fetch: Started
+NOTE: recipe dbus-1.14.10-r0: task do_install: Succeeded
+NOTE: Running task 3356 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_install_ptest_base)
+NOTE: recipe dbus-1.14.10-r0: task do_install_ptest_base: Started
+NOTE: recipe dbus-1.14.10-r0: task do_install_ptest_base: Succeeded
+NOTE: Running task 3357 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_package)
+NOTE: recipe dbus-1.14.10-r0: task do_package: Started
+NOTE: recipe dbus-1.14.10-r0: task do_package: Succeeded
+NOTE: Running task 3358 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_packagedata)
+NOTE: recipe dbus-1.14.10-r0: task do_packagedata: Started
+NOTE: recipe dbus-1.14.10-r0: task do_packagedata: Succeeded
+NOTE: Running task 3359 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_create_spdx)
+NOTE: recipe dbus-1.14.10-r0: task do_create_spdx: Started
+NOTE: recipe dbus-1.14.10-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3360 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_collect_spdx_deps)
+NOTE: recipe avahi-0.8-r0: task do_collect_spdx_deps: Started
+NOTE: recipe avahi-0.8-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3361 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_populate_sysroot)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_fetch: Succeeded
+NOTE: Running task 3362 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_prepare_recipe_sysroot)
+NOTE: recipe dbus-1.14.10-r0: task do_populate_sysroot: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3363 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_unpack)
+NOTE: recipe dbus-1.14.10-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3364 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_prepare_recipe_sysroot)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_unpack: Started
+NOTE: recipe avahi-0.8-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_unpack: Succeeded
+NOTE: Running task 3365 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_collect_spdx_deps)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_collect_spdx_deps: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3366 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_create_spdx)
+NOTE: recipe avahi-0.8-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3367 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_configure)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_create_spdx: Started
+NOTE: recipe avahi-0.8-r0: task do_configure: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3368 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_create_runtime_spdx)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_create_runtime_spdx: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3369 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_patch)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_patch: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_patch: Succeeded
+NOTE: Running task 3370 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_populate_lic)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_populate_lic: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3371 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_deploy_source_date_epoch)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3372 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_configure)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_configure: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_configure: Succeeded
+NOTE: Running task 3373 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_compile)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_compile: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_compile: Succeeded
+NOTE: Running task 3374 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_install)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_install: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_install: Succeeded
+NOTE: Running task 3375 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_populate_sysroot)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_populate_sysroot: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3376 of 4366 (virtual:native:/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_rm_work)
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_rm_work: Started
+NOTE: recipe shared-mime-info-native-2.4-r0: task do_rm_work: Succeeded
+NOTE: Running task 3434 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_recipe_qa)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_recipe_qa: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3435 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_fetch)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_fetch: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_fetch: Succeeded
+NOTE: Running task 3436 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_prepare_recipe_sysroot)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3437 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_unpack)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_unpack: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_unpack: Succeeded
+NOTE: Running task 3438 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_collect_spdx_deps)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_collect_spdx_deps: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3439 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_patch)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_patch: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_patch: Succeeded
+NOTE: Running task 3440 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_populate_lic)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_populate_lic: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3441 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_deploy_source_date_epoch)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3442 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_configure)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_configure: Started
+NOTE: recipe avahi-0.8-r0: task do_configure: Succeeded
+NOTE: Running task 3443 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_compile)
+NOTE: recipe avahi-0.8-r0: task do_compile: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_configure: Succeeded
+NOTE: Running task 3444 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_compile)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_compile: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_compile: Succeeded
+NOTE: Running task 3445 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_install)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_install: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_install: Succeeded
+NOTE: Running task 3446 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_package)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_package: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_package: Succeeded
+NOTE: Running task 3447 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_packagedata)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_packagedata: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_packagedata: Succeeded
+NOTE: Running task 3448 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_package_qa)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_package_qa: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_package_qa: Succeeded
+NOTE: Running task 3449 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_package_qa)
+NOTE: recipe dbus-1.14.10-r0: task do_package_qa: Started
+NOTE: recipe avahi-0.8-r0: task do_compile: Succeeded
+NOTE: Running task 3450 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_package_write_ipk)
+NOTE: recipe dbus-1.14.10-r0: task do_package_write_ipk: Started
+NOTE: recipe dbus-1.14.10-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3451 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_package_write_ipk)
+NOTE: recipe dbus-1.14.10-r0: task do_package_qa: Succeeded
+NOTE: Running task 3452 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_create_spdx)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_package_write_ipk: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_create_spdx: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3453 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_create_runtime_spdx)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_create_runtime_spdx: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3454 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_create_runtime_spdx)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3455 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_populate_sysroot)
+NOTE: recipe dbus-1.14.10-r0: task do_create_runtime_spdx: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_populate_sysroot: Started
+NOTE: recipe dbus-1.14.10-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3456 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/dbus/dbus_1.14.10.bb:do_rm_work)
+NOTE: recipe dbus-1.14.10-r0: task do_rm_work: Started
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3457 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/gnome-desktop-testing/gnome-desktop-testing_2021.1.bb:do_rm_work)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_rm_work: Started
+NOTE: recipe dbus-1.14.10-r0: task do_rm_work: Succeeded
+NOTE: Running task 3458 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_install)
+NOTE: recipe gnome-desktop-testing-2021.1-r0: task do_rm_work: Succeeded
+NOTE: Running task 3459 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_recipe_qa)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_recipe_qa: Started
+NOTE: recipe avahi-0.8-r0: task do_install: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3460 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_fetch)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_fetch: Started
+NOTE: recipe avahi-0.8-r0: task do_install: Succeeded
+NOTE: Running task 3461 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_package)
+NOTE: recipe avahi-0.8-r0: task do_package: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_fetch: Succeeded
+NOTE: Running task 3462 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_populate_sysroot)
+NOTE: recipe avahi-0.8-r0: task do_populate_sysroot: Started
+NOTE: recipe avahi-0.8-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3463 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_prepare_recipe_sysroot)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3464 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_unpack)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_unpack: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_unpack: Succeeded
+NOTE: Running task 3465 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_patch)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_patch: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_patch: Succeeded
+NOTE: Running task 3466 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_populate_lic)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_populate_lic: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3467 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_deploy_source_date_epoch)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe avahi-0.8-r0: task do_package: Succeeded
+NOTE: Running task 3468 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_packagedata)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3469 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_configure)
+NOTE: recipe avahi-0.8-r0: task do_packagedata: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_configure: Started
+NOTE: recipe avahi-0.8-r0: task do_packagedata: Succeeded
+NOTE: Running task 3470 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_create_spdx)
+NOTE: recipe avahi-0.8-r0: task do_create_spdx: Started
+NOTE: recipe avahi-0.8-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3471 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_collect_spdx_deps)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_collect_spdx_deps: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3655 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_recipe_qa)
+NOTE: recipe shared-mime-info-2.4-r0: task do_recipe_qa: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3656 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_fetch)
+NOTE: recipe shared-mime-info-2.4-r0: task do_fetch: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_fetch: Succeeded
+NOTE: Running task 3657 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_prepare_recipe_sysroot)
+NOTE: recipe shared-mime-info-2.4-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3658 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_unpack)
+NOTE: recipe shared-mime-info-2.4-r0: task do_unpack: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_unpack: Succeeded
+NOTE: Running task 3659 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_collect_spdx_deps)
+NOTE: recipe shared-mime-info-2.4-r0: task do_collect_spdx_deps: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3660 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_patch)
+NOTE: recipe shared-mime-info-2.4-r0: task do_patch: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_patch: Succeeded
+NOTE: Running task 3661 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_populate_lic)
+NOTE: recipe shared-mime-info-2.4-r0: task do_populate_lic: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3662 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_deploy_source_date_epoch)
+NOTE: recipe shared-mime-info-2.4-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3663 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_configure)
+NOTE: recipe shared-mime-info-2.4-r0: task do_configure: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_configure: Succeeded
+NOTE: Running task 3664 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_compile)
+NOTE: recipe shared-mime-info-2.4-r0: task do_compile: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_configure: Succeeded
+NOTE: Running task 3665 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_compile)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_compile: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_compile: Succeeded
+NOTE: Running task 3666 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_install)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_install: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_install: Succeeded
+NOTE: Running task 3667 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_package)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_package: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_compile: Succeeded
+NOTE: Running task 3668 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_populate_sysroot)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_populate_sysroot: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3669 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_install)
+NOTE: recipe shared-mime-info-2.4-r0: task do_install: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_package: Succeeded
+NOTE: Running task 3670 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_packagedata)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_packagedata: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_packagedata: Succeeded
+NOTE: Running task 3671 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_package_qa)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_package_qa: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_package_qa: Succeeded
+NOTE: Running task 3672 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_package_qa)
+NOTE: recipe avahi-0.8-r0: task do_package_qa: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_install: Succeeded
+NOTE: Running task 3673 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_package_write_ipk)
+NOTE: recipe avahi-0.8-r0: task do_package_write_ipk: Started
+NOTE: recipe avahi-0.8-r0: task do_package_qa: Succeeded
+NOTE: Running task 3674 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_package_write_ipk)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_package_write_ipk: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3675 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_create_spdx)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_create_spdx: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3676 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_create_runtime_spdx)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_create_runtime_spdx: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3677 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/libnss-mdns/libnss-mdns_0.15.1.bb:do_rm_work)
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_rm_work: Started
+NOTE: recipe libnss-mdns-0.15.1-r0: task do_rm_work: Succeeded
+NOTE: Running task 3678 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_create_runtime_spdx)
+NOTE: recipe avahi-0.8-r0: task do_create_runtime_spdx: Started
+NOTE: recipe avahi-0.8-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3679 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_package)
+NOTE: recipe shared-mime-info-2.4-r0: task do_package: Started
+NOTE: recipe avahi-0.8-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3680 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/avahi/avahi_0.8.bb:do_rm_work)
+NOTE: recipe avahi-0.8-r0: task do_rm_work: Started
+NOTE: recipe avahi-0.8-r0: task do_rm_work: Succeeded
+NOTE: Running task 3681 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_populate_sysroot)
+NOTE: recipe shared-mime-info-2.4-r0: task do_populate_sysroot: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3682 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_recipe_qa)
+NOTE: recipe python3-packaging-23.2-r0: task do_recipe_qa: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3683 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_fetch)
+NOTE: recipe python3-packaging-23.2-r0: task do_fetch: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_fetch: Succeeded
+NOTE: Running task 3684 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_prepare_recipe_sysroot)
+NOTE: recipe python3-packaging-23.2-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3685 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_unpack)
+NOTE: recipe python3-packaging-23.2-r0: task do_unpack: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_unpack: Succeeded
+NOTE: Running task 3686 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_collect_spdx_deps)
+NOTE: recipe python3-packaging-23.2-r0: task do_collect_spdx_deps: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3687 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_patch)
+NOTE: recipe python3-packaging-23.2-r0: task do_patch: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_patch: Succeeded
+NOTE: Running task 3688 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_populate_lic)
+NOTE: recipe python3-packaging-23.2-r0: task do_populate_lic: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3689 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_deploy_source_date_epoch)
+NOTE: recipe python3-packaging-23.2-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3690 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_configure)
+NOTE: recipe python3-packaging-23.2-r0: task do_configure: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_configure: Succeeded
+NOTE: Running task 3691 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_compile)
+NOTE: recipe python3-packaging-23.2-r0: task do_compile: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_compile: Succeeded
+NOTE: Running task 3692 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_install)
+NOTE: recipe shared-mime-info-2.4-r0: task do_package: Succeeded
+NOTE: recipe python3-packaging-23.2-r0: task do_install: Started
+NOTE: Running task 3693 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_packagedata)
+NOTE: recipe shared-mime-info-2.4-r0: task do_packagedata: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_install: Succeeded
+NOTE: Running task 3694 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_package)
+NOTE: recipe python3-packaging-23.2-r0: task do_package: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_packagedata: Succeeded
+NOTE: Running task 3695 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_package_qa)
+NOTE: recipe shared-mime-info-2.4-r0: task do_package_qa: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_package: Succeeded
+NOTE: Running task 3696 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_package_write_ipk)
+NOTE: recipe shared-mime-info-2.4-r0: task do_package_write_ipk: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_package_qa: Succeeded
+NOTE: Running task 3697 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_create_spdx)
+NOTE: recipe shared-mime-info-2.4-r0: task do_create_spdx: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3698 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_create_runtime_spdx)
+NOTE: recipe shared-mime-info-2.4-r0: task do_create_runtime_spdx: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3699 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_packagedata)
+NOTE: recipe python3-packaging-23.2-r0: task do_packagedata: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_packagedata: Succeeded
+NOTE: Running task 3700 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_package_qa)
+NOTE: recipe python3-packaging-23.2-r0: task do_package_qa: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_package_qa: Succeeded
+NOTE: Running task 3701 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_package_qa)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_package_qa: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_package_qa: Succeeded
+NOTE: Running task 3702 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_package_write_ipk)
+NOTE: recipe python3-packaging-23.2-r0: task do_package_write_ipk: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3703 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_package_write_ipk)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_package_write_ipk: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3704 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-support/shared-mime-info/shared-mime-info_2.4.bb:do_rm_work)
+NOTE: recipe shared-mime-info-2.4-r0: task do_rm_work: Started
+NOTE: recipe shared-mime-info-2.4-r0: task do_rm_work: Succeeded
+NOTE: Running task 3705 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_create_spdx)
+NOTE: recipe python3-packaging-23.2-r0: task do_create_spdx: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3706 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_create_runtime_spdx)
+NOTE: recipe python3-packaging-23.2-r0: task do_create_runtime_spdx: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3707 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_create_runtime_spdx)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_create_runtime_spdx: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3708 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_populate_sysroot)
+NOTE: recipe python3-packaging-23.2-r0: task do_populate_sysroot: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3709 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-devtools/python/python3-packaging_23.2.bb:do_rm_work)
+NOTE: recipe python3-packaging-23.2-r0: task do_rm_work: Started
+NOTE: recipe python3-packaging-23.2-r0: task do_rm_work: Succeeded
+NOTE: Running task 3734 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_fetch)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_fetch: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_fetch: Succeeded
+NOTE: Running task 3735 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_prepare_recipe_sysroot)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3736 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_unpack)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_unpack: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_unpack: Succeeded
+NOTE: Running task 3737 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_collect_spdx_deps)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_collect_spdx_deps: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3738 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_patch)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_patch: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_patch: Succeeded
+NOTE: Running task 3739 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_populate_lic)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_populate_lic: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3740 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_deploy_source_date_epoch)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3741 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_configure)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_configure: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_configure: Succeeded
+NOTE: Running task 3742 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_compile)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_compile: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_compile: Succeeded
+NOTE: Running task 3743 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_install)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_install: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_install: Succeeded
+NOTE: Running task 3744 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_package)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package: Succeeded
+NOTE: Running task 3745 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_packagedata)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_packagedata: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_packagedata: Succeeded
+NOTE: Running task 3746 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_package_qa)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package_qa: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package_qa: Succeeded
+NOTE: Running task 3747 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_package_write_ipk)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package_write_ipk: Started
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3748 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-core/glib-2.0/glib-2.0_2.78.6.bb:do_rm_work)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3749 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_create_spdx)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_rm_work: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_create_spdx: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3750 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_create_runtime_spdx)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_create_runtime_spdx: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3751 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_deploy)
+NOTE: recipe glib-2.0-1_2.78.6-r0: task do_rm_work: Succeeded
+NOTE: Running task 3752 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_populate_sysroot)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_deploy: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_populate_sysroot: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_deploy: Succeeded
+NOTE: Running task 3772 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_recipe_qa)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_recipe_qa: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3773 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_rm_work)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3774 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_fetch)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_rm_work: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_fetch: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_rm_work: Succeeded
+NOTE: Running task 3776 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_fetch)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_fetch: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_fetch: Succeeded
+NOTE: Running task 3777 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_prepare_recipe_sysroot)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3778 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_unpack)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_unpack: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_unpack: Succeeded
+NOTE: Running task 3779 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_collect_spdx_deps)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_collect_spdx_deps: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3780 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_patch)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_patch: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_patch: Succeeded
+NOTE: Running task 3781 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_populate_lic)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_populate_lic: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3782 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_deploy_source_date_epoch)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running noexec task 3783 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_configure)
+NOTE: Running noexec task 3784 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_compile)
+NOTE: Running task 3785 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_install)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_install: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_install: Succeeded
+NOTE: Running task 3786 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_package)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_package: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_package: Succeeded
+NOTE: Running task 3787 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_packagedata)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_fetch: Succeeded
+NOTE: Running task 3788 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_populate_sysroot)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_populate_sysroot: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_packagedata: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_packagedata: Succeeded
+NOTE: Running task 3789 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_package_qa)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3790 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_package_write_ipk)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_package_qa: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_package_write_ipk: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_package_qa: Succeeded
+NOTE: Running task 3791 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_create_spdx)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_create_spdx: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3792 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_prepare_recipe_sysroot)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3793 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_create_runtime_spdx)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_create_runtime_spdx: Started
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3794 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-kernel/wireless-regdb/wireless-regdb_2026.09.03.bb:do_rm_work)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_rm_work: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3795 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_unpack)
+NOTE: recipe wireless-regdb-2026.09.03-r0: task do_rm_work: Succeeded
+NOTE: Running task 3796 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_recipe_qa)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_unpack: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_recipe_qa: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 3797 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_fetch)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_fetch: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_unpack: Succeeded
+NOTE: Running task 3798 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_collect_spdx_deps)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_collect_spdx_deps: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3799 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_patch)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_patch: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_patch: Succeeded
+NOTE: Running task 3800 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_populate_lic)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_populate_lic: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3801 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_deploy_source_date_epoch)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3802 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_configure)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_configure: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_configure: Succeeded
+NOTE: Running task 3803 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_compile)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_compile: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_fetch: Succeeded
+NOTE: Running task 3804 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_prepare_recipe_sysroot)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3805 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_unpack)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_unpack: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_unpack: Succeeded
+NOTE: Running task 3806 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_collect_spdx_deps)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_collect_spdx_deps: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3807 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_patch)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_patch: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_patch: Succeeded
+NOTE: Running task 3808 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_populate_lic)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_populate_lic: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3809 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_deploy_source_date_epoch)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running noexec task 3810 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_configure)
+NOTE: Running noexec task 3811 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_compile)
+NOTE: Running task 3812 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_install)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_install: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_install: Succeeded
+NOTE: Running task 3813 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_package)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_package: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_package: Succeeded
+NOTE: Running task 3814 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_packagedata)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_packagedata: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_packagedata: Succeeded
+NOTE: Running task 3815 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_package_qa)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_package_qa: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_package_qa: Succeeded
+NOTE: Running task 3816 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_package_write_ipk)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_package_write_ipk: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3817 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_create_spdx)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_create_spdx: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_compile: Succeeded
+NOTE: Running task 3818 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_populate_sysroot)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_populate_sysroot: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3819 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_create_runtime_spdx)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_create_runtime_spdx: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3820 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_install)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3821 of 4366 (/workspace/rpi4-yocto/build/../sources/meta-raspberrypi/recipes-kernel/linux-firmware-rpidistro/linux-firmware-rpidistro_git.bb:do_rm_work)
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_rm_work: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_install: Started
+NOTE: recipe linux-firmware-rpidistro-20240709-2~bpo12+1+rpt3-r0: task do_rm_work: Succeeded
+NOTE: Running task 4238 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_recipe_qa)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_recipe_qa: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_install: Succeeded
+NOTE: Running task 4239 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_package)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_recipe_qa: Succeeded
+NOTE: Running task 4240 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_populate_sysroot)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_package: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_populate_sysroot: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_populate_sysroot: Succeeded
+NOTE: Running noexec task 4241 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_fetch)
+NOTE: Running task 4242 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_prepare_recipe_sysroot)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running noexec task 4243 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_unpack)
+NOTE: Running task 4244 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_collect_spdx_deps)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_collect_spdx_deps: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 4245 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_create_spdx)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_create_spdx: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_create_spdx: Succeeded
+NOTE: recipe wpa-supplicant-2.10-r0: task do_package: Succeeded
+NOTE: Running task 4348 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_packagedata)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_packagedata: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_packagedata: Succeeded
+NOTE: Running task 4349 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_package_qa)
+NOTE: Running task 4350 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_package_write_ipk)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_package_qa: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_package_write_ipk: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_package_qa: Succeeded
+NOTE: Running task 4351 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_create_spdx)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_create_spdx: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_package_write_ipk: Succeeded
+NOTE: recipe wpa-supplicant-2.10-r0: task do_create_spdx: Succeeded
+NOTE: Running task 4352 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_create_runtime_spdx)
+NOTE: Running task 4353 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_create_runtime_spdx)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_create_runtime_spdx: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_create_runtime_spdx: Started
+NOTE: recipe wpa-supplicant-2.10-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 4354 of 4366 (/workspace/rpi4-yocto/build/../sources/poky/meta/recipes-connectivity/wpa-supplicant/wpa-supplicant_2.10.bb:do_rm_work)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_rm_work: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 4355 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_rootfs)
+NOTE: recipe wpa-supplicant-2.10-r0: task do_rm_work: Succeeded
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_rootfs: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_rootfs: Succeeded
+NOTE: Running task 4356 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_flush_pseudodb)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_flush_pseudodb: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_flush_pseudodb: Succeeded
+NOTE: Running task 4357 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_image_qa)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_image_qa: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_image_qa: Succeeded
+NOTE: Running task 4358 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_image)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_image: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_image: Succeeded
+NOTE: Running task 4359 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_image_tar)
+NOTE: Running task 4360 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_rootfs_wicenv)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_image_tar: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_rootfs_wicenv: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_rootfs_wicenv: Succeeded
+NOTE: Running task 4361 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_image_wic)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_image_wic: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_image_tar: Succeeded
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_image_wic: Succeeded
+NOTE: Running task 4362 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_image_complete)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_image_complete: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_image_complete: Succeeded
+NOTE: Running task 4363 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_populate_lic_deploy)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_populate_lic_deploy: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_populate_lic_deploy: Succeeded
+NOTE: Running task 4364 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_rm_work)
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_rm_work: Started
+NOTE: recipe rpi4-boot-rcu-wifi-image-1.0-r0: task do_rm_work: Succeeded
+NOTE: Running noexec task 4365 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_rm_work_all)
+NOTE: Running noexec task 4366 of 4366 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-wifi-image.bb:do_build)
+NOTE: Tasks Summary: Attempted 4366 tasks of which 4010 didn't need to be rerun and all succeeded.
+NOTE: No commit since BUILDHISTORY_COMMIT != '1'

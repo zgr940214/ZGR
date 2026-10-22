@@ -1,0 +1,86 @@
+{
+  "fixture": "/tmp/headless-setup-fixture-kurxq3t6",
+  "script_sha256": "e21711d54fb66ce264fb38e3e6ae12d00b95a80a1558eed6af6d07a820261956",
+  "tests": [
+    {
+      "name": "Windows UTF8 BOM + CRLF, DHCP, valid OpenSSH public key and permissions",
+      "passed": true
+    },
+    {
+      "name": "Unchanged FAT files preserve subsequent on-board edits",
+      "passed": true
+    },
+    {
+      "name": "Static IPv4 and DNS",
+      "passed": true
+    },
+    {
+      "name": "Shell injection rejected without execution or valid network replacement",
+      "passed": true
+    },
+    {
+      "name": "Unknown/duplicate fields and invalid IPv4 rejected",
+      "passed": true
+    },
+    {
+      "name": "Mixed valid/invalid keys rejected atomically",
+      "passed": true
+    },
+    {
+      "name": "SHA512 crypt import without chpasswd, CRLF/BOM handling, secret file removal/no hash logs",
+      "passed": true
+    },
+    {
+      "name": "Plaintext/placeholder password rejected, previous credential retained",
+      "passed": true
+    },
+    {
+      "name": "Shadow database preferred when present",
+      "passed": true
+    },
+    {
+      "name": "Fixture mode refuses host root and unmarked roots",
+      "passed": true
+    },
+    {
+      "name": "S39 import ordering after S37 volatile setup and before runlevel networking/SSHD",
+      "passed": true
+    },
+    {
+      "name": "Fixture absolute symlink refused before any writes",
+      "passed": true
+    },
+    {
+      "name": "Only-two-field shipped placeholders are rejected while Ethernet remains usable",
+      "passed": true
+    },
+    {
+      "name": "Two fields default wlan0 DHCP/CN; UTF8/quotes/slashes/spaces retained; PSK stdin+hex SSID+hashed config only",
+      "passed": true
+    },
+    {
+      "name": "Unchanged WiFi FAT configuration preserves on-board networking and WPA edits",
+      "passed": true
+    },
+    {
+      "name": "Shell syntax in WiFi values is literal data and never executed",
+      "passed": true
+    },
+    {
+      "name": "Invalid WiFi lengths, placeholders, duplicate/unknown fields, country rejected without replacing settings",
+      "passed": true
+    },
+    {
+      "name": "64-hex raw PSK and optional country supported without passphrase helper invocation",
+      "passed": true
+    },
+    {
+      "name": "Production module load/rfkill/10-second wait and explicit WPA package dependencies present",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "hardware_boot_tested": false,
+  "wpa_passphrase_host_test": "PBKDF2 mock; real target helper tested separately",
+  "no_host_passwords_or_private_keys_used": true
+}

@@ -1,4 +1,4 @@
-# Copy the CONTENTS of your Windows .ssh/id_ed25519.pub into a file named
-# authorized_keys (no .txt extension) in this FAT boot partition.
-# It must contain a real public key, for example: ssh-ed25519 BASE64 comment
+# Optional advanced configuration. This image already has a root SSH password.
+# You do NOT need this file for normal WiFi + password SSH access.
+# If you prefer public keys, copy your real .pub content to authorized_keys.
 # Do not copy your private key. This comment-only example grants no access.

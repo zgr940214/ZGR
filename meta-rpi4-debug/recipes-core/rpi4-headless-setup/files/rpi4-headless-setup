@@ -76,8 +76,9 @@ apply_network() {
     if ! normalise "$boot/network-config" "$work/network" 8192; then error 'invalid network-config file'; return; fi
     checksum=$(hash_file "$work/network")
     if already_applied network "$checksum"; then echo 'Network: unchanged; local edits preserved' >> "$status"; return; fi
-    # Reject unknown/duplicate keys, shell fragments and malformed IPv4 values.
-    if ! awk '
+    # The values of SSID/PASSWORD are literal, including spaces and punctuation.
+    # Never source/eval this file; reject control characters and malformed keys.
+    if ! LC_ALL=C awk '
     function ipv4(s, a,n,i) {
         if (s !~ /^[0-9.]+$/) return 0
         n=split(s,a,"."); if(n!=4) return 0
@@ -86,31 +87,85 @@ apply_network() {
     }
     /^[[:space:]]*($|#)/ {next}
     {
-        line=$0; sub(/^[[:space:]]*/,"",line); sub(/[[:space:]]*$/, "", line)
+        line=$0; sub(/^[[:space:]]*/,"",line)
         p=index(line,"="); if(!p) exit 1
         k=substr(line,1,p-1); v=substr(line,p+1)
-        sub(/[[:space:]]*$/, "", k); sub(/^[[:space:]]*/, "", v)
-        if(k !~ /^(INTERFACE|MODE|ADDRESS|NETMASK|GATEWAY|DNS)$/ || seen[k]++) exit 1
+        sub(/[[:space:]]*$/, "", k)
+        if(k !~ /^(INTERFACE|MODE|ADDRESS|NETMASK|GATEWAY|DNS|SSID|PASSWORD|REGDOM)$/ || seen[k]++) exit 1
+        if(k!="SSID" && k!="PASSWORD") {sub(/^[[:space:]]*/,"",v);sub(/[[:space:]]*$/,"",v)}
+        if(v ~ /[[:cntrl:]]/) exit 1
         val[k]=v
     }
     END {
-        if(val["INTERFACE"] !~ /^[A-Za-z][A-Za-z0-9_.:-]*$/ || length(val["INTERFACE"])>15) exit 1
+        if(seen["SSID"] || seen["PASSWORD"]) {
+            if(!seen["INTERFACE"]) val["INTERFACE"]="wlan0"
+            if(!seen["MODE"]) val["MODE"]="dhcp"
+        }
+        iface=val["INTERFACE"]
+        if(iface !~ /^[A-Za-z][A-Za-z0-9_.:-]*$/ || length(iface)>15) exit 1
         if(val["MODE"]!="dhcp" && val["MODE"]!="static") exit 1
         if(val["ADDRESS"]!="" && !ipv4(val["ADDRESS"])) exit 1
         if(val["NETMASK"]!="" && !ipv4(val["NETMASK"])) exit 1
         if(val["GATEWAY"]!="" && !ipv4(val["GATEWAY"])) exit 1
         if(val["DNS"]!="") {n=split(val["DNS"],d,/ +/); for(i=1;i<=n;i++) if(!ipv4(d[i])) exit 1}
         if(val["MODE"]=="static" && (!ipv4(val["ADDRESS"]) || !ipv4(val["NETMASK"]))) exit 1
+        if(val["REGDOM"]!="" && val["REGDOM"]!~/^[A-Z][A-Z]$/) exit 1
+        if(iface=="wlan0") {
+            ssid=val["SSID"]; password=val["PASSWORD"]
+            if(length(ssid)<1 || length(ssid)>32 || ssid=="填写WiFi名" || ssid=="YOUR_WIFI_NAME" || ssid=="YOUR_WIFI_SSID") exit 1
+            if(password=="填写WiFi密码" || password=="YOUR_WIFI_PASSWORD") exit 1
+            if(!((length(password)>=8 && length(password)<=63) || (length(password)==64 && password~/^[A-Fa-f0-9]+$/))) exit 1
+        } else if(seen["SSID"] || seen["PASSWORD"]) exit 1
         print "auto lo\niface lo inet loopback\n"
-        print "auto " val["INTERFACE"] "\niface " val["INTERFACE"] " inet " val["MODE"]
+        # Ethernet remains available even when Wi-Fi is configured incorrectly.
+        if(iface!="eth0") print "auto eth0\niface eth0 inet dhcp\n"
+        print "auto " iface "\niface " iface " inet " val["MODE"]
         if(val["MODE"]=="static") {
             print "    address " val["ADDRESS"] "\n    netmask " val["NETMASK"]
             if(val["GATEWAY"]!="") print "    gateway " val["GATEWAY"]
         }
+        if(iface=="wlan0") print "    wpa-driver nl80211\n    wpa-conf /etc/wpa_supplicant.conf"
     }' "$work/network" > "$work/interfaces"; then error 'network-config validation failed'; return; fi
+    interface=$(awk 'index($0,"=") {k=substr($0,1,index($0,"=")-1);gsub(/[[:space:]]/,"",k);if(k=="INTERFACE"){v=substr($0,index($0,"=")+1);gsub(/[[:space:]]/,"",v);print v}}' "$work/network")
+    [ -n "$interface" ] || interface=wlan0
+    if [ "$interface" = wlan0 ]; then
+        # Strip only the key; leading/trailing SSID/PSK spaces are meaningful.
+        ssid=$(awk 'index($0,"=") {k=substr($0,1,index($0,"=")-1);gsub(/[[:space:]]/,"",k);if(k=="SSID")print substr($0,index($0,"=")+1)}' "$work/network")
+        wifi_password=$(awk 'index($0,"=") {k=substr($0,1,index($0,"=")-1);gsub(/[[:space:]]/,"",k);if(k=="PASSWORD")print substr($0,index($0,"=")+1)}' "$work/network")
+        regdom=$(awk 'index($0,"=") {k=substr($0,1,index($0,"=")-1);gsub(/[[:space:]]/,"",k);if(k=="REGDOM"){v=substr($0,index($0,"=")+1);gsub(/[[:space:]]/,"",v);print v}}' "$work/network")
+        [ -n "$regdom" ] || regdom=CN
+        wifi_psk=
+        if [ "$(LC_ALL=C printf '%s' "$wifi_password" | wc -c)" = 64 ]; then
+            wifi_psk=$wifi_password
+        else
+            # The passphrase is sent over stdin, never a process argument.
+            # wpa_passphrase emits a plaintext comment: never install its output.
+            if ! printf '%s\n' "$wifi_password" | wpa_passphrase "$ssid" > "$work/wpa-output" 2>/dev/null; then
+                unset wifi_password
+                error 'Wi-Fi PSK derivation failed'; return
+            fi
+            wifi_psk=$(awk '/^[[:space:]]*psk=/ {sub(/^[[:space:]]*psk=/,"");if(length($0)==64 && $0~/^[A-Fa-f0-9]+$/)print}' "$work/wpa-output")
+        fi
+        unset wifi_password
+        if ! printf '%s\n' "$wifi_psk" | LC_ALL=C awk 'length($0)==64 && /^[A-Fa-f0-9]+$/ {ok=1} END {exit !ok}'; then
+            error 'Wi-Fi PSK derivation returned invalid data'; return
+        fi
+        # A hex SSID handles UTF-8, quotes and backslashes without config escape
+        # ambiguities; only the derived 256-bit PSK is persisted in rootfs.
+        ssid_hex=$(printf '%s' "$ssid" | od -An -tx1 | tr -d ' \n')
+        {
+            printf '%s\n' 'ctrl_interface=/var/run/wpa_supplicant' 'update_config=0' "country=$regdom" 'network={'
+            printf '    ssid=%s\n' "$ssid_hex"
+            printf '    psk=%s\n' "$wifi_psk"
+            printf '%s\n' '    key_mgmt=WPA-PSK' '    ieee80211w=1' '    scan_ssid=1' '}'
+        } > "$work/wpa_supplicant.conf"
+        unset wifi_psk ssid
+        if ! atomic_copy "$work/wpa_supplicant.conf" "$root/etc/wpa_supplicant.conf" 0600; then error 'cannot install Wi-Fi configuration'; return; fi
+    fi
     mkdir -p "$root/etc/network" || { error 'cannot create network configuration directory'; return; }
     if ! atomic_copy "$work/interfaces" "$root/etc/network/interfaces" 0644; then error 'cannot install network configuration'; return; fi
     mode=$(awk -F= '$1 ~ /^[[:space:]]*MODE[[:space:]]*$/ {gsub(/[[:space:]]/,"",$2);print $2}' "$work/network")
+    [ -n "$mode" ] || mode=dhcp
     if [ "$mode" = static ]; then
         awk -F= '$1 ~ /^[[:space:]]*DNS[[:space:]]*$/ {n=split($2,d,/ +/);for(i=1;i<=n;i++)if(d[i]!="")print "nameserver " d[i]}' "$work/network" > "$work/resolv.conf"
         if [ -s "$work/resolv.conf" ]; then
@@ -120,6 +175,31 @@ apply_network() {
     fi
     remember network "$checksum"
     echo "Network: applied ($mode)" >> "$status"
+    [ "$interface" != wlan0 ] || echo 'Wi-Fi: WPA2-PSK configured; Ethernet DHCP retained' >> "$status"
+}
+prepare_wifi_hardware() {
+    [ "$test_mode" = 0 ] || return
+    [ -f /etc/wpa_supplicant.conf ] || return
+    grep -Eq '^[[:space:]]*ssid=' /etc/wpa_supplicant.conf || return
+    # eudev (S04), module loading (S06) and /run setup (S37) precede us.
+    # Explicit loading plus a bounded wait handles asynchronous SDIO probing.
+    if ! modprobe brcmfmac >/dev/null 2>&1; then
+        error 'brcmfmac module could not be loaded; Ethernet DHCP remains available'
+        return
+    fi
+    if ! rfkill unblock wifi >/dev/null 2>&1; then
+        echo 'Wi-Fi: rfkill unblock was unavailable; checking interface discovery' >> "$status"
+    fi
+    wifi_wait=0
+    while [ ! -d /sys/class/net/wlan0 ] && [ "$wifi_wait" -lt 10 ]; do
+        sleep 1
+        wifi_wait=$((wifi_wait + 1))
+    done
+    if [ ! -d /sys/class/net/wlan0 ]; then
+        error 'wlan0 did not appear within 10 seconds; Ethernet DHCP remains available'
+    else
+        echo 'Wi-Fi: wlan0 ready before networking starts' >> "$status"
+    fi
 }
 apply_keys() {
     [ -e "$boot/authorized_keys" ] || { echo 'SSH public keys: no import file' >> "$status"; return; }
@@ -170,6 +250,7 @@ apply_password() {
     echo 'Root password: SHA-512 hash imported; userconf.txt removed' >> "$status"
 }
 apply_network
+prepare_wifi_hardware
 apply_keys
 apply_password
 if [ "$failed" = 0 ]; then
