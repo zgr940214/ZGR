@@ -1,0 +1,182 @@
+Loading cache...done.
+Loaded 1928 entries from dependency cache.
+NOTE: Resolving any missing task queue dependencies
+
+Build Configuration:
+BB_VERSION           = "2.8.1"
+BUILD_SYS            = "x86_64-linux"
+NATIVELSBSTRING      = "universal"
+TARGET_SYS           = "aarch64-poky-linux"
+MACHINE              = "raspberrypi4-64"
+DISTRO               = "poky"
+DISTRO_VERSION       = "5.0.21"
+TUNE_FEATURES        = "aarch64 crc cortexa72"
+TARGET_FPU           = ""
+meta                 
+meta-poky            
+meta-yocto-bsp       = "scarthgap:104772c5fd0653290cbb5e4b77813343957939cc"
+meta-raspberrypi     = "scarthgap:018d44467c4f09eb63f8ea5e86e85d755250cf89"
+meta-rpi4-debug      = "<unknown>:<unknown>"
+
+Initialising tasks...Sstate summary: Wanted 174 Local 89 Mirrors 59 Missed 26 Current 1525 (85% match, 98% complete)
+Removing 1 stale sstate objects for arch cortexa72...done.
+NOTE: Executing Tasks
+NOTE: Running task 3182 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_fetch)
+NOTE: Running task 3204 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_prepare_recipe_sysroot)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_fetch: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_fetch: Succeeded
+NOTE: Running task 3205 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_prepare_recipe_sysroot)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3206 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_unpack)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 3207 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_unpack)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_unpack: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_unpack: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_unpack: Succeeded
+NOTE: Running task 3208 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_collect_spdx_deps)
+NOTE: recipe libgpiod-2.1.3-r0: task do_unpack: Succeeded
+NOTE: Running task 3209 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_collect_spdx_deps)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_collect_spdx_deps: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_collect_spdx_deps: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3210 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_patch)
+NOTE: recipe libgpiod-2.1.3-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3211 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_patch)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_patch: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_patch: Succeeded
+NOTE: Running task 3212 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_populate_lic)
+NOTE: recipe libgpiod-2.1.3-r0: task do_patch: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_patch: Succeeded
+NOTE: Running task 3213 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_populate_lic)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_populate_lic: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_populate_lic: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3214 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_deploy_source_date_epoch)
+NOTE: recipe libgpiod-2.1.3-r0: task do_populate_lic: Succeeded
+NOTE: Running task 3215 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_deploy_source_date_epoch)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_deploy_source_date_epoch: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3216 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_configure)
+NOTE: recipe libgpiod-2.1.3-r0: task do_deploy_source_date_epoch: Succeeded
+NOTE: Running task 3217 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_configure)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_configure: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_configure: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_configure: Succeeded
+NOTE: Running task 3218 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_compile)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_compile: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_compile: Succeeded
+NOTE: Running task 3219 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_install)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_install: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_install: Succeeded
+NOTE: Running task 3220 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_package)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package: Succeeded
+NOTE: Running task 3221 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_packagedata)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_packagedata: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_packagedata: Succeeded
+NOTE: Running task 3222 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_package_qa)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package_qa: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package_qa: Succeeded
+NOTE: Running task 3223 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_package_write_ipk)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package_write_ipk: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_package_write_ipk: Succeeded
+NOTE: Running task 3224 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_create_spdx)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_create_spdx: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3225 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_create_runtime_spdx)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_create_runtime_spdx: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3226 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_deploy)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_deploy: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_deploy: Succeeded
+NOTE: Running task 3227 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_populate_sysroot)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_populate_sysroot: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_populate_sysroot: Succeeded
+NOTE: Running task 3228 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/rpi4-headless-setup/rpi4-headless-setup_1.0.bb:do_rm_work)
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_rm_work: Started
+NOTE: recipe rpi4-headless-setup-1.0-r0: task do_rm_work: Succeeded
+NOTE: Running task 3626 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_recipe_qa)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_recipe_qa: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_recipe_qa: Succeeded
+NOTE: Running noexec task 3627 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_fetch)
+NOTE: Running task 3628 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_prepare_recipe_sysroot)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running noexec task 3629 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_unpack)
+NOTE: Running task 3630 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_collect_spdx_deps)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_collect_spdx_deps: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_collect_spdx_deps: Succeeded
+NOTE: Running task 3631 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_create_spdx)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_create_spdx: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_create_spdx: Succeeded
+NOTE: recipe libgpiod-2.1.3-r0: task do_configure: Succeeded
+NOTE: Running task 3734 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_compile)
+NOTE: recipe libgpiod-2.1.3-r0: task do_compile: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_compile: Succeeded
+NOTE: Running task 3735 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_install)
+NOTE: recipe libgpiod-2.1.3-r0: task do_install: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_install: Succeeded
+NOTE: Running task 3736 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_package)
+NOTE: Running task 3737 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_populate_sysroot)
+NOTE: recipe libgpiod-2.1.3-r0: task do_populate_sysroot: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_package: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_populate_sysroot: Succeeded
+NOTE: recipe libgpiod-2.1.3-r0: task do_package: Succeeded
+NOTE: Running task 3738 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_packagedata)
+NOTE: recipe libgpiod-2.1.3-r0: task do_packagedata: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_packagedata: Succeeded
+NOTE: Running task 3739 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_package_qa)
+NOTE: Running task 3740 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_package_write_ipk)
+NOTE: recipe libgpiod-2.1.3-r0: task do_package_write_ipk: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_package_qa: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_package_qa: Succeeded
+NOTE: Running task 3741 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_create_spdx)
+NOTE: recipe libgpiod-2.1.3-r0: task do_create_spdx: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_package_write_ipk: Succeeded
+NOTE: recipe libgpiod-2.1.3-r0: task do_create_spdx: Succeeded
+NOTE: Running task 3742 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_create_runtime_spdx)
+NOTE: Running task 3743 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_create_runtime_spdx)
+NOTE: recipe libgpiod-2.1.3-r0: task do_create_runtime_spdx: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_create_runtime_spdx: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3744 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-support/libgpiod/libgpiod_2.1.3.bb:do_rm_work)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_create_runtime_spdx: Succeeded
+NOTE: Running task 3745 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_rootfs)
+NOTE: recipe libgpiod-2.1.3-r0: task do_rm_work: Started
+NOTE: recipe libgpiod-2.1.3-r0: task do_rm_work: Succeeded
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_rootfs: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_rootfs: Succeeded
+NOTE: Running task 3746 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_flush_pseudodb)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_flush_pseudodb: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_flush_pseudodb: Succeeded
+NOTE: Running task 3747 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_image_qa)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_image_qa: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_image_qa: Succeeded
+NOTE: Running task 3748 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_image)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_image: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_image: Succeeded
+NOTE: Running task 3749 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_image_tar)
+NOTE: Running task 3750 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_rootfs_wicenv)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_image_tar: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_rootfs_wicenv: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_rootfs_wicenv: Succeeded
+NOTE: Running task 3751 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_image_wic)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_image_wic: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_image_tar: Succeeded
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_image_wic: Succeeded
+NOTE: Running task 3752 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_image_complete)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_image_complete: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_image_complete: Succeeded
+NOTE: Running task 3753 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_populate_lic_deploy)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_populate_lic_deploy: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_populate_lic_deploy: Succeeded
+NOTE: Running task 3754 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_rm_work)
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_rm_work: Started
+NOTE: recipe rpi4-boot-rcu-ssh-image-1.0-r0: task do_rm_work: Succeeded
+NOTE: Running noexec task 3755 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_rm_work_all)
+NOTE: Running noexec task 3756 of 3756 (/workspace/rpi4-yocto/build/../meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb:do_build)
+NOTE: Tasks Summary: Attempted 3756 tasks of which 3701 didn't need to be rerun and all succeeded.
+NOTE: No commit since BUILDHISTORY_COMMIT != '1'

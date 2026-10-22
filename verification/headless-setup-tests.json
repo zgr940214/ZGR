@@ -1,0 +1,57 @@
+{
+  "fixture": "/tmp/headless-setup-fixture-kn76zepc",
+  "script_sha256": "3a346e977d82f2e8943941565d26df997c83b550fd8cce54a658bc527c434bf9",
+  "tests": [
+    {
+      "name": "Windows UTF8 BOM + CRLF, DHCP, valid OpenSSH public key and permissions",
+      "passed": true
+    },
+    {
+      "name": "Unchanged FAT files preserve subsequent on-board edits",
+      "passed": true
+    },
+    {
+      "name": "Static IPv4 and DNS",
+      "passed": true
+    },
+    {
+      "name": "Shell injection rejected without execution or valid network replacement",
+      "passed": true
+    },
+    {
+      "name": "Unknown/duplicate fields and invalid IPv4 rejected",
+      "passed": true
+    },
+    {
+      "name": "Mixed valid/invalid keys rejected atomically",
+      "passed": true
+    },
+    {
+      "name": "SHA512 crypt import without chpasswd, CRLF/BOM handling, secret file removal/no hash logs",
+      "passed": true
+    },
+    {
+      "name": "Plaintext/placeholder password rejected, previous credential retained",
+      "passed": true
+    },
+    {
+      "name": "Shadow database preferred when present",
+      "passed": true
+    },
+    {
+      "name": "Fixture mode refuses host root and unmarked roots",
+      "passed": true
+    },
+    {
+      "name": "S39 import ordering after S37 volatile setup and before runlevel networking/SSHD",
+      "passed": true
+    },
+    {
+      "name": "Fixture absolute symlink refused before any writes",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "hardware_boot_tested": false,
+  "no_host_passwords_or_private_keys_used": true
+}
