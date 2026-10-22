@@ -1,9 +1,9 @@
 {
-  "source_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs-20261022060721.tar.bz2",
-  "source_sha256": "c631a9e0da55d2ab081e70ed0aa8e6fea18592e0d7161b7fb8fe5cba3bc0e385",
+  "source_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs-20261022090555.tar.bz2",
+  "source_sha256": "59a5f93d8dc8a664ee6fbc0c2385d56912f78c5a410a69e919f82eeb09608025",
   "qemu_version": "10.0.13",
   "emulator_provenance": "/tmp/rpi4-aarch64-smoke-lheeftmu/package-provenance.json",
-  "fixture_rootfs": "/tmp/rpi4-aarch64-smoke-lheeftmu/final-wifi-rootfs-20261022T061415Z",
+  "fixture_rootfs": "/tmp/rpi4-aarch64-smoke-lheeftmu/final-wifi-rootfs-20261022T090759Z",
   "execution": "QEMU AArch64 userspace in Docker UID0, --network none, project readonly",
   "hardware_boot_tested": false,
   "wifi_radio_association_tested": false,
@@ -40,7 +40,7 @@
   "correct_password_ssh": {
     "identification": "SSH-2.0-OpenSSH_9.6",
     "returncode": 255,
-    "stderr": "Accepted password for root from 127.0.0.1 port 43450 ssh2\r\n",
+    "stderr": "Accepted password for root from 127.0.0.1 port 51132 ssh2\r\n",
     "accepted": true,
     "shell_or_command_executed": false
   },
@@ -49,12 +49,12 @@
   "incorrect_password_ssh": {
     "identification": "SSH-2.0-OpenSSH_9.6",
     "returncode": 255,
-    "stderr": "Failed password for root from 127.0.0.1 port 33006 ssh2\r\nConnection closed by authenticating user root 127.0.0.1 port 33006 [preauth]\r\n",
+    "stderr": "Failed password for root from 127.0.0.1 port 41036 ssh2\r\nConnection closed by authenticating user root 127.0.0.1 port 41036 [preauth]\r\n",
     "accepted": false,
     "shell_or_command_executed": false
   },
   "fixture_account_databases_unchanged": true,
   "production_archive_and_container_base_credentials_unchanged": true,
   "passed": true,
-  "log": "/workspace/rpi4-yocto/logs/wifi-aarch64-smoke-20261022T061415Z.log"
+  "log": "/workspace/rpi4-yocto/logs/wifi-aarch64-smoke-20261022T090759Z.log"
 }

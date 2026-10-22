@@ -1,6 +1,6 @@
 {
-  "fixture": "/tmp/headless-setup-fixture-kurxq3t6",
-  "script_sha256": "e21711d54fb66ce264fb38e3e6ae12d00b95a80a1558eed6af6d07a820261956",
+  "fixture": "/tmp/headless-setup-fixture-va5jkxrd",
+  "script_sha256": "2e9a08c265e3eae2852e6c1540ab9daf69333478672c2c579cfc2954d3b42c70",
   "tests": [
     {
       "name": "Windows UTF8 BOM + CRLF, DHCP, valid OpenSSH public key and permissions",
@@ -63,6 +63,18 @@
       "passed": true
     },
     {
+      "name": "Old cached empty-SSID configuration migrates once without changing FAT; status distinguishes import from association",
+      "passed": true
+    },
+    {
+      "name": "32-byte repeated SSID encodes every byte without hexdump duplicate suppression",
+      "passed": true
+    },
+    {
+      "name": "Failed, truncated and non-hex encoding rejected without replacing config or remembering input",
+      "passed": true
+    },
+    {
       "name": "Shell syntax in WiFi values is literal data and never executed",
       "passed": true
     },
@@ -82,5 +94,6 @@
   "passed": true,
   "hardware_boot_tested": false,
   "wpa_passphrase_host_test": "PBKDF2 mock; real target helper tested separately",
+  "hexdump_host_mock": true,
   "no_host_passwords_or_private_keys_used": true
 }

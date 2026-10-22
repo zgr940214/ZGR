@@ -3,7 +3,7 @@
   "ipk": "/workspace/rpi4-yocto/build/tmp/deploy/ipk/all/wireless-regdb-static_2026.09.03-r0_all.ipk",
   "package_matches_pinned_source": true,
   "final_rootfs_matches_package": true,
-  "final_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs-20261022060721.tar.bz2",
+  "final_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs-20261022090555.tar.bz2",
   "final_rootfs_members": {
     "regulatory.db": {
       "member": "lib/firmware/regulatory.db",
@@ -30,9 +30,9 @@
   "kernel_module_loaded": false,
   "hardware_radio_tested": false,
   "passed": true,
-  "source_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs-20261022060721.tar.bz2",
-  "source_sha256": "c631a9e0da55d2ab081e70ed0aa8e6fea18592e0d7161b7fb8fe5cba3bc0e385",
-  "source_bytes": 20904629,
+  "source_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs-20261022090555.tar.bz2",
+  "source_sha256": "59a5f93d8dc8a664ee6fbc0c2385d56912f78c5a410a69e919f82eeb09608025",
+  "source_bytes": 20897907,
   "final_rootfs_cfg80211_matches_verified_elf": true,
   "verified_final_rootfs_members": {
     "regulatory.db": {
@@ -50,5 +50,7 @@
       "bytes": 22428568,
       "sha256": "4faf962a32a68ad921cb0a51f21949889d0f534c5070b89f5ff7bf4ef0eb1aac"
     }
-  }
+  },
+  "prior_verified_rootfs_sha256": "c631a9e0da55d2ab081e70ed0aa8e6fea18592e0d7161b7fb8fe5cba3bc0e385",
+  "v2_members_identical_to_cryptographically_verified_v1": true
 }
