@@ -1,0 +1,2 @@
+Kernel verified: Linux 6.12.93-v8, AArch64, full DWARF4, 1890 unstripped modules, exact pins and SHA-256 checksums
+Image verified: rpi4-debug-image-raspberrypi4-64.rootfs.wic.bz2; all rootfs modules match the complete debug archive

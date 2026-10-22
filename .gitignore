@@ -1,0 +1,10 @@
+/sources/
+/build/
+/downloads/
+/sstate-cache/
+/.home/
+/.docker/
+/.prefetch/
+/kernel-source-cache/
+/logs/
+__pycache__/
