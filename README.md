@@ -4,10 +4,17 @@ RPi4 / BCM2711 的 64 位 Yocto 镜像，固定 Yocto Scarthgap LTS **5.0.21**�
 Raspberry Pi Linux **6.12.93-v8**。上游源码、BSP 和内核 metadata 均固定到完整
 Git SHA，见 [sources.lock.json](sources.lock.json)，不使用 AUTOREV。
 
+## 下载已构建产物
+
+[镜像 + 完整内核符号 ZIP（约 118 MiB）](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-boot-rcu-6.12.93-v8-minimal-v1.zip)
+
+此包使用独立产物标签分发，解压后可校验 SHA256SUMS。源码克隆请使用下方
+`--single-branch --no-tags`，避免同时下载产物标签里的二进制文件。
+
 ## 构建启动 / RCU 精简镜像
 
 ```bash
-git clone --branch yocto-rpi4 https://github.com/zgr940214/ZGR.git rpi4-yocto
+git clone --single-branch --no-tags --branch yocto-rpi4 https://github.com/zgr940214/ZGR.git rpi4-yocto
 cd rpi4-yocto
 bash scripts/setup.sh
 bash scripts/build-boot-rcu.sh
