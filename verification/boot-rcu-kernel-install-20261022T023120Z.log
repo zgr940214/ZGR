@@ -1,0 +1,25 @@
+Loading cache...done.
+Loaded 1925 entries from dependency cache.
+NOTE: Resolving any missing task queue dependencies
+
+Build Configuration:
+BB_VERSION           = "2.8.1"
+BUILD_SYS            = "x86_64-linux"
+NATIVELSBSTRING      = "universal"
+TARGET_SYS           = "aarch64-poky-linux"
+MACHINE              = "raspberrypi4-64"
+DISTRO               = "poky"
+DISTRO_VERSION       = "5.0.21"
+TUNE_FEATURES        = "aarch64 crc cortexa72"
+TARGET_FPU           = ""
+meta                 
+meta-poky            
+meta-yocto-bsp       = "scarthgap:104772c5fd0653290cbb5e4b77813343957939cc"
+meta-raspberrypi     = "scarthgap:018d44467c4f09eb63f8ea5e86e85d755250cf89"
+meta-rpi4-debug      = "<unknown>:<unknown>"
+
+Initialising tasks...Sstate summary: Wanted 45 Local 0 Mirrors 45 Missed 0 Current 184 (100% match, 100% complete)
+done.
+NOTE: Executing Tasks
+NOTE: Tasks Summary: Attempted 769 tasks of which 769 didn't need to be rerun and all succeeded.
+NOTE: No commit since BUILDHISTORY_COMMIT != '1'
