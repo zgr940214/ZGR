@@ -1,0 +1,10 @@
+{
+  "machine": "raspberrypi4-64",
+  "linux_version": "6.12.93",
+  "kernel_release": "6.12.93-v8",
+  "srcrev_machine": "d8ab4e908235da7727f22dd36ad5af224671677d",
+  "srcrev_meta": "e66f40994fc740818776a0f3af55e8b6d74bfbef",
+  "dwarf_version": 4,
+  "modules_stripped": false,
+  "source_debug_prefix": "/usr/src/kernel"
+}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "kernel_release": "6.12.93-v8",
+  "full_dwarf_version": 4,
+  "raw_vmlinux_sha256": "9876b8f468f386d5fd54497511bb44e059b55beb17517f7efd83367fa935cef7",
+  "raw_vmlinux_bytes": 404542840,
+  "compressed_vmlinux_sha256": "b677b88dab7676b796bf3551bf7aafc5692f2d1ef91178cee2e24e1e9201d6a3",
+  "new_wifi_image_sha256": "88c88fe98c63f824b593db66011381aa7a0ef6eacdba35dff5cbe59ba522af14",
+  "all_eight_symbol_source_files_match_verified_public_archive": true,
+  "complete_elf_lossless_decompression_matches_current_kernel": true,
+  "all_module_archive_included": false,
+  "physical_hardware_tested": false
+}
