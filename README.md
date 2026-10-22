@@ -53,6 +53,15 @@ rpi4-kernel-debug/                 # 同一次完整符号内核构建的调试�
 “使用自定义镜像”中选择该文件，无需解压 XZ。发布 ZIP 则先解压 ZIP，再选其中
 `image/*.img.xz`。改后缀不改变磁盘镜像内容。
 
+## 可选的 SSH 模板
+
+需要有线 SSH 时，使用独立的
+[rpi4-boot-rcu-ssh-image.bb](meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb)
+和[配置说明](docs/ssh-template.zh-CN.md)。模板采用 eth0 DHCP、OpenSSH，首次串口设置
+root 密码后通过 SSH 登录，AP 暂不配置。运行
+`bash scripts/bitbake.sh rpi4-boot-rcu-ssh-image` 生成新镜像。
+模板已通过元数据解析；SSH 镜像尚未构建或实机验证，当前精简下载包不包含 sshd。
+
 ## 内核调试
 
 内核保留完整 DWARF4，禁用 reduced、split 和 debug 信息压缩，禁用内核包 strip。
