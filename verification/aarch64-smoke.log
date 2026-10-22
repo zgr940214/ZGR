@@ -1,0 +1,567 @@
+$ qemu-aarch64 -L <new-rootfs> /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/bin/busybox --list
+[
+[[
+addgroup
+adduser
+ascii
+ash
+awk
+base32
+basename
+blkid
+bunzip2
+bzcat
+bzip2
+cat
+chattr
+chgrp
+chmod
+chown
+chroot
+chvt
+clear
+cmp
+cp
+cpio
+crc32
+cut
+date
+dc
+dd
+deallocvt
+delgroup
+deluser
+depmod
+df
+diff
+dirname
+dmesg
+dnsdomainname
+du
+dumpkmap
+dumpleases
+echo
+egrep
+env
+expr
+false
+fbset
+fdisk
+fgrep
+find
+flock
+free
+fsck
+fstrim
+fuser
+getopt
+getty
+grep
+groups
+gunzip
+gzip
+head
+hexdump
+hostname
+hwclock
+id
+ifconfig
+ifdown
+ifup
+insmod
+ip
+kill
+killall
+klogd
+less
+ln
+loadfont
+loadkmap
+logger
+logname
+logread
+losetup
+ls
+lsmod
+lzcat
+md5sum
+mesg
+microcom
+mkdir
+mkfifo
+mknod
+mkswap
+mktemp
+modprobe
+more
+mount
+mountpoint
+mv
+nc
+netstat
+nohup
+nproc
+nslookup
+od
+openvt
+patch
+pgrep
+pidof
+pivot_root
+printf
+ps
+pwd
+rdate
+readlink
+realpath
+reboot
+renice
+reset
+resize
+rev
+rfkill
+rm
+rmdir
+rmmod
+route
+run-parts
+sed
+seq
+setconsole
+setsid
+sh
+sha1sum
+sha256sum
+shuf
+sleep
+sort
+start-stop-daemon
+stat
+strings
+stty
+sulogin
+swapoff
+swapon
+switch_root
+sync
+sysctl
+syslogd
+tail
+tar
+tee
+telnet
+test
+tftp
+time
+top
+touch
+tr
+true
+ts
+tty
+udhcpc
+udhcpd
+umount
+uname
+uniq
+unlink
+unzip
+uptime
+users
+usleep
+vi
+watch
+wc
+wget
+which
+who
+whoami
+xargs
+xzcat
+yes
+zcat
+exit=0
+$ qemu-aarch64 -L <new-rootfs> /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/usr/bin/passwd --help
+Usage: passwd [options] [LOGIN]
+
+Options:
+  -a, --all                     report password status on all accounts
+  -d, --delete                  delete the password for the named account
+  -e, --expire                  force expire the password for the named account
+  -h, --help                    display this help message and exit
+  -k, --keep-tokens             change password only if expired
+  -i, --inactive INACTIVE       set password inactive after expiration
+                                to INACTIVE
+  -l, --lock                    lock the password of the named account
+  -n, --mindays MIN_DAYS        set minimum number of days before password
+                                change to MIN_DAYS
+  -q, --quiet                   quiet mode
+  -r, --repository REPOSITORY   change password in REPOSITORY repository
+  -R, --root CHROOT_DIR         directory to chroot into
+  -P, --prefix PREFIX_DIR       directory prefix
+  -S, --status                  report password status on the named account
+  -u, --unlock                  unlock the password of the named account
+  -w, --warndays WARN_DAYS      set expiration warning days to WARN_DAYS
+  -x, --maxdays MAX_DAYS        set maximum number of days before password
+                                change to MAX_DAYS
+
+exit=0
+$ qemu-aarch64 -L <new-rootfs> /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/bin/busybox sh -n /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/usr/sbin/rpi4-headless-setup
+exit=0
+$ qemu-aarch64 -L <new-rootfs> /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/usr/bin/gpiodetect --version
+gpiodetect (libgpiod) v2.1.3
+Copyright (C) 2017-2023 Bartosz Golaszewski
+License: GPL-2.0-or-later
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+exit=0
+$ qemu-aarch64 -L <new-rootfs> /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/usr/bin/gpioinfo --version
+gpioinfo (libgpiod) v2.1.3
+Copyright (C) 2017-2023 Bartosz Golaszewski
+License: GPL-2.0-or-later
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+exit=0
+$ qemu-aarch64 -L <new-rootfs> /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/usr/bin/gpioset --version
+gpioset (libgpiod) v2.1.3
+Copyright (C) 2017-2023 Bartosz Golaszewski
+License: GPL-2.0-or-later
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+exit=0
+$ qemu-aarch64 -L <new-rootfs> /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/usr/bin/ssh-keygen -q -t ed25519 -N  -f /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/tmp/smoke-host-keys/ssh_host_ed25519_key
+exit=0
+$ qemu-aarch64 -L <new-rootfs> /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/usr/sbin/sshd -f /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/etc/ssh/sshd_config -h /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/tmp/smoke-host-keys/ssh_host_ed25519_key -t
+exit=0
+$ qemu-aarch64 -L <new-rootfs> /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/usr/sbin/sshd -f /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/etc/ssh/sshd_config -h /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/tmp/smoke-host-keys/ssh_host_ed25519_key -T
+port 22
+addressfamily inet
+listenaddress 0.0.0.0:22
+logingracetime 120
+x11displayoffset 10
+maxauthtries 6
+maxsessions 10
+clientaliveinterval 15
+clientalivecountmax 4
+requiredrsasize 1024
+streamlocalbindmask 0177
+unusedconnectiontimeout none
+permitrootlogin yes
+ignorerhosts yes
+ignoreuserknownhosts no
+hostbasedauthentication no
+hostbasedusesnamefrompacketonly no
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+printmotd yes
+printlastlog yes
+x11forwarding yes
+x11uselocalhost yes
+permittty yes
+permituserrc yes
+strictmodes yes
+tcpkeepalive yes
+permitemptypasswords no
+compression no
+gatewayports no
+usedns no
+allowtcpforwarding yes
+allowagentforwarding yes
+disableforwarding no
+allowstreamlocalforwarding yes
+streamlocalbindunlink no
+fingerprinthash SHA256
+exposeauthinfo no
+pidfile /var/run/sshd.pid
+modulifile /etc/ssh/moduli
+xauthlocation /usr/bin/xauth
+ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+macs umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1
+banner none
+forcecommand none
+chrootdirectory none
+trustedusercakeys none
+revokedkeys none
+securitykeyprovider internal
+authorizedprincipalsfile none
+versionaddendum none
+authorizedkeyscommand none
+authorizedkeyscommanduser none
+authorizedprincipalscommand none
+authorizedprincipalscommanduser none
+hostkeyagent none
+kexalgorithms sntrup761x25519-sha512@openssh.com,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256
+casignaturealgorithms ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256
+hostbasedacceptedalgorithms ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256
+hostkeyalgorithms ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256
+pubkeyacceptedalgorithms ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256
+loglevel INFO
+syslogfacility AUTH
+authorizedkeysfile .ssh/authorized_keys
+hostkey /tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z/tmp/smoke-host-keys/ssh_host_ed25519_key
+authenticationmethods any
+channeltimeout none
+subsystem sftp /usr/libexec/sftp-server 
+maxstartups 10:30:100
+persourcemaxstartups none
+persourcenetblocksize 32:128
+permittunnel no
+ipqos af21 cs1
+rekeylimit 0 0
+permitopen any
+permitlisten any
+permituserenvironment no
+pubkeyauthoptions none
+exit=0
+{
+  "source_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-ssh-image-raspberrypi4-64.rootfs-20261022033508.tar.bz2",
+  "source_sha256": "5e2bffb4dc124e9045ba252871973148f62434136710dd5f26aed1363ac6597e",
+  "qemu_version": "10.0.13",
+  "rootfs_extraction": "/tmp/rpi4-aarch64-smoke-lheeftmu/rootfs-20261022T033836Z",
+  "extraction": {
+    "regular_files": 449,
+    "absolute_symlinks_rebased_within_fixture": [
+      "bin/ash",
+      "bin/base32",
+      "bin/cat",
+      "bin/chattr",
+      "bin/chgrp",
+      "bin/chmod",
+      "bin/chown",
+      "bin/cp",
+      "bin/cpio",
+      "bin/date",
+      "bin/dd",
+      "bin/df",
+      "bin/dmesg",
+      "bin/dnsdomainname",
+      "bin/dumpkmap",
+      "bin/echo",
+      "bin/egrep",
+      "bin/false",
+      "bin/fgrep",
+      "bin/getopt",
+      "bin/grep",
+      "bin/gunzip",
+      "bin/gzip",
+      "bin/hostname",
+      "bin/kill",
+      "bin/ln",
+      "bin/login",
+      "bin/ls",
+      "bin/lsmod",
+      "bin/mkdir",
+      "bin/mknod",
+      "bin/mktemp",
+      "bin/more",
+      "bin/mount",
+      "bin/mountpoint",
+      "bin/mv",
+      "bin/netstat",
+      "bin/pidof",
+      "bin/pidof.sysvinit",
+      "bin/ping",
+      "bin/ping6",
+      "bin/ps",
+      "bin/pwd",
+      "bin/rev",
+      "bin/rm",
+      "bin/rmdir",
+      "bin/run-parts",
+      "bin/sed",
+      "bin/sh",
+      "bin/sleep",
+      "bin/stat",
+      "bin/stty",
+      "bin/su",
+      "bin/sync",
+      "bin/tar",
+      "bin/touch",
+      "bin/true",
+      "bin/umount",
+      "bin/uname",
+      "bin/usleep",
+      "bin/vi",
+      "bin/watch",
+      "bin/zcat",
+      "etc/mtab",
+      "sbin/blkid",
+      "sbin/depmod",
+      "sbin/fdisk",
+      "sbin/fsck",
+      "sbin/fstrim",
+      "sbin/getty",
+      "sbin/halt",
+      "sbin/hwclock",
+      "sbin/ifconfig",
+      "sbin/ifdown",
+      "sbin/ifup",
+      "sbin/init",
+      "sbin/insmod",
+      "sbin/ip",
+      "sbin/loadkmap",
+      "sbin/logread",
+      "sbin/losetup",
+      "sbin/lsmod",
+      "sbin/mkswap",
+      "sbin/modinfo",
+      "sbin/modprobe",
+      "sbin/nologin",
+      "sbin/pivot_root",
+      "sbin/poweroff",
+      "sbin/reboot",
+      "sbin/rmmod",
+      "sbin/route",
+      "sbin/runlevel",
+      "sbin/setconsole",
+      "sbin/shutdown",
+      "sbin/start-stop-daemon",
+      "sbin/sulogin",
+      "sbin/swapoff",
+      "sbin/swapon",
+      "sbin/switch_root",
+      "sbin/sysctl",
+      "sbin/udevadm",
+      "sbin/udhcpc",
+      "sbin/vigr",
+      "sbin/vipw",
+      "usr/bin/[",
+      "usr/bin/[[",
+      "usr/bin/ascii",
+      "usr/bin/awk",
+      "usr/bin/basename",
+      "usr/bin/bunzip2",
+      "usr/bin/bzcat",
+      "usr/bin/bzip2",
+      "usr/bin/chfn",
+      "usr/bin/chsh",
+      "usr/bin/chvt",
+      "usr/bin/clear",
+      "usr/bin/cmp",
+      "usr/bin/crc32",
+      "usr/bin/cut",
+      "usr/bin/dc",
+      "usr/bin/deallocvt",
+      "usr/bin/diff",
+      "usr/bin/dirname",
+      "usr/bin/du",
+      "usr/bin/dumpleases",
+      "usr/bin/env",
+      "usr/bin/expr",
+      "usr/bin/fgconsole",
+      "usr/bin/find",
+      "usr/bin/flock",
+      "usr/bin/free",
+      "usr/bin/fuser",
+      "usr/bin/groups",
+      "usr/bin/head",
+      "usr/bin/hexdump",
+      "usr/bin/id",
+      "usr/bin/killall",
+      "usr/bin/last",
+      "usr/bin/lastb",
+      "usr/bin/less",
+      "usr/bin/logger",
+      "usr/bin/logname",
+      "usr/bin/lzcat",
+      "usr/bin/md5sum",
+      "usr/bin/mesg",
+      "usr/bin/microcom",
+      "usr/bin/mkfifo",
+      "usr/bin/nc",
+      "usr/bin/newgrp",
+      "usr/bin/nohup",
+      "usr/bin/nproc",
+      "usr/bin/nslookup",
+      "usr/bin/od",
+      "usr/bin/openvt",
+      "usr/bin/passwd",
+      "usr/bin/patch",
+      "usr/bin/pgrep",
+      "usr/bin/printf",
+      "usr/bin/readlink",
+      "usr/bin/realpath",
+      "usr/bin/renice",
+      "usr/bin/reset",
+      "usr/bin/resize",
+      "usr/bin/scp",
+      "usr/bin/seq",
+      "usr/bin/setsid",
+      "usr/bin/sha1sum",
+      "usr/bin/sha256sum",
+      "usr/bin/showkey",
+      "usr/bin/shuf",
+      "usr/bin/sort",
+      "usr/bin/ssh",
+      "usr/bin/strings",
+      "usr/bin/tail",
+      "usr/bin/tee",
+      "usr/bin/telnet",
+      "usr/bin/test",
+      "usr/bin/tftp",
+      "usr/bin/time",
+      "usr/bin/top",
+      "usr/bin/tr",
+      "usr/bin/traceroute",
+      "usr/bin/ts",
+      "usr/bin/tty",
+      "usr/bin/uniq",
+      "usr/bin/unlink",
+      "usr/bin/unzip",
+      "usr/bin/uptime",
+      "usr/bin/users",
+      "usr/bin/utmpdump",
+      "usr/bin/vlock",
+      "usr/bin/wall",
+      "usr/bin/wc",
+      "usr/bin/wget",
+      "usr/bin/which",
+      "usr/bin/who",
+      "usr/bin/whoami",
+      "usr/bin/xargs",
+      "usr/bin/xzcat",
+      "usr/bin/yes",
+      "usr/sbin/addgroup",
+      "usr/sbin/adduser",
+      "usr/sbin/chpasswd",
+      "usr/sbin/chroot",
+      "usr/sbin/delgroup",
+      "usr/sbin/deluser",
+      "usr/sbin/fbset",
+      "usr/sbin/loadfont",
+      "usr/sbin/rdate",
+      "usr/sbin/rfkill",
+      "usr/sbin/udhcpd"
+    ],
+    "device_or_special_entries_skipped": []
+  },
+  "emulation": "AArch64 Linux userspace under QEMU user mode, no hardware boot",
+  "hardware_boot_tested": false,
+  "actual_ssh_login_tested": false,
+  "checks": [
+    "actual_aarch64_shadow_passwd_help",
+    "actual_aarch64_busybox_required_applets",
+    "actual_aarch64_busybox_importer_shell_syntax",
+    "actual_aarch64_gpiodetect_version_2.1.3",
+    "actual_aarch64_gpioinfo_version_2.1.3",
+    "actual_aarch64_gpioset_version_2.1.3",
+    "actual_aarch64_ssh_keygen_ephemeral_hostkey",
+    "actual_aarch64_sshd_config_and_hostkey_validation",
+    "actual_aarch64_sshd_effective_headless_settings"
+  ],
+  "effective_sshd_authentication": {
+    "port": "22",
+    "addressfamily": "inet",
+    "permitrootlogin": "yes",
+    "passwordauthentication": "yes",
+    "permitemptypasswords": "no",
+    "pubkeyauthentication": "yes",
+    "authorizedkeysfile": ".ssh/authorized_keys"
+  },
+  "passed": true,
+  "log": "/tmp/rpi4-aarch64-smoke-lheeftmu/docker-logs/ssh-aarch64-smoke-20261022T033836Z.log"
+}
+
+Execution: existing unprivileged-capability Docker container, UID 0 inside container, --network none; project mounted readonly. No host credentials changed. Temporary non-production host key only.
+RESULT: All nine actual AArch64 userspace smoke checks passed. This is not a hardware boot or actual SSH-login test.

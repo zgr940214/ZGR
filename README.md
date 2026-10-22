@@ -1,17 +1,60 @@
-# Raspberry Pi 4：启动与 RCU 调试
+# Raspberry Pi 4：SSH / GPIO / 启动与 RCU 调试
 
 RPi4 / BCM2711 的 64 位 Yocto 镜像，固定 Yocto Scarthgap LTS **5.0.21**、
 Raspberry Pi Linux **6.12.93-v8**。上游源码、BSP 和内核 metadata 均固定到完整
 Git SHA，见 [sources.lock.json](sources.lock.json)，不使用 AUTOREV。
 
-## 下载已构建产物
+## 推荐：可在 Windows 配置的 SSH / GPIO 镜像
+
+[镜像升级包，无需重复下载符号](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-headless-ssh-gpio-6.12.93-v8-image-v1.zip)
+或[镜像 + 完整内核符号](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-headless-ssh-gpio-6.12.93-v8-full-v1.zip)。
+
+此版本包含 OpenSSH、有线 DHCP、GPIO 工具与 FAT 启动分区配置导入，镜像仅
+18,951,216 字节；仍为零 `.ko`，同一完整 DWARF4 内核。AP / Wi-Fi 暂不加入。
+已实际运行 `bash scripts/build-headless-ssh.sh`，3756 项 BitBake 任务全部成功，
+构建入口及产物验收退出码均为 0。12 项配置导入 fixture 检查通过。
+
+烧录 ZIP 中 `image/*.img.xz`，跳过 Imager 的 Raspberry Pi OS 定制。重新插卡，
+Windows 可见的 FAT 分区中已有 `network-config` 和 `README-SETUP.txt`。
+默认 eth0 DHCP。将自己的 SSH **公钥**复制到 FAT 根目录，命名 `authorized_keys`，
+插网线开机后即可公钥登录，无需预先接串口：
+
+```powershell
+ssh-keygen -t ed25519
+# 将 E: 替换成 SD 卡启动分区盘符；已有密钥时跳过生成，勿覆盖自己的密钥。
+Copy-Item "$env:USERPROFILE\.ssh\id_ed25519.pub" 'E:\authorized_keys'
+# 从路由器 DHCP 客户端列表查到 IPv4 后：
+ssh root@树莓派的IPv4
+```
+
+首次配置结果写入 FAT 的 `setup-result.txt`。`network-config` 是本镜像的
+KEY=VALUE 格式，不是 cloud-init YAML。完整模板、静态 IP 与可选密码方式见
+[启动分区配置说明](docs/ssh-template.zh-CN.md)。GPIO 设备树参数仍在 `config.txt`；
+SSH 登录后可用 `gpiodetect`、`gpioinfo` 和 libgpiod 2.1.3 的其他工具。
+
+从源码构建推荐镜像：
+
+```bash
+git clone --single-branch --no-tags --branch yocto-rpi4 https://github.com/zgr940214/ZGR.git rpi4-yocto
+cd rpi4-yocto
+bash scripts/setup.sh
+bash scripts/build-headless-ssh.sh
+```
+
+本轮日志：
+[构建](verification/headless-ssh-build-20261022T033449Z.log)、
+[产物验收](verification/headless-ssh-artifacts-20261022T033449Z.log)、
+[导入测试](verification/headless-setup-tests.json)。
+本环境没有 RPi4 硬件，未验证实机启动、网线连通和 GPIO 电气行为。
+
+## 历史纯串口镜像（没有 SSH）
 
 [镜像 + 完整内核符号 ZIP（约 118 MiB）](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-boot-rcu-6.12.93-v8-minimal-v1.zip)
 
 此包使用独立产物标签分发，解压后可校验 SHA256SUMS。源码克隆请使用下方
 `--single-branch --no-tags`，避免同时下载产物标签里的二进制文件。
 
-## 构建启动 / RCU 精简镜像
+## 可选：构建原纯串口精简镜像
 
 ```bash
 git clone --single-branch --no-tags --branch yocto-rpi4 https://github.com/zgr940214/ZGR.git rpi4-yocto
@@ -52,15 +95,6 @@ rpi4-kernel-debug/                 # 同一次完整符号内核构建的调试�
 烧录时把 `.wic.xz` 复制或改名为 `.img.xz`，在 Raspberry Pi Imager 的
 “使用自定义镜像”中选择该文件，无需解压 XZ。发布 ZIP 则先解压 ZIP，再选其中
 `image/*.img.xz`。改后缀不改变磁盘镜像内容。
-
-## 可选的 SSH 模板
-
-需要有线 SSH 时，使用独立的
-[rpi4-boot-rcu-ssh-image.bb](meta-rpi4-debug/recipes-core/images/rpi4-boot-rcu-ssh-image.bb)
-和[配置说明](docs/ssh-template.zh-CN.md)。模板采用 eth0 DHCP、OpenSSH，首次串口设置
-root 密码后通过 SSH 登录，AP 暂不配置。运行
-`bash scripts/bitbake.sh rpi4-boot-rcu-ssh-image` 生成新镜像。
-模板已通过元数据解析；SSH 镜像尚未构建或实机验证，当前精简下载包不包含 sshd。
 
 ## 内核调试
 
@@ -156,3 +190,11 @@ init/shell、ext4 与分区范围均通过验收。
 
 编译复用了此前已实际交叉编译并验收的固定版本内核。
 未进行 RPi4 实机启动或调试器连接测试。
+
+## AArch64 用户态执行验证
+
+新 SSH 镜像里的实际 AArch64 ssh-keygen、sshd 配置检查、BusyBox、passwd 和
+GPIO 2.1.3 工具已在 QEMU 10.0.13 用户模式下运行，9 项检查通过。
+[执行报告](verification/aarch64-smoke.json)、[执行日志](verification/aarch64-smoke.log)、
+[模拟器来源验证](verification/aarch64-emulator-provenance.json)。
+这不是 RPi4 实机启动或实际 SSH 联网测试。

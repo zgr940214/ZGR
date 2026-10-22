@@ -1,0 +1,19 @@
+#!/bin/sh
+# SPDX-License-Identifier: MIT
+### BEGIN INIT INFO
+# Provides:          rpi4-headless-setup
+# Required-Start:    $local_fs
+# Required-Stop:
+# Default-Start:     S
+# Default-Stop:
+# Short-Description: Import FAT boot network and root SSH setup before networking
+### END INIT INFO
+case "${1:-}" in
+    start|restart|force-reload)
+        /usr/sbin/rpi4-headless-setup || echo 'Headless setup had errors; existing access settings retained.' >&2
+        ;;
+    stop) ;;
+    *) echo 'Usage: rpi4-headless-setup {start|stop|restart}' >&2; exit 1 ;;
+esac
+# A malformed user file must never prevent the system from finishing boot.
+exit 0

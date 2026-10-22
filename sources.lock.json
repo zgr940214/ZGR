@@ -19,6 +19,7 @@
     "metadata_commit": "e66f40994fc740818776a0f3af55e8b6d74bfbef"
   },
   "machine": "raspberrypi4-64",
-  "image": "rpi4-boot-rcu-image",
+  "image": "rpi4-boot-rcu-ssh-image",
+  "minimal_image": "rpi4-boot-rcu-image",
   "full_image": "rpi4-debug-image"
 }
