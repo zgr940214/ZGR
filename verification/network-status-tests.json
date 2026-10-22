@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "hardware_tested": false,
+  "checks": [
+    "Missing wlan0 is not reported as connected",
+    "Present interface with absent supplicant is distinguished from association",
+    "Scanning is pending and raw WPA data is not copied",
+    "Association without DHCP does not claim SSH access",
+    "Association plus IPv4 plus listener yields endpoint without overstating reachability",
+    "Identical status does not rewrite FAT",
+    "Assigned IP without sshd listener does not claim SSH readiness",
+    "Ethernet access is reported while Wi-Fi failure remains visible",
+    "Unrecognized WPA states and invalid/link-local/loopback addresses are excluded",
+    "Fixture mode rejects symlinks and unmarked roots before writes"
+  ],
+  "script_sha256": "ee6cdf218d8854c9b7ead2c7db944f80ae3933ea4194aa8dd23ce52d92adb18d",
+  "actual_aarch64_userspace_tested": true,
+  "aarch64_harness": "QEMU 10.0.13 + actual image BusyBox in Docker --network none chroot; network commands mocked",
+  "aarch64_checks": [
+    "Full reporter: SCANNING is pending",
+    "Full reporter: COMPLETED without IPv4 is DHCP pending",
+    "Full reporter: COMPLETED + IPv4 + TCP listener yields SSH endpoint",
+    "Full reporter: SSID and PSK markers excluded from output",
+    "Actual BusyBox syntax and ip/awk/cmp/kill flags accepted"
+  ],
+  "wifi_radio_association_tested": false,
+  "ssh_client_reachability_tested": false,
+  "boot_partition_mount_tested": false
+}

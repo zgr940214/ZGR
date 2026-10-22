@@ -1,0 +1,20 @@
+#!/bin/sh
+# SPDX-License-Identifier: MIT
+### BEGIN INIT INFO
+# Provides:          rpi4-network-status
+# Required-Start:    $local_fs $network sshd
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Save bounded post-startup Wi-Fi and SSH status to boot FAT
+### END INIT INFO
+case "${1:-}" in
+    start|restart|force-reload)
+        # The reporter owns its lock and exits within a bounded observation
+        # window. It must not hold up boot or SSH while DHCP is still pending.
+        /usr/sbin/rpi4-network-status </dev/null >/dev/null 2>&1 &
+        ;;
+    stop) ;;
+    *) echo 'Usage: rpi4-network-status {start|stop|restart}' >&2; exit 1 ;;
+esac
+exit 0

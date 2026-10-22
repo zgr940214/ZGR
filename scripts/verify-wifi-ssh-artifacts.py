@@ -68,6 +68,7 @@ class WiFiRootfs(SUPPORT.Rootfs):
             "etc/avahi/avahi-daemon.conf", f"etc/init.d/{SETUP}", f"usr/sbin/{SETUP}",
             "etc/init.d/sshd", "etc/init.d/networking", "etc/init.d/avahi-daemon",
             "etc/init.d/dbus-1", "etc/init.d/modutils.sh", "etc/modules-load.d/rpi4-wifi.conf",
+            "usr/sbin/rpi4-network-status", "etc/init.d/rpi4-network-status",
         }
         wanted.update(f"usr/share/rpi4-setup/{name}" for name in ROOTFS_TEMPLATES)
         wanted.update(f"{prefix}/modules/{release}/{name}" for prefix in ("lib", "usr/lib")
@@ -242,6 +243,15 @@ def check_rootfs(path, release, full, kernel_build):
     importer = root.read(f"usr/sbin/{SETUP}")
     for token in ("network-config", "SSID", "PASSWORD", "wpa_passphrase", "wlan0", "setup-result.txt"):
         require(token in importer, f"Wi-Fi importer lacks expected support: {token}")
+    setup_sources = PROJECT / "meta-rpi4-debug/recipes-core/rpi4-headless-setup/files"
+    for installed, source in ((f"usr/sbin/{SETUP}", SETUP),
+                              ("usr/sbin/rpi4-network-status", "rpi4-network-status"),
+                              ("etc/init.d/rpi4-network-status", "rpi4-network-status.init")):
+        root.executable(installed, elf=False)
+        require(root.read(installed) == (setup_sources / source).read_text(),
+                f"Built image contains an outdated setup/status script: {installed}")
+    require({level for level, priority, _ in root.starts("rpi4-network-status") if priority == 22}
+            >= set("2345"), "Post-network status collection is not enabled after SSH in rc2-5")
 
     require(any(level == "S" and number == 39 for level, number, _ in root.starts(SETUP)),
             "Headless importer is not enabled at rcS priority 39")

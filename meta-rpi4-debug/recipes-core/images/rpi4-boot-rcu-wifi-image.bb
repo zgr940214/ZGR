@@ -12,6 +12,7 @@ IMAGE_INSTALL:append = " \
     linux-firmware-rpidistro-bcm43456 \
     wireless-regdb-static \
     wpa-supplicant wpa-supplicant-passphrase wpa-supplicant-cli \
+    rpi4-network-status \
     avahi-daemon dbus \
 "
 

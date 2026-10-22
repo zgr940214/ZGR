@@ -6,7 +6,7 @@
 
 ## 烧录后只改两行
 
-1. 解压镜像 ZIP，使用 Raspberry Pi Imager 写入 `image/rpi4-wifi-ready-6.12.93-v8.img.xz`。
+1. 解压镜像 ZIP，使用 Raspberry Pi Imager 写入 `image/rpi4-wifi-ready-6.12.93-v8-v2.img.xz`。
    跳过 Raspberry Pi OS 专用定制，完成写入后重新插入 SD 卡。
 2. Windows 可见的 FAT 分区中已有 `network-config` 和 `README-SETUP.txt`。
    打开 `network-config`，只把两行占位内容换成自己的 Wi-Fi 信息，不额外加引号：
@@ -37,12 +37,20 @@ Wi-Fi `wlan0` 与有线 `eth0` 默认使用 DHCP。电脑无法解析 `.local` �
 
 ## 模板格式和导入结果
 
+已烧录 v1 时可使用[免重刷修复包](https://raw.githubusercontent.com/zgr940214/ZGR/rpi4-wifi-repair-v2/rpi4-wifi-repair-v2.zip)。
+关机，将其中的 `config.txt` 和 `rpi4-wifi-fix.cpio.gz` 复制到启动分区根目录，
+保留已填写的 `network-config`，再上电。使用自定义 config 时仅追加包内的 initramfs 指令。
+修复包保留现有账户、密码和内核；新增 `repair-result.txt` 与 `network-status.txt`。
+
 `network-config` 是自定义 **KEY=VALUE**，不是 cloud-init YAML。
 普通连接只填写 `SSID`、`PASSWORD`，无需补齐其他字段。
-开机时先导入，再启动 networking、SSH 和 mDNS；结果写入 FAT 的 `setup-result.txt`。
+开机时先导入，再启动 networking、SSH 和 mDNS；导入结果写入 FAT 的 `setup-result.txt`。
+该文件不代表联网成功。`network-status.txt` 另外报告实际 Wi-Fi 关联状态、
+IPv4 地址及 SSH 的 TCP/22 监听状态，最多观察启动后的 120 秒。
 错误不会覆盖已有有效配置或阻止启动。
 
-只有 FAT 文件内容改变时才重新导入，未变模板不会覆盖后续板上修改。
+FAT 文件内容改变时会重新导入，未变模板保留后续板上修改。
+v1 升级至 v2 时会额外导入一次，修复旧脚本因 BusyBox `od` 参数不兼容写入的空 SSID。
 启动分区保留原始 Wi-Fi 配置以便在 Windows 继续修改；结果文件不包含 Wi-Fi 密码、PSK 或口令哈希。
 根文件系统使用推导后的 WPA PSK，相关配置权限为 0600。
 
@@ -79,7 +87,9 @@ bash scripts/build-wifi-ssh.sh
 该入口实际运行新镜像构建及 `scripts/verify-wifi-ssh-artifacts.py`，任一步失败均返回非零。
 输出 `rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs.wic.xz`，改名 `.img.xz` 后可用于 Imager。
 本轮标识在 `logs/wifi-ssh-current-run.txt`，构建和验收日志使用相同的 `<run>` 标识。
-本轮运行标识 `20261022T061536Z`；交付包保留构建/产物日志、19 项配置导入与 15 项 AArch64 软件验证报告。
+本轮运行标识 `20261022T090523Z`；4385 项构建任务成功。
+交付包保留构建/产物日志、22 项导入检查、10 项实际 AArch64 导入/网络启动链回归和
+15 项 AArch64 软件验证报告。网络端点在启动链回归中模拟；没有模拟射频连接。
 真实 OpenSSH 使用镜像预置且未修改的账号库完成密码鉴权，错误密码被拒绝；WPA nl80211 和 PSK 推导验证通过。
 5 个无线模块逐一验收完整 DWARF4、vermagic 和原内核构建哈希，模块依赖/SDIO alias 完整。
 监管数据库签名已由实际 cfg80211 模块内置公钥对应证书验证通过。

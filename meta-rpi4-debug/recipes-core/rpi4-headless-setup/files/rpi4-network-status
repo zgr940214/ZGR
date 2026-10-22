@@ -1,0 +1,159 @@
+#!/bin/sh
+# SPDX-License-Identifier: MIT
+# Record actual association/address/listener state after the network starts.
+# Never copy raw supplicant output, Wi-Fi names, or credentials to FAT.
+set -u
+umask 077
+root=
+boot=
+fixture=0
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        --root) [ "$#" -ge 2 ] || exit 2; root=$2; fixture=1; shift 2 ;;
+        --boot) [ "$#" -ge 2 ] || exit 2; boot=$2; shift 2 ;;
+        *) echo 'Usage: rpi4-network-status [--root FIXTURE --boot FIXTURE]' >&2; exit 2 ;;
+    esac
+done
+if [ "$fixture" = 1 ]; then
+    case "$root" in /*) ;; *) exit 2 ;; esac
+    case "$boot" in /*) ;; *) exit 2 ;; esac
+    [ "$root" != / ] && [ -f "$root/.rpi4-network-status-test-root" ] && [ -d "$boot" ] || exit 2
+    [ ! -L "$root" ] && [ ! -L "$boot" ] || exit 2
+    [ -z "$(find "$root" "$boot" -type l -print)" ] || exit 2
+else
+    [ -z "$boot" ] && [ "$(id -u)" = 0 ] || exit 2
+fi
+
+mkdir -p "$root/run" "$root/var/lib/rpi4-setup" || exit 1
+lock=$root/run/rpi4-network-status.lock
+mkdir "$lock" 2>/dev/null || exit 0
+work=$lock
+mounted=0
+request_pid=
+cleanup() {
+    if [ -n "$request_pid" ]; then kill "$request_pid" 2>/dev/null || :; wait "$request_pid" 2>/dev/null || :; fi
+    if [ "$mounted" = 1 ]; then umount "$boot" || :; fi
+    rm -rf "$work"
+}
+trap cleanup EXIT
+trap 'exit 1' HUP INT TERM
+if [ "$fixture" = 0 ]; then
+    if awk '$2 == "/boot" && ($3 == "vfat" || $3 == "msdos") {found=1} END {exit !found}' /proc/mounts; then
+        boot=/boot
+    else
+        boot=/run/rpi4-network-status-boot
+        mkdir -p "$boot" || exit 1
+        if mount -t vfat -o rw /dev/mmcblk0p1 "$boot"; then
+            mounted=1
+        else
+            boot=
+            echo 'rpi4-network-status: boot partition unavailable; status retained in /var/lib/rpi4-setup' >&2
+        fi
+    fi
+fi
+
+ipv4_of() {
+    ip -4 addr show dev "$1" 2>/dev/null | awk '
+    $1 == "inet" {
+        split($2,c,"/"); n=split(c[1],a,"."); valid=(n==4)
+        for(i=1;i<=n;i++) if(a[i]!~/^[0-9]+$/ || length(a[i])>3 || a[i]+0>255) valid=0
+        if(valid && a[1]!=127 && !(a[1]==169 && a[2]==254)) {print c[1]; exit}
+    }'
+}
+supplicant_state() {
+    # A stuck control socket must not leave a background reporter running forever.
+    wpa_cli -i wlan0 status > "$work/wpa-raw" 2>/dev/null &
+    request_pid=$!
+    request_wait=0
+    while kill -0 "$request_pid" 2>/dev/null && [ "$request_wait" -lt 3 ]; do
+        sleep 1
+        request_wait=$((request_wait + 1))
+    done
+    if kill -0 "$request_pid" 2>/dev/null; then
+        kill -KILL "$request_pid" 2>/dev/null || :
+    fi
+    wait "$request_pid" 2>/dev/null || :
+    request_pid=
+    value=$(awk -F= '$1=="wpa_state" {print $2; exit}' "$work/wpa-raw")
+    rm -f "$work/wpa-raw"
+    case "$value" in
+        DISCONNECTED|INTERFACE_DISABLED|INACTIVE|SCANNING|AUTHENTICATING|ASSOCIATING|ASSOCIATED|4WAY_HANDSHAKE|GROUP_HANDSHAKE|COMPLETED) printf '%s\n' "$value" ;;
+        *) printf '%s\n' UNAVAILABLE ;;
+    esac
+}
+write_status() {
+    destination=$root/var/lib/rpi4-setup/network-status.txt
+    if ! cmp -s "$work/status" "$destination"; then
+        cp "$work/status" "$destination.new" && mv -f "$destination.new" "$destination" || return 1
+    fi
+    if [ -n "$boot" ] && ! cmp -s "$work/status" "$boot/network-status.txt"; then
+        if ! cp "$work/status" "$boot/network-status.txt.tmp" || ! mv -f "$boot/network-status.txt.tmp" "$boot/network-status.txt"; then
+            echo 'rpi4-network-status: could not update FAT network-status.txt' >&2
+            return 1
+        fi
+        [ "$fixture" = 1 ] || sync
+    fi
+}
+clock_seconds() {
+    # Wall time may change when a network time service starts. Use monotonic
+    # uptime for the production observation deadline.
+    if [ "$fixture" = 0 ]; then
+        awk '{split($1,a,"."); print a[1]}' /proc/uptime
+    else
+        date +%s
+    fi
+}
+
+# The first and final samples are always identified. Intermediate identical
+# states do not rewrite flash; no daemon is left running after this window.
+started=$(clock_seconds)
+deadline=$((started + 120))
+while :; do
+    wifi_state=NO_INTERFACE
+    if [ -d "$root/sys/class/net/wlan0" ]; then wifi_state=$(supplicant_state); fi
+    wifi_ip=$(ipv4_of wlan0)
+    ethernet_ip=$(ipv4_of eth0)
+    ssh_listener=no
+    # The image's sshd is configured for IPv4. This detects an actual listening
+    # socket on all IPv4 addresses, rather than treating a stale PID as success.
+    if [ -r "$root/proc/net/tcp" ] && awk '$2=="00000000:0016" && $4=="0A" {found=1} END {exit !found}' "$root/proc/net/tcp"; then
+        ssh_listener=yes
+    fi
+    complete=0
+    if [ "$wifi_state" = COMPLETED ] && [ -n "$wifi_ip" ] && [ "$ssh_listener" = yes ]; then complete=1; fi
+    if [ ! -s "$root/etc/wpa_supplicant.conf" ] && [ -n "$ethernet_ip" ] && [ "$ssh_listener" = yes ]; then complete=1; fi
+    now=$(clock_seconds)
+    final=0
+    if [ "$fixture" = 1 ] || [ "$complete" = 1 ] || [ "$now" -ge "$deadline" ]; then final=1; fi
+    {
+        printf '%s\n' 'RPi4 network status (actual post-startup state)'
+        printf 'Wi-Fi supplicant state: %s\n' "$wifi_state"
+        case "$wifi_state" in
+            NO_INTERFACE) echo 'Wi-Fi: wlan0 is missing; driver/firmware discovery failed or is still pending' ;;
+            UNAVAILABLE) echo 'Wi-Fi: supplicant control interface unavailable; association is not confirmed' ;;
+            COMPLETED)
+                if [ -n "$wifi_ip" ]; then echo 'Wi-Fi: associated, IPv4 address assigned'; else echo 'Wi-Fi: associated, waiting for IPv4 (DHCP in the default setup)'; fi ;;
+            *) echo 'Wi-Fi: association/authentication not complete' ;;
+        esac
+        printf 'wlan0 IPv4: %s\n' "${wifi_ip:-none}"
+        printf 'eth0 IPv4: %s\n' "${ethernet_ip:-none}"
+        if [ "$ssh_listener" = yes ]; then
+            echo 'SSH: listening on all IPv4 addresses, TCP port 22'
+            if [ "$wifi_state" = COMPLETED ] && [ -n "$wifi_ip" ]; then printf 'Wi-Fi SSH: ssh root@%s -p 22\n' "$wifi_ip"; fi
+            if [ -n "$ethernet_ip" ]; then printf 'Ethernet SSH: ssh root@%s -p 22\n' "$ethernet_ip"; fi
+        else
+            echo 'SSH: no TCP/22 listener on all IPv4 addresses detected'
+        fi
+        if [ "$complete" = 1 ]; then
+            echo 'Result: network and SSH listener ready; client reachability is not tested'
+        elif [ "$final" = 1 ]; then
+            echo 'Result: startup observation ended without confirming Wi-Fi and SSH readiness'
+        else
+            echo 'Result: pending; this file updates during the first 120 seconds after networking starts'
+        fi
+        echo 'This file is a startup snapshot; setup-result.txt reports configuration import only.'
+    } > "$work/status"
+    write_status || :
+    [ "$final" = 0 ] || break
+    sleep 5
+done

@@ -11,14 +11,26 @@ Git SHA，见 [sources.lock.json](sources.lock.json)，不使用 AUTOREV。
 只安装 Wi-Fi 所需的少量完整 DWARF 模块、RPi4 固件和签名监管数据库；
 同一完整符号内核保持不变，已有 vmlinux 和启动 / RCU 源码可以继续使用。
 
-[镜像 + 完整内核符号 + 启动/RCU 源码 ZIP（127.3 MiB）](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-wifi-ready-6.12.93-v8-full-v1.zip)
+[镜像 + 完整内核符号 + 启动/RCU 源码 ZIP](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-wifi-ready-6.12.93-v8-full-v2.zip)
 
-[Wi-Fi 镜像升级 ZIP](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-wifi-ready-6.12.93-v8-image-v1.zip)
-**已在本执行环境实际构建，产物验收、19 项配置导入和 15 项 AArch64 软件检查均通过。**
+[Wi-Fi 镜像升级 ZIP](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-wifi-ready-6.12.93-v8-image-v2.zip)
 升级包只下载新镜像与使用说明，不重复携带完整符号。
 
+v2 修复了 v1 的联网缺陷：精简 BusyBox 不支持导入脚本的 `od -An -tx1` 参数，
+导致 SSID 转换为空值，配置导入却报告成功。现使用镜像支持的 `hexdump` 并检查
+退出码、长度和十六进制字符；升级后会重新导入一次旧版缓存配置。
+回归验证使用镜像实际 AArch64 程序，结果见 `verification/wifi-aarch64-importer-regression.json`。
+
+已经烧录 v1 的 SD 卡可使用[免重刷修复包（约 1.5 MiB）](https://raw.githubusercontent.com/zgr940214/ZGR/rpi4-wifi-repair-v2/rpi4-wifi-repair-v2.zip)：
+关机后，将 ZIP 中的 `config.txt` 和 `rpi4-wifi-fix.cpio.gz` 复制到启动分区根目录，
+覆盖 `config.txt`，保留现有 `network-config`，再上电。包内 config 基于本项目发布的默认
+配置；若自行修改过 GPIO/显示配置，请仅在自己的 config 末尾追加
+`initramfs rpi4-wifi-fix.cpio.gz followkernel`。
+修复结果写入 `repair-result.txt`，实际连接状态见 `network-status.txt`。
+修复包已验证实际 AArch64 脚本，内核到 initramfs 的实机启动衔接尚未验证。
+
 1. 解压 ZIP，在 Raspberry Pi Imager 的“使用自定义镜像”中选择
-   `image/rpi4-wifi-ready-6.12.93-v8.img.xz`，烧录一次，跳过 Raspberry Pi OS 专用定制。
+   `image/rpi4-wifi-ready-6.12.93-v8-v2.img.xz`，烧录一次，跳过 Raspberry Pi OS 专用定制。
 2. 重插 SD 卡，在 Windows 可见的 FAT 启动分区打开 `network-config`。
    **只改两行**，等号后直接填写自己的名称和密码，不额外加引号：
 
@@ -39,7 +51,8 @@ Git SHA，见 [sources.lock.json](sources.lock.json)，不使用 AUTOREV。
 如果 `.local` 无法解析，在路由器 DHCP 列表查找 `rpi4-debug` 的 IPv4，
 使用 `ssh root@实际IP`；插网线到 DHCP 路由器也可作为备用连接。
 Wi-Fi 是连接现有 AP 的客户端，默认国家代码 CN；支持 WPA2-PSK 和提供 WPA2 兼容模式的
-WPA2/WPA3 混合网络，不承诺 WPA3-only AP。首次导入结果写入 FAT 的 `setup-result.txt`。
+WPA2/WPA3 混合网络，不承诺 WPA3-only AP。配置导入结果写入 FAT 的 `setup-result.txt`；
+实际连接状态、IPv4 和 SSH 监听状态写入 `network-status.txt`，启动后最多观察 120 秒。
 详细说明见[启动分区配置说明](docs/ssh-template.zh-CN.md)。
 
 GPIO 设备树参数仍在 FAT 的 `config.txt`；登录后先查看实际芯片与线路：
@@ -75,8 +88,9 @@ rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs.tar.bz2
 烧录自己构建的产物时，将 `.wic.xz` 复制或改名为 `.img.xz` 后选择即可，内容不变。
 本轮标识在 `logs/wifi-ssh-current-run.txt`，对应日志为
 `logs/wifi-ssh-build-<run>.log` 和 `logs/wifi-ssh-artifacts-<run>.log`。
-完整构建/验收入口本轮原生退出码为 0，4366 项任务全部成功；当前运行标识 `20261022T061536Z`。
-发布包保留对应日志、19 项配置导入检查和新目标 15 项 AArch64 软件检查报告。
+完整构建/验收入口本轮原生退出码为 0，4385 项任务全部成功；当前运行标识 `20261022T090523Z`。
+发布包保留对应日志、22 项配置导入检查、10 项实际 AArch64 导入/网络启动链回归，
+以及 15 项 AArch64 软件检查报告。网络启动链测试模拟无线和 DHCP 端点。
 真实 OpenSSH 使用镜像预置密码完成 SSH 鉴权，错误密码被拒绝；账号库未修改。
 实际安装 5 个无线模块，逐一验证完整 DWARF4、vermagic、依赖和原内核构建哈希。
 签名监管数据库还通过实际 cfg80211 模块内置证书的密码学验证。

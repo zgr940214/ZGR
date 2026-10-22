@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "source_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs-20261022090555.tar.bz2",
+  "source_rootfs_sha256": "59a5f93d8dc8a664ee6fbc0c2385d56912f78c5a410a69e919f82eeb09608025",
+  "image_importer_sha256": "2e9a08c265e3eae2852e6c1540ab9daf69333478672c2c579cfc2954d3b42c70",
+  "importer_sha256": "2e9a08c265e3eae2852e6c1540ab9daf69333478672c2c579cfc2954d3b42c70",
+  "importer_overridden_for_prebuild_test": false,
+  "execution": "Actual image AArch64 BusyBox and WPA executables under QEMU user mode, isolated Docker chroot, no network",
+  "hardware_boot_tested": false,
+  "wifi_radio_association_tested": false,
+  "dhcp_exchange_tested": false,
+  "network_endpoints_mocked": [
+    "ip",
+    "ifconfig",
+    "route",
+    "udhcpc",
+    "wpa_supplicant only during init-chain check"
+  ],
+  "sysctl_proc_file_is_fixture": true,
+  "checks": [
+    "actual_aarch64_importer_ascii_ssid_psk_and_permissions",
+    "actual_aarch64_importer_utf8_ssid_psk_and_permissions",
+    "actual_aarch64_importer_repeated32_ssid_psk_and_permissions",
+    "original_aarch64_importer_reproduces_empty_ssid_despite_success",
+    "actual_aarch64_migration_repairs_unchanged_input_once",
+    "actual_aarch64_wpa_parser_reads_fixed_ssid",
+    "actual_aarch64_failed_encoding_preserves_previous_settings",
+    "actual_aarch64_truncated_encoding_preserves_previous_settings",
+    "actual_aarch64_invalidhex_encoding_preserves_previous_settings",
+    "actual_aarch64_networking_init_ifup_runparts_wpa_hook_and_dhcp_dispatch"
+  ],
+  "expected_checks": [
+    "actual_aarch64_importer_ascii_ssid_psk_and_permissions",
+    "actual_aarch64_importer_utf8_ssid_psk_and_permissions",
+    "actual_aarch64_importer_repeated32_ssid_psk_and_permissions",
+    "original_aarch64_importer_reproduces_empty_ssid_despite_success",
+    "actual_aarch64_migration_repairs_unchanged_input_once",
+    "actual_aarch64_wpa_parser_reads_fixed_ssid",
+    "actual_aarch64_failed_encoding_preserves_previous_settings",
+    "actual_aarch64_truncated_encoding_preserves_previous_settings",
+    "actual_aarch64_invalidhex_encoding_preserves_previous_settings",
+    "actual_aarch64_networking_init_ifup_runparts_wpa_hook_and_dhcp_dispatch"
+  ],
+  "production_archive_unchanged": true,
+  "fixture": "/tmp/rpi4-arm-importer-regression-scy5br7e",
+  "log": "/workspace/rpi4-yocto/verification/wifi-aarch64-importer-regression.log"
+}

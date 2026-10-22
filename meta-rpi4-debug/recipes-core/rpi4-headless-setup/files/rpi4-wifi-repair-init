@@ -1,0 +1,137 @@
+#!/bin/sh
+# SPDX-License-Identifier: MIT
+# One-purpose initramfs: repair the known v1 importer, then boot the same rootfs.
+set -u
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+export PATH
+umask 077
+old_hash='@OLD_HASH@'
+new_hash='@NEW_HASH@'
+repair_root=/newroot
+repair_boot=/boot
+payload=/repair
+test_mode=0
+if [ "${1-}" = --test ]; then
+    [ "$#" = 4 ] || exit 2
+    repair_root=$2; repair_boot=$3; payload=$4; test_mode=1
+    for path in "$repair_root" "$repair_boot" "$payload"; do
+        case "$path" in /*) ;; *) exit 2 ;; esac
+        [ "$path" != / ] && [ -d "$path" ] && [ ! -L "$path" ] || exit 2
+    done
+    [ -f "$repair_root/.rpi4-repair-test-root" ] || exit 2
+elif [ "$#" != 0 ]; then
+    exit 2
+fi
+log=$payload/repair.log
+printf '%s\n' 'RPi4 Wi-Fi repair v2' > "$log"
+note() { printf '%s\n' "$1" >> "$log"; printf '%s\n' "rpi4-wifi-repair: $1" >&2; }
+hash_file() { sha256sum "$1" | awk '{print $1}'; }
+report() {
+    if [ -d "$repair_boot" ]; then
+        cp "$log" "$repair_boot/repair-result.txt.new" &&
+            mv -f "$repair_boot/repair-result.txt.new" "$repair_boot/repair-result.txt" || :
+    fi
+}
+repair() {
+    [ -f "$repair_root/etc/hostname" ] &&
+        [ "$(cat "$repair_root/etc/hostname")" = rpi4-debug ] &&
+        [ -d "$repair_root/lib/modules/6.12.93-v8" ] || {
+        note 'SKIPPED: this root filesystem does not match the supplied RPi4 image'; return 1;
+    }
+    target=$repair_root/usr/sbin/rpi4-headless-setup
+    [ -f "$target" ] && [ ! -L "$target" ] || {
+        note 'SKIPPED: the expected importer is missing or is a symlink'; return 1;
+    }
+    current=$(hash_file "$target")
+    case "$current" in "$old_hash"|"$new_hash") ;; *)
+        note 'SKIPPED: importer differs from the known original and repaired versions'; return 1;;
+    esac
+    # Validate every payload and existing destination before changing anything.
+    while read -r digest mode name; do
+        case "$name" in usr/sbin/rpi4-headless-setup|usr/sbin/rpi4-network-status|etc/init.d/rpi4-network-status) ;; *)
+            note 'SKIPPED: unexpected payload path'; return 1;;
+        esac
+        [ "$mode" = 0755 ] && [ -f "$payload/$name" ] &&
+            [ "$(hash_file "$payload/$name")" = "$digest" ] || {
+            note 'SKIPPED: repair payload integrity check failed'; return 1;
+        }
+        if [ "$name" != usr/sbin/rpi4-headless-setup ] && [ -e "$repair_root/$name" ]; then
+            [ -f "$repair_root/$name" ] && [ ! -L "$repair_root/$name" ] &&
+                [ "$(hash_file "$repair_root/$name")" = "$digest" ] || {
+                note 'SKIPPED: an existing status service differs from this repair'; return 1;
+            }
+        fi
+    done < "$payload/manifest"
+    for level in 2 3 4 5; do
+        link=$repair_root/etc/rc$level.d/S22rpi4-network-status
+        if [ -e "$link" ] || [ -L "$link" ]; then
+            [ -L "$link" ] && [ "$(readlink "$link")" = ../init.d/rpi4-network-status ] || {
+                note 'SKIPPED: an existing startup entry differs from this repair'; return 1;
+            }
+        fi
+    done
+    state=$repair_root/var/lib/rpi4-setup
+    mkdir -p "$state" || return 1
+    if [ "$current" = "$old_hash" ] && [ ! -e "$state/rpi4-headless-setup.before-wifi-v2" ]; then
+        cp "$target" "$state/rpi4-headless-setup.before-wifi-v2" || return 1
+    fi
+    while read -r digest mode name; do
+        if [ -f "$repair_root/$name" ] && [ "$(hash_file "$repair_root/$name")" = "$digest" ]; then continue; fi
+        parent=${name%/*}
+        mkdir -p "$repair_root/$parent" || return 1
+        cp "$payload/$name" "$repair_root/$name.wifi-repair-new" &&
+            chmod "$mode" "$repair_root/$name.wifi-repair-new" || return 1
+        if [ "$test_mode" = 0 ]; then chown 0:0 "$repair_root/$name.wifi-repair-new" || return 1; fi
+        mv -f "$repair_root/$name.wifi-repair-new" "$repair_root/$name" || return 1
+    done < "$payload/manifest"
+    for level in 2 3 4 5; do
+        mkdir -p "$repair_root/etc/rc$level.d" || return 1
+        ln -snf ../init.d/rpi4-network-status "$repair_root/etc/rc$level.d/S22rpi4-network-status" || return 1
+    done
+    printf '%s\n' "$new_hash" > "$state/wifi-repair-v2"
+    note 'OK: importer repaired; unchanged SSID/PASSWORD will be imported during normal startup'
+    note 'Read network-status.txt after startup for Wi-Fi, IP address, and SSH status'
+}
+if [ "$test_mode" = 1 ]; then
+    repair || note 'No further repair actions; existing system retained'
+    report
+    exit 0
+fi
+
+mkdir -p /proc /sys /dev /newroot /boot
+mount -t proc proc /proc || :
+mount -t sysfs sysfs /sys || :
+mount -t devtmpfs devtmpfs /dev || :
+exec </dev/console >/dev/console 2>&1
+root_device=
+for argument in $(cat /proc/cmdline); do
+    case "$argument" in root=*) root_device=${argument#root=};; esac
+done
+# Follow the existing root= for booting, but repair only the original layout.
+# Waiting for a named block device preserves the kernel's rootwait behavior.
+if [ -z "$root_device" ]; then
+    note 'No root= device was specified; repair was not applied'
+    exec /bin/sh
+fi
+case "$root_device" in
+    /dev/*) while [ ! -b "$root_device" ]; do sleep 1; done;;
+esac
+if ! mount -t ext4 -o rw "$root_device" /newroot; then
+    note 'Root filesystem could not be mounted; repair was not applied'
+    exec /bin/sh
+fi
+if [ ! -e /dev/root ]; then ln -s "$root_device" /dev/root || :; fi
+boot_mounted=0
+if mount -t vfat -o rw /dev/mmcblk0p1 /boot; then boot_mounted=1; fi
+if [ "$root_device" = /dev/mmcblk0p2 ]; then
+    repair || note 'No further repair actions; existing system retained'
+else
+    note 'SKIPPED: root= differs from the original SD-card image'
+fi
+if [ "$boot_mounted" = 1 ]; then report; sync; umount /boot || :; fi
+sync
+mkdir -p /newroot/dev /newroot/proc /newroot/sys
+mount --move /dev /newroot/dev || :
+mount --move /proc /newroot/proc || :
+mount --move /sys /newroot/sys || :
+exec switch_root /newroot /sbin/init

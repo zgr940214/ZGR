@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Exercise the FAT setup importer using isolated fixture files and a PBKDF2 helper mock."""
 from pathlib import Path
-import base64, hashlib, json, os, stat, struct, subprocess, tempfile
+import base64, hashlib, json, os, shutil, stat, struct, subprocess, tempfile
 PROJECT=Path(__file__).resolve().parent.parent
 SCRIPT=PROJECT/'meta-rpi4-debug/recipes-core/rpi4-headless-setup/files/rpi4-headless-setup'
 environment=os.environ.copy()
@@ -89,6 +89,18 @@ result('Fixture absolute symlink refused before any writes')
 # The build host need not install WPA tools. This helper implements the exact
 # WPA2 PBKDF2 primitive; the real target wpa_passphrase is tested separately.
 bin_dir=root/'helper-bin'; bin_dir.mkdir()
+# Some build hosts lack hexdump. The actual shipped BusyBox applet is exercised
+# separately under AArch64 QEMU; this helper only keeps these host fixtures portable.
+hexdump_mock=shutil.which('hexdump') is None
+if hexdump_mock:
+ hex_helper=bin_dir/'hexdump'
+ hex_helper.write_text('''#!/usr/bin/env python3
+from pathlib import Path
+import sys
+assert sys.argv[1:4]==['-v','-e','1/1 "%02x"']
+print(Path(sys.argv[4]).read_bytes().hex(),end='')
+''')
+ hex_helper.chmod(0o755)
 helper=bin_dir/'wpa_passphrase'
 helper.write_text("""#!/usr/bin/env python3
 from pathlib import Path
@@ -146,6 +158,41 @@ assert (fixture/'etc/wpa_supplicant.conf').read_text()=='on-board WPA edit\n'
 assert json.loads((bin_dir/'helper-calls.json').read_text())['calls']==calls['calls']
 result('Unchanged WiFi FAT configuration preserves on-board networking and WPA edits')
 
+# Cards using the previous importer can have a remembered input hash but an
+# invalid empty SSID. Updating the script must fix those without editing FAT.
+(fixture/'var/lib/rpi4-setup/network-format').unlink()
+(fixture/'etc/wpa_supplicant.conf').write_text('network={\n    ssid=\n}\n')
+status=run()
+assert 'Network: applied (dhcp)' in status
+assert 'ssid='+ssid.encode().hex() in (fixture/'etc/wpa_supplicant.conf').read_text()
+assert (fixture/'var/lib/rpi4-setup/network-format').read_text()=='2\n'
+assert 'Result: configuration applied; see network-status.txt for connection status' in status
+after_migration=json.loads((bin_dir/'helper-calls.json').read_text())['calls']
+run()
+assert json.loads((bin_dir/'helper-calls.json').read_text())['calls']==after_migration
+result('Old cached empty-SSID configuration migrates once without changing FAT; status distinguishes import from association')
+
+(boot/'network-config').write_text('SSID='+('a'*32)+'\nPASSWORD=fixture-password\n')
+run()
+assert 'ssid='+('61'*32) in (fixture/'etc/wpa_supplicant.conf').read_text()
+result('32-byte repeated SSID encodes every byte without hexdump duplicate suppression')
+
+saved_hex=(bin_dir/'hexdump').read_bytes() if (bin_dir/'hexdump').exists() else None
+previous_network=(fixture/'etc/network/interfaces').read_bytes()
+previous_wpa=(fixture/'etc/wpa_supplicant.conf').read_bytes()
+previous_hash=(fixture/'var/lib/rpi4-setup/network.sha256').read_bytes()
+(boot/'network-config').write_text('SSID=encoding-failure\nPASSWORD=fixture-password\n')
+for body in ['exit 1',"printf '00'", "printf 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'"]:
+ (bin_dir/'hexdump').write_text('#!/bin/sh\n'+body+'\n');(bin_dir/'hexdump').chmod(0o755)
+ status=run(1)
+ assert 'SSID encoding' in status
+ assert (fixture/'etc/network/interfaces').read_bytes()==previous_network
+ assert (fixture/'etc/wpa_supplicant.conf').read_bytes()==previous_wpa
+ assert (fixture/'var/lib/rpi4-setup/network.sha256').read_bytes()==previous_hash
+if saved_hex is None:(bin_dir/'hexdump').unlink()
+else:(bin_dir/'hexdump').write_bytes(saved_hex)
+result('Failed, truncated and non-hex encoding rejected without replacing config or remembering input')
+
 marker=Path('/tmp')/('wifi-injection-'+str(os.getpid()))
 assert not marker.exists()
 ssid='$(x);"\\ #'
@@ -198,6 +245,7 @@ result('Production module load/rfkill/10-second wait and explicit WPA package de
 report={'fixture':str(root),'script_sha256':hashlib.sha256(SCRIPT.read_bytes()).hexdigest(),
  'tests':results,'passed':True,'hardware_boot_tested':False,
  'wpa_passphrase_host_test':'PBKDF2 mock; real target helper tested separately',
+ 'hexdump_host_mock':hexdump_mock,
  'no_host_passwords_or_private_keys_used':True}
 report_path=Path('/tmp/rpi4-headless-setup-tests-v2.json')
 report_path.write_text(json.dumps(report,indent=2)+'\n')

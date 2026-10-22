@@ -75,7 +75,12 @@ apply_network() {
     [ -e "$boot/network-config" ] || { echo 'Network: existing configuration' >> "$status"; return; }
     if ! normalise "$boot/network-config" "$work/network" 8192; then error 'invalid network-config file'; return; fi
     checksum=$(hash_file "$work/network")
-    if already_applied network "$checksum"; then echo 'Network: unchanged; local edits preserved' >> "$status"; return; fi
+    # Version 1 used GNU-only od options and could persist an empty SSID while
+    # remembering a successful import. Re-import those cards once even when
+    # the FAT file has not changed; later runs still preserve local edits.
+    if already_applied network "$checksum" && [ "$(cat "$state/network-format" 2>/dev/null)" = 2 ]; then
+        echo 'Network: unchanged; local edits preserved' >> "$status"; return
+    fi
     # The values of SSID/PASSWORD are literal, including spaces and punctuation.
     # Never source/eval this file; reject control characters and malformed keys.
     if ! LC_ALL=C awk '
@@ -152,7 +157,15 @@ apply_network() {
         fi
         # A hex SSID handles UTF-8, quotes and backslashes without config escape
         # ambiguities; only the derived 256-bit PSK is persisted in rootfs.
-        ssid_hex=$(printf '%s' "$ssid" | od -An -tx1 | tr -d ' \n')
+        # The target BusyBox od has no -A/-t support. Use its hexdump applet,
+        # keep repeated bytes (-v), and reject failures before replacing files.
+        if ! printf '%s' "$ssid" > "$work/ssid" || ! ssid_hex=$(hexdump -v -e '1/1 "%02x"' "$work/ssid"); then
+            error 'Wi-Fi SSID encoding failed'; return
+        fi
+        ssid_bytes=$(wc -c < "$work/ssid")
+        if ! printf '%s\n' "$ssid_hex" | LC_ALL=C awk -v bytes="$ssid_bytes" 'length($0)==2*bytes && /^[0-9a-f]+$/ {ok=1} END {exit !ok}'; then
+            error 'Wi-Fi SSID encoding returned invalid data'; return
+        fi
         {
             printf '%s\n' 'ctrl_interface=/var/run/wpa_supplicant' 'update_config=0' "country=$regdom" 'network={'
             printf '    ssid=%s\n' "$ssid_hex"
@@ -174,6 +187,7 @@ apply_network() {
         fi
     fi
     remember network "$checksum"
+    printf '%s\n' 2 > "$state/network-format"
     echo "Network: applied ($mode)" >> "$status"
     [ "$interface" != wlan0 ] || echo 'Wi-Fi: WPA2-PSK configured; Ethernet DHCP retained' >> "$status"
 }
@@ -254,7 +268,7 @@ prepare_wifi_hardware
 apply_keys
 apply_password
 if [ "$failed" = 0 ]; then
-    echo 'Result: success' >> "$status"
+    echo 'Result: configuration applied; see network-status.txt for connection status' >> "$status"
     cp "$status" "$state/headless-setup.done"
 else
     echo 'Result: one or more imports rejected; inspect messages above' >> "$status"

@@ -26,7 +26,9 @@ RPi4 Yocto：只填写 WiFi 名称和 WiFi 密码
 当前 WiFi 是客户端连接现有 AP；默认 country=CN，WPA2-PSK/PMF optional，
 可以连接提供 WPA2 兼容模式的 WPA2/WPA3 混合网络，不承诺 WPA3-only AP。
 
-启动后的 setup-result.txt 会报告配置成功/错误，不包含 WiFi 密码、PSK 或口令哈希。
+启动后的 setup-result.txt 只报告配置导入结果，不代表已经联网。
+network-status.txt 会报告实际 WiFi 连接状态、DHCP 地址和 SSH 端口，
+启动后最多检查 120 秒。这两个结果文件不包含 WiFi 密码、PSK 或口令哈希。
 network-config 保留原始 WiFi 配置以便以后在 Windows 修改；请妥善保管 SD 卡。
 根文件系统只保存推导后的 WPA PSK，/etc/wpa_supplicant.conf 权限为 0600。
 
