@@ -11,6 +11,8 @@ Git SHA，见 [sources.lock.json](sources.lock.json)，不使用 AUTOREV。
 只安装 Wi-Fi 所需的少量完整 DWARF 模块、RPi4 固件和签名监管数据库；
 同一完整符号内核保持不变，已有 vmlinux 和启动 / RCU 源码可以继续使用。
 
+[镜像 + 完整内核符号 + 启动/RCU 源码 ZIP（127.3 MiB）](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-wifi-ready-6.12.93-v8-full-v1.zip)
+
 [Wi-Fi 镜像升级 ZIP](https://github.com/zgr940214/ZGR/archive/refs/tags/rpi4-wifi-ready-6.12.93-v8-image-v1.zip)
 **已在本执行环境实际构建，产物验收、19 项配置导入和 15 项 AArch64 软件检查均通过。**
 升级包只下载新镜像与使用说明，不重复携带完整符号。
