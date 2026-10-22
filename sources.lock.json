@@ -1,0 +1,24 @@
+{
+  "yocto": {
+    "release": "5.0.21",
+    "series": "scarthgap",
+    "url": "https://github.com/yoctoproject/poky.git",
+    "commit": "104772c5fd0653290cbb5e4b77813343957939cc"
+  },
+  "bsp": {
+    "url": "https://github.com/agherzan/meta-raspberrypi.git",
+    "commit": "018d44467c4f09eb63f8ea5e86e85d755250cf89"
+  },
+  "kernel": {
+    "version": "6.12.93",
+    "url": "https://github.com/raspberrypi/linux.git",
+    "branch": "rpi-6.12.y",
+    "commit": "d8ab4e908235da7727f22dd36ad5af224671677d",
+    "metadata_url": "https://git.yoctoproject.org/yocto-kernel-cache",
+    "metadata_branch": "yocto-6.12",
+    "metadata_commit": "e66f40994fc740818776a0f3af55e8b6d74bfbef"
+  },
+  "machine": "raspberrypi4-64",
+  "image": "rpi4-boot-rcu-image",
+  "full_image": "rpi4-debug-image"
+}

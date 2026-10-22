@@ -1,0 +1,3 @@
+Focused image verified: rpi4-boot-rcu-image-raspberrypi4-64.rootfs.wic.xz; FAT firmware/kernel/DTB, ext4 bounds, AArch64 init/shell, serial root login, 685 rootfs entries and zero .ko files
+Kernel verified: Linux 6.12.93-v8, exact pins, complete DWARF4 and 17 real boot/RCU symbols; SD/ext4/serial/Ethernet built in
+Artifact checks only; physical Raspberry Pi boot and KGDB/JTAG connectivity were not tested
