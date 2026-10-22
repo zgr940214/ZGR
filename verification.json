@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "zip_sha256": "b2e9bc1cc5f8f477b782b0adb7f160c04346748d7cf650aa3d8adf83230bf6f1",
+  "zip_bytes": 1538989,
+  "zip_path": "/workspace/rpi4-release/rpi4-wifi-repair-v2.zip",
+  "verified_utc": "2026-10-22T09:12:08.187907+00:00",
+  "tests": [
+    "ZIP member CRC and SHA256SUMS",
+    "newc bounds, paths, zero ownership, payload hashes, gzip CRC",
+    "AArch64 ELF64 machine183 runtime closure",
+    "dev/console character device major5 minor1",
+    "archive init and all payload bytes match final source",
+    "user supplied config preserved as exact prefix; one initramfs directive added",
+    "marked fixture original importer replacement and backup",
+    "target BusyBox chmod0755 on all installed scripts",
+    "target BusyBox ln -snf and readlink for rc2-5 service symlinks",
+    "repeated repair preserves importer modification time",
+    "unknown importer refuses mutation",
+    "wrong rootfs hostname refuses mutation",
+    "corrupted payload refuses mutation",
+    "network-config credentials retained and omitted from repair-result",
+    "actual AArch64 BusyBox sh -n"
+  ],
+  "target_runtime": "Actual image AArch64 BusyBox and libc through qemu-aarch64 in disposable Docker chroot; no host mounts used by --test fixtures",
+  "target_runtime_sha256": {
+    "bin/busybox.nosuid": "1538de9b30a13b2bcd47d3f6ca27a9fe56db13ddee0879c4f6b9d2bf116ca49e",
+    "lib/ld-linux-aarch64.so.1": "707dcfc0f8166dd8841b3760f605db449c101aa9e23f715ae19c5f863f096329",
+    "lib/libc.so.6": "7c70acbbb32fe3c488d82b5b5a79ffa995a6afb46761060f823ff6159a2084d9",
+    "lib/libm.so.6": "ee1bfd6341bc73c04ad6f39efa5030d81a73670ddebe2b678ceffdf1ed920c24"
+  },
+  "payload_sha256": {
+    "usr/sbin/rpi4-network-status": "ee6cdf218d8854c9b7ead2c7db944f80ae3933ea4194aa8dd23ce52d92adb18d",
+    "etc/init.d/rpi4-network-status": "a67578c211e9f6fd092067d0fca3bab1d4fc4e1608dce2b8376690bcdd5ef459",
+    "usr/sbin/rpi4-headless-setup": "2e9a08c265e3eae2852e6c1540ab9daf69333478672c2c579cfc2954d3b42c70"
+  },
+  "init_sha256": "71760e6464cf2c47d0ee04a98f789915eff67b4ba1a86d07b9e895c77947537e",
+  "kernel_release": "6.12.93-v8",
+  "kernel_initramfs_features_verified": [
+    "BLK_DEV_INITRD=y",
+    "RD_GZIP=y",
+    "BINFMT_SCRIPT=y",
+    "BINFMT_ELF=y",
+    "DEVTMPFS=y",
+    "EXT4_FS=y",
+    "VFAT_FS=y",
+    "MMC_BLOCK=y"
+  ],
+  "hardware_boot_verified": false,
+  "wireless_association_verified": false,
+  "limits": [
+    "Actual firmware initramfs handoff, hardware MMC mount and PID1 switch_root were reviewed, not hardware-boot tested.",
+    "QEMU user-mode verifies the target userspace patch; it does not emulate Raspberry Pi Wi-Fi radio."
+  ]
+}
