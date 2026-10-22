@@ -1,4 +1,0 @@
-# Optional alternative to SSH public keys: a single line root:SHA512_CRYPT_HASH
-# Generate the hash with openssl passwd -6 on a trusted computer.
-# Rename the completed file to userconf.txt. Plaintext passwords are rejected.
-# The valid userconf.txt is deleted after successful password import.

@@ -1,0 +1,438 @@
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> busybox --list
+[
+[[
+addgroup
+adduser
+ascii
+ash
+awk
+base32
+basename
+blkid
+bunzip2
+bzcat
+bzip2
+cat
+chattr
+chgrp
+chmod
+chown
+chroot
+chvt
+clear
+cmp
+cp
+cpio
+crc32
+cut
+date
+dc
+dd
+deallocvt
+delgroup
+deluser
+depmod
+df
+diff
+dirname
+dmesg
+dnsdomainname
+du
+dumpkmap
+dumpleases
+echo
+egrep
+env
+expr
+false
+fbset
+fdisk
+fgrep
+find
+flock
+free
+fsck
+fstrim
+fuser
+getopt
+getty
+grep
+groups
+gunzip
+gzip
+head
+hexdump
+hostname
+hwclock
+id
+ifconfig
+ifdown
+ifup
+insmod
+ip
+kill
+killall
+klogd
+less
+ln
+loadfont
+loadkmap
+logger
+logname
+logread
+losetup
+ls
+lsmod
+lzcat
+md5sum
+mesg
+microcom
+mkdir
+mkfifo
+mknod
+mkswap
+mktemp
+modprobe
+more
+mount
+mountpoint
+mv
+nc
+netstat
+nohup
+nproc
+nslookup
+od
+openvt
+patch
+pgrep
+pidof
+pivot_root
+printf
+ps
+pwd
+rdate
+readlink
+realpath
+reboot
+renice
+reset
+resize
+rev
+rfkill
+rm
+rmdir
+rmmod
+route
+run-parts
+sed
+seq
+setconsole
+setsid
+sh
+sha1sum
+sha256sum
+shuf
+sleep
+sort
+start-stop-daemon
+stat
+strings
+stty
+sulogin
+swapoff
+swapon
+switch_root
+sync
+sysctl
+syslogd
+tail
+tar
+tee
+telnet
+test
+tftp
+time
+top
+touch
+tr
+true
+ts
+tty
+udhcpc
+udhcpd
+umount
+uname
+uniq
+unlink
+unzip
+uptime
+users
+usleep
+vi
+watch
+wc
+wget
+which
+who
+whoami
+xargs
+xzcat
+yes
+zcat
+exit=0
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> passwd --help
+Usage: passwd [options] [LOGIN]
+
+Options:
+  -a, --all                     report password status on all accounts
+  -d, --delete                  delete the password for the named account
+  -e, --expire                  force expire the password for the named account
+  -h, --help                    display this help message and exit
+  -k, --keep-tokens             change password only if expired
+  -i, --inactive INACTIVE       set password inactive after expiration
+                                to INACTIVE
+  -l, --lock                    lock the password of the named account
+  -n, --mindays MIN_DAYS        set minimum number of days before password
+                                change to MIN_DAYS
+  -q, --quiet                   quiet mode
+  -r, --repository REPOSITORY   change password in REPOSITORY repository
+  -R, --root CHROOT_DIR         directory to chroot into
+  -P, --prefix PREFIX_DIR       directory prefix
+  -S, --status                  report password status on the named account
+  -u, --unlock                  unlock the password of the named account
+  -w, --warndays WARN_DAYS      set expiration warning days to WARN_DAYS
+  -x, --maxdays MAX_DAYS        set maximum number of days before password
+                                change to MAX_DAYS
+
+exit=0
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> busybox sh -n /tmp/rpi4-aarch64-smoke-lheeftmu/final-wifi-rootfs-20261022T061415Z/usr/sbin/rpi4-headless-setup
+exit=0
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> gpiodetect --version
+gpiodetect (libgpiod) v2.1.3
+Copyright (C) 2017-2023 Bartosz Golaszewski
+License: GPL-2.0-or-later
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+exit=0
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> gpioinfo --version
+gpioinfo (libgpiod) v2.1.3
+Copyright (C) 2017-2023 Bartosz Golaszewski
+License: GPL-2.0-or-later
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+exit=0
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> gpioset --version
+gpioset (libgpiod) v2.1.3
+Copyright (C) 2017-2023 Bartosz Golaszewski
+License: GPL-2.0-or-later
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+exit=0
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> wpa_passphrase <stdin supplied; values redacted>
+exit=0
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> wpa_supplicant -v
+wpa_supplicant v2.10
+Copyright (c) 2003-2022, Jouni Malinen <j@w1.fi> and contributors
+exit=0
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> wpa_supplicant -h
+wpa_supplicant v2.10
+Copyright (c) 2003-2022, Jouni Malinen <j@w1.fi> and contributors
+
+This software may be distributed under the terms of the BSD license.
+See README for more details.
+
+This product includes software developed by the OpenSSL Project
+for use in the OpenSSL Toolkit (http://www.openssl.org/)
+
+usage:
+  wpa_supplicant [-BddhKLqqstuvW] [-P<pid file>] [-g<global ctrl>] \
+        [-G<group>] \
+        -i<ifname> -c<config file> [-C<ctrl>] [-D<driver>] [-p<driver_param>] \
+        [-b<br_ifname>] [-e<entropy file>] [-f<debug file>] \
+        [-o<override driver>] [-O<override ctrl>] \
+        [-N -i<ifname> -c<conf> [-C<ctrl>] [-D<driver>] \
+        [-m<P2P Device config file>] \
+        [-p<driver_param>] [-b<br_ifname>] [-I<config file>] ...]
+
+drivers:
+  nl80211 = Linux nl80211/cfg80211
+  wext = Linux wireless extensions (generic)
+  wired = Wired Ethernet driver
+  macsec_linux = MACsec Ethernet driver for Linux
+options:
+  -b = optional bridge interface name
+  -B = run daemon in the background
+  -c = Configuration file
+  -C = ctrl_interface parameter (only used if -c is not)
+  -d = increase debugging verbosity (-dd even more)
+  -D = driver name (can be multiple drivers: nl80211,wext)
+  -e = entropy file
+  -f = log output to debug file instead of stdout
+  -g = global ctrl_interface
+  -G = global ctrl_interface group
+  -h = show this help text
+  -i = interface name
+  -I = additional configuration file
+  -K = include keys (passwords, etc.) in debug output
+  -L = show license (BSD)
+  -m = Configuration file for the P2P Device interface
+  -N = start describing new interface
+  -o = override driver parameter for new interfaces
+  -O = override ctrl_interface parameter for new interfaces
+  -p = driver parameters
+  -P = PID file
+  -q = decrease debugging verbosity (-qq even less)
+  -s = log output to syslog instead of stdout
+  -t = include timestamp in debug messages
+  -u = enable DBus control interface
+  -v = show version
+  -W = wait for a control interface monitor before starting
+example:
+  wpa_supplicant -Dnl80211 -iwlan0 -c/etc/wpa_supplicant.conf
+exit=0
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> ssh-keygen -q -t ed25519 -N  -f /tmp/rpi4-aarch64-smoke-lheeftmu/final-wifi-rootfs-20261022T061415Z/tmp/fixture_host_ed25519
+exit=0
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> sshd -f /tmp/rpi4-aarch64-smoke-lheeftmu/final-wifi-rootfs-20261022T061415Z/etc/ssh/sshd_config -h /tmp/rpi4-aarch64-smoke-lheeftmu/final-wifi-rootfs-20261022T061415Z/tmp/fixture_host_ed25519 -t
+exit=0
+$ qemu-aarch64 <actual final Wi-Fi rootfs binary> sshd -f /tmp/rpi4-aarch64-smoke-lheeftmu/final-wifi-rootfs-20261022T061415Z/etc/ssh/sshd_config -h /tmp/rpi4-aarch64-smoke-lheeftmu/final-wifi-rootfs-20261022T061415Z/tmp/fixture_host_ed25519 -T
+port 22
+addressfamily inet
+listenaddress 0.0.0.0:22
+logingracetime 120
+x11displayoffset 10
+maxauthtries 6
+maxsessions 10
+clientaliveinterval 15
+clientalivecountmax 4
+requiredrsasize 1024
+streamlocalbindmask 0177
+unusedconnectiontimeout none
+permitrootlogin yes
+ignorerhosts yes
+ignoreuserknownhosts no
+hostbasedauthentication no
+hostbasedusesnamefrompacketonly no
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+printmotd yes
+printlastlog yes
+x11forwarding yes
+x11uselocalhost yes
+permittty yes
+permituserrc yes
+strictmodes yes
+tcpkeepalive yes
+permitemptypasswords no
+compression no
+gatewayports no
+usedns no
+allowtcpforwarding yes
+allowagentforwarding yes
+disableforwarding no
+allowstreamlocalforwarding yes
+streamlocalbindunlink no
+fingerprinthash SHA256
+exposeauthinfo no
+pidfile /var/run/sshd.pid
+modulifile /etc/ssh/moduli
+xauthlocation /usr/bin/xauth
+ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+macs umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1
+banner none
+forcecommand none
+chrootdirectory none
+trustedusercakeys none
+revokedkeys none
+securitykeyprovider internal
+authorizedprincipalsfile none
+versionaddendum none
+authorizedkeyscommand none
+authorizedkeyscommanduser none
+authorizedprincipalscommand none
+authorizedprincipalscommanduser none
+hostkeyagent none
+kexalgorithms sntrup761x25519-sha512@openssh.com,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256
+casignaturealgorithms ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256
+hostbasedacceptedalgorithms ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256
+hostkeyalgorithms ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256
+pubkeyacceptedalgorithms ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256
+loglevel INFO
+syslogfacility AUTH
+authorizedkeysfile .ssh/authorized_keys
+hostkey /tmp/rpi4-aarch64-smoke-lheeftmu/final-wifi-rootfs-20261022T061415Z/tmp/fixture_host_ed25519
+authenticationmethods any
+channeltimeout none
+subsystem sftp /usr/libexec/sftp-server 
+maxstartups 10:30:100
+persourcemaxstartups none
+persourcenetblocksize 32:128
+permittunnel no
+ipqos af21 cs1
+rekeylimit 0 0
+permitopen any
+permitlisten any
+permituserenvironment no
+pubkeyauthoptions none
+exit=0
+{
+  "source_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs-20261022060721.tar.bz2",
+  "source_sha256": "c631a9e0da55d2ab081e70ed0aa8e6fea18592e0d7161b7fb8fe5cba3bc0e385",
+  "qemu_version": "10.0.13",
+  "emulator_provenance": "/tmp/rpi4-aarch64-smoke-lheeftmu/package-provenance.json",
+  "fixture_rootfs": "/tmp/rpi4-aarch64-smoke-lheeftmu/final-wifi-rootfs-20261022T061415Z",
+  "execution": "QEMU AArch64 userspace in Docker UID0, --network none, project readonly",
+  "hardware_boot_tested": false,
+  "wifi_radio_association_tested": false,
+  "gpio_electrical_tested": false,
+  "host_system_credentials_modified": false,
+  "production_image_modified": false,
+  "checks": [
+    "actual_aarch64_busybox_required_applets",
+    "actual_aarch64_shadow_passwd_help",
+    "actual_aarch64_wifi_importer_shell_syntax",
+    "actual_aarch64_gpiodetect_version_2.1.3",
+    "actual_aarch64_gpioinfo_version_2.1.3",
+    "actual_aarch64_gpioset_version_2.1.3",
+    "actual_aarch64_wpa_passphrase_utf8_punctuation_psk_matches_pbkdf2",
+    "actual_aarch64_wpa_supplicant_version",
+    "actual_aarch64_wpa_supplicant_nl80211_driver_compiled",
+    "preconfigured_root_sha512_password_matches_without_modification",
+    "actual_aarch64_ssh_keygen_ephemeral_host_key",
+    "actual_aarch64_sshd_configuration_and_hostkey_validation",
+    "actual_aarch64_sshd_effective_authentication_settings",
+    "actual_aarch64_sshd_loopback_password_authentication_accepted",
+    "actual_aarch64_sshd_loopback_incorrect_password_rejected"
+  ],
+  "wpa_supplicant_version": "wpa_supplicant v2.10",
+  "nl80211_driver_compiled": true,
+  "sshd_effective_authentication": {
+    "port": "22",
+    "addressfamily": "inet",
+    "permitrootlogin": "yes",
+    "passwordauthentication": "yes",
+    "permitemptypasswords": "no",
+    "pubkeyauthentication": "yes"
+  },
+  "correct_password_ssh": {
+    "identification": "SSH-2.0-OpenSSH_9.6",
+    "returncode": 255,
+    "stderr": "Accepted password for root from 127.0.0.1 port 43450 ssh2\r\n",
+    "accepted": true,
+    "shell_or_command_executed": false
+  },
+  "actual_ssh_login_tested": true,
+  "ssh_shell_or_command_executed": false,
+  "incorrect_password_ssh": {
+    "identification": "SSH-2.0-OpenSSH_9.6",
+    "returncode": 255,
+    "stderr": "Failed password for root from 127.0.0.1 port 33006 ssh2\r\nConnection closed by authenticating user root 127.0.0.1 port 33006 [preauth]\r\n",
+    "accepted": false,
+    "shell_or_command_executed": false
+  },
+  "fixture_account_databases_unchanged": true,
+  "production_archive_and_container_base_credentials_unchanged": true,
+  "passed": true,
+  "log": "/tmp/rpi4-aarch64-smoke-lheeftmu/docker-logs/wifi-aarch64-smoke-20261022T061415Z.log"
+}

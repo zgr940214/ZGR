@@ -1,0 +1,6 @@
+Wi-Fi SSH image verified: rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs.wic.xz; 992 rootfs entries; real AArch64 SSH/WPA/GPIO/mDNS tools
+Wireless modules verified: 5 (brcmfmac, brcmfmac_wcc, brcmutil, cfg80211, rfkill); each ET_REL AArch64, complete DWARF4, correct vermagic and byte-identical to original kernel build
+Module loading verified: installed-only modules.dep closure, ELF dependency coverage, 4345/43455 SDIO aliases to brcmfmac and WCC dependency chain
+Access verified: preset root password, IPv4 SSH policy, rpi4-debug mDNS, boot SSID/PASSWORD template, rcS39 import before networking/sshd, wired DHCP fallback
+Kernel verified: Linux 6.12.93-v8, exact pins, complete DWARF4; RPi4 Wi-Fi firmware/NVRAM/regdb, FAT kernel/DTB hashes, ext4 and partition bounds
+Artifact checks only; physical Raspberry Pi boot, Wi-Fi association, SSH/mDNS reachability, GPIO electrical behavior and KGDB/JTAG were not tested

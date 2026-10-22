@@ -1,4 +1,0 @@
-# Copy the CONTENTS of your Windows .ssh/id_ed25519.pub into a file named
-# authorized_keys (no .txt extension) in this FAT boot partition.
-# It must contain a real public key, for example: ssh-ed25519 BASE64 comment
-# Do not copy your private key. This comment-only example grants no access.

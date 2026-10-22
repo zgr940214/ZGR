@@ -1,4 +1,0 @@
-Headless SSH image verified: rpi4-boot-rcu-ssh-image-raspberrypi4-64.rootfs.wic.xz; 815 rootfs entries, zero .ko files, real AArch64 SSH/GPIO tools
-Boot setup verified: FAT network-config/authorized_keys example/userconf example/instructions, rcS39 import before networking/sshd, IPv4 DHCP and no empty-password SSH
-Kernel verified: Linux 6.12.93-v8, exact pins, complete DWARF4, boot/RCU symbols, built-in SD/ext4/Ethernet/GPIO; FAT kernel/DTB hashes and ext4 bounds
-Artifact checks only; physical Raspberry Pi boot, Ethernet/SSH login, GPIO electrical behavior and KGDB/JTAG were not tested

@@ -1,42 +1,37 @@
-RPi4 Yocto: configure from Windows before first boot
-==================================================
-1. Flash this image with Raspberry Pi Imager, skip Raspberry Pi OS customization.
-2. Reinsert the SD card. Its visible FAT boot volume contains network-config,
-   this README and public-key/password examples.
-3. Connect the RPi4 Ethernet port to a router providing DHCP. network-config
-   already selects eth0 DHCP. To use static IPv4, edit MODE and the example
-   address/netmask/gateway/DNS lines. This is KEY=VALUE, NOT cloud-init YAML.
-4. In Windows PowerShell, generate an SSH key if you do not already have one:
+RPi4 Yocto：只填写 WiFi 名称和 WiFi 密码
+=====================================
+1. 使用 Raspberry Pi Imager 烧录镜像，跳过 Raspberry Pi OS 专用定制。
+2. 重新插入 SD 卡，在 Windows 可见的启动分区打开 network-config。
+3. 只改这两行，等号后直接填内容，不加额外引号：
 
-   ssh-keygen -t ed25519
+   SSID=你的WiFi名称
+   PASSWORD=你的WiFi密码
 
-   Choose a passphrase when prompted. Then replace E: below with the SD FAT
-   drive letter (never copy id_ed25519; only its public .pub file):
+   其余保持不动，保存为 UTF-8。Windows CRLF 换行和 UTF-8 BOM 都支持。
+   SSID 最多 32 个 UTF-8 字节，密码 8..63 个字节或 64 位十六进制 PSK。
+   名称和密码中的空格、中文及常见符号会按原样读取，不作为命令执行。
+4. 安全弹出 SD 卡，插入树莓派并上电。WiFi 默认 DHCP、国家代码 CN。
+   等待启动完成，在同一局域网电脑的 PowerShell 执行：
 
-   Copy-Item "$env:USERPROFILE\.ssh\id_ed25519.pub" 'E:\authorized_keys'
+   ssh root@rpi4-debug.local
 
-   Do not add a .txt extension to authorized_keys. Eject the card safely.
-5. Boot the Pi. Look up its IPv4 in your router DHCP client list, then run:
+   用户名：root
+   初始 SSH 密码：Rpi4GPIO-2026!
 
-   ssh root@THE_PI_IPV4
+   不需要生成密钥、不需要 userconf.txt、不需要串口线。
+   登录后可用 passwd 修改 SSH 密码；未改变 network-config 不会覆盖板上网络修改。
 
-   This works with your private key; no serial cable or preset password is
-   needed. Root SSH empty-password logins are disabled. No default public key
-   or shared password is installed. If you use a different key filename:
+如果电脑不支持 .local 名称解析，在路由器 DHCP 列表中找到 rpi4-debug 的 IPv4，
+再用 ssh root@该地址。以太网备用：插网线到 DHCP 路由器，同样账号密码可用。
+当前 WiFi 是客户端连接现有 AP；默认 country=CN，WPA2-PSK/PMF optional，
+可以连接提供 WPA2 兼容模式的 WPA2/WPA3 混合网络，不承诺 WPA3-only AP。
 
-   ssh -i "$env:USERPROFILE\.ssh\YOUR_KEY" root@THE_PI_IPV4
+启动后的 setup-result.txt 会报告配置成功/错误，不包含 WiFi 密码、PSK 或口令哈希。
+network-config 保留原始 WiFi 配置以便以后在 Windows 修改；请妥善保管 SD 卡。
+根文件系统只保存推导后的 WPA PSK，/etc/wpa_supplicant.conf 权限为 0600。
 
-After import, setup-result.txt on the FAT volume reports success/errors.
-It contains no private keys or password hashes. A public authorized_keys file
-may stay on FAT. Changing it triggers reimport; unchanged files do not overwrite
-subsequent on-board edits. network-config behaves the same way.
+GPIO：固件/引脚 overlay 参数仍在 config.txt。SSH 登录后可运行 gpioinfo、
+gpioget、gpioset，使用前确认实际 gpiochip/line 映射。完整内核调试符号不变。
 
-Optional password login: fill userconf.txt.example using root: followed by a
-real SHA-512 crypt hash (openssl passwd -6), remove its comments, then rename
-it userconf.txt. Plaintext and placeholder passwords are rejected. A valid
-password file is removed after import. SSH public keys are simpler on Windows.
-
-GPIO firmware/pin overlays still belong in config.txt. After SSH login, use
-gpioinfo/gpioget/gpioset from libgpiod-tools to inspect/request GPIO lines; check
-actual gpiochip/line mapping first. No AP/Wi-Fi stack is included in this image.
-Kernel, full DWARF symbols and startup/RCU debugging configuration are unchanged.
+可选高级入口：authorized_keys 可导入 root SSH 公钥；userconf.txt 可导入
+root:$6$... 格式的 SHA-512 crypt 密码哈希。这些都不是普通连接所必需的步骤。

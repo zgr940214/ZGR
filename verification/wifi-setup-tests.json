@@ -1,6 +1,6 @@
 {
-  "fixture": "/tmp/headless-setup-fixture-kn76zepc",
-  "script_sha256": "3a346e977d82f2e8943941565d26df997c83b550fd8cce54a658bc527c434bf9",
+  "fixture": "/tmp/headless-setup-fixture-kurxq3t6",
+  "script_sha256": "e21711d54fb66ce264fb38e3e6ae12d00b95a80a1558eed6af6d07a820261956",
   "tests": [
     {
       "name": "Windows UTF8 BOM + CRLF, DHCP, valid OpenSSH public key and permissions",
@@ -49,9 +49,38 @@
     {
       "name": "Fixture absolute symlink refused before any writes",
       "passed": true
+    },
+    {
+      "name": "Only-two-field shipped placeholders are rejected while Ethernet remains usable",
+      "passed": true
+    },
+    {
+      "name": "Two fields default wlan0 DHCP/CN; UTF8/quotes/slashes/spaces retained; PSK stdin+hex SSID+hashed config only",
+      "passed": true
+    },
+    {
+      "name": "Unchanged WiFi FAT configuration preserves on-board networking and WPA edits",
+      "passed": true
+    },
+    {
+      "name": "Shell syntax in WiFi values is literal data and never executed",
+      "passed": true
+    },
+    {
+      "name": "Invalid WiFi lengths, placeholders, duplicate/unknown fields, country rejected without replacing settings",
+      "passed": true
+    },
+    {
+      "name": "64-hex raw PSK and optional country supported without passphrase helper invocation",
+      "passed": true
+    },
+    {
+      "name": "Production module load/rfkill/10-second wait and explicit WPA package dependencies present",
+      "passed": true
     }
   ],
   "passed": true,
   "hardware_boot_tested": false,
+  "wpa_passphrase_host_test": "PBKDF2 mock; real target helper tested separately",
   "no_host_passwords_or_private_keys_used": true
 }

@@ -1,11 +1,2 @@
-# RPi4 Yocto headless setup (KEY=VALUE; not cloud-init YAML).
-# Edit this FAT partition file in Windows; CRLF and UTF-8 BOM are accepted.
-# Values must be unquoted. Only changed content is reapplied on a later boot.
-INTERFACE=eth0
-MODE=dhcp
-
-# For a fixed IPv4 address, change MODE to static and fill these values:
-# ADDRESS=192.168.1.50
-# NETMASK=255.255.255.0
-# GATEWAY=192.168.1.1
-# DNS=192.168.1.1 1.1.1.1
+SSID=YOUR_WIFI_SSID
+PASSWORD=YOUR_WIFI_PASSWORD

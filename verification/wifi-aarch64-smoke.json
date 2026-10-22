@@ -1,0 +1,60 @@
+{
+  "source_rootfs": "/workspace/rpi4-yocto/build/tmp/deploy/images/raspberrypi4-64/rpi4-boot-rcu-wifi-image-raspberrypi4-64.rootfs-20261022060721.tar.bz2",
+  "source_sha256": "c631a9e0da55d2ab081e70ed0aa8e6fea18592e0d7161b7fb8fe5cba3bc0e385",
+  "qemu_version": "10.0.13",
+  "emulator_provenance": "/tmp/rpi4-aarch64-smoke-lheeftmu/package-provenance.json",
+  "fixture_rootfs": "/tmp/rpi4-aarch64-smoke-lheeftmu/final-wifi-rootfs-20261022T061415Z",
+  "execution": "QEMU AArch64 userspace in Docker UID0, --network none, project readonly",
+  "hardware_boot_tested": false,
+  "wifi_radio_association_tested": false,
+  "gpio_electrical_tested": false,
+  "host_system_credentials_modified": false,
+  "production_image_modified": false,
+  "checks": [
+    "actual_aarch64_busybox_required_applets",
+    "actual_aarch64_shadow_passwd_help",
+    "actual_aarch64_wifi_importer_shell_syntax",
+    "actual_aarch64_gpiodetect_version_2.1.3",
+    "actual_aarch64_gpioinfo_version_2.1.3",
+    "actual_aarch64_gpioset_version_2.1.3",
+    "actual_aarch64_wpa_passphrase_utf8_punctuation_psk_matches_pbkdf2",
+    "actual_aarch64_wpa_supplicant_version",
+    "actual_aarch64_wpa_supplicant_nl80211_driver_compiled",
+    "preconfigured_root_sha512_password_matches_without_modification",
+    "actual_aarch64_ssh_keygen_ephemeral_host_key",
+    "actual_aarch64_sshd_configuration_and_hostkey_validation",
+    "actual_aarch64_sshd_effective_authentication_settings",
+    "actual_aarch64_sshd_loopback_password_authentication_accepted",
+    "actual_aarch64_sshd_loopback_incorrect_password_rejected"
+  ],
+  "wpa_supplicant_version": "wpa_supplicant v2.10",
+  "nl80211_driver_compiled": true,
+  "sshd_effective_authentication": {
+    "port": "22",
+    "addressfamily": "inet",
+    "permitrootlogin": "yes",
+    "passwordauthentication": "yes",
+    "permitemptypasswords": "no",
+    "pubkeyauthentication": "yes"
+  },
+  "correct_password_ssh": {
+    "identification": "SSH-2.0-OpenSSH_9.6",
+    "returncode": 255,
+    "stderr": "Accepted password for root from 127.0.0.1 port 43450 ssh2\r\n",
+    "accepted": true,
+    "shell_or_command_executed": false
+  },
+  "actual_ssh_login_tested": true,
+  "ssh_shell_or_command_executed": false,
+  "incorrect_password_ssh": {
+    "identification": "SSH-2.0-OpenSSH_9.6",
+    "returncode": 255,
+    "stderr": "Failed password for root from 127.0.0.1 port 33006 ssh2\r\nConnection closed by authenticating user root 127.0.0.1 port 33006 [preauth]\r\n",
+    "accepted": false,
+    "shell_or_command_executed": false
+  },
+  "fixture_account_databases_unchanged": true,
+  "production_archive_and_container_base_credentials_unchanged": true,
+  "passed": true,
+  "log": "/workspace/rpi4-yocto/logs/wifi-aarch64-smoke-20261022T061415Z.log"
+}
