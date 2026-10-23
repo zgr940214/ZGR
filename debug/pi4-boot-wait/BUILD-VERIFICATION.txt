@@ -1,0 +1,11 @@
+Source: raspberrypi/tools commit 439b6198a9b340de5998dd14a26a0d9d38a6bcac
+Variant: GIC=1 BCM2711=1 HIGH_PERI unset (ordinary Pi 4 configuration)
+Stock size: 512 bytes; debug size: 768 bytes
+Only changed word within stock binary: 0x70
+CPU0 wait address: 0x200; release PC: 0x204
+Release branches back to stock primary_cpu at 0x8c
+Firmware magic, version, DTB/kernel slots and secondary mailboxes preserved.
+All original code other than the primary-core CBZ destination preserved.
+SHA256 armstub8-debug.bin: a6b9c27f73b137b1df514cc2dd732a5352058e3d51424e849438d0b348998cf1
+Checks: cross-assembled, linked, disassembled, binary layout assertions passed.
+No Raspberry Pi / E50 hardware execution was performed.

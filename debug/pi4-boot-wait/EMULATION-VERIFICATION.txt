@@ -1,0 +1,11 @@
+PASS primary wait/release: entry=0x80000 DTB=0x2eff0000
+PASS primary wait/release: entry=0x80000 DTB=0x30000000
+PASS primary wait/release: entry=0x200000 DTB=0x2eff0000
+PASS primary wait/release: entry=0x200000 DTB=0x30000000
+PASS CPU1: stock/debug wait and mailbox-release behavior match
+PASS CPU2: stock/debug wait and mailbox-release behavior match
+PASS CPU3: stock/debug wait and mailbox-release behavior match
+PASS actual 6.12.93-v8 Image: entry 0x80000, two instructions reach primary_entry 0x149d068
+Scope: emulates core selection, wait/release, Linux argument ABI, secondary mailboxes and Image entry branch.
+Does not emulate VideoCore firmware, GIC/clock setup, full Linux boot, JTAG or TRACE32.
+No Raspberry Pi / E50 hardware execution was performed.
